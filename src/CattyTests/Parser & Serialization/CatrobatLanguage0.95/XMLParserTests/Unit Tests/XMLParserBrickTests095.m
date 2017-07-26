@@ -50,6 +50,7 @@
     SetVariableBrick *setVariableBrick = [SetVariableBrick new];
     [setVariableBrick setDefaultValuesForObject:nil];
     GDataXMLElement *xmlElement = [setVariableBrick xmlElementWithContext:self.serializerContext];
+    [xmlElement addChild:[GDataXMLElement elementWithName:@"inUserBrick" stringValue:@"false" context:self.serializerContext] context:self.serializerContext];
     
     XCTAssertNotNil(xmlElement, @"GDataXMLElement must not be nil");
     
@@ -69,12 +70,6 @@
     GDataXMLElement *xmlElement = [setVariableBrick xmlElementWithContext:self.serializerContext];
     
     XCTAssertNotNil(xmlElement, @"GDataXMLElement must not be nil");
-    
-    GDataXMLElement *inUserBrickElement = [xmlElement childWithElementName:@"inUserBrick"];
-    XCTAssertNotNil(inUserBrickElement, @"No inUserBrickElement element found");
-    
-    [xmlElement removeChild:inUserBrickElement];
-    
     XCTAssertNil([xmlElement childWithElementName:@"inUserBrick"], @"inUserBrickElement element not removed");
     
     SetVariableBrick *parsedSetVariableBrick = [SetVariableBrick parseFromElement:xmlElement withContext:self.parserContext];
@@ -117,6 +112,7 @@
     ChangeVariableBrick *changeVariableBrick = [ChangeVariableBrick new];
     [changeVariableBrick setDefaultValuesForObject:nil];
     GDataXMLElement *xmlElement = [changeVariableBrick xmlElementWithContext:self.serializerContext];
+    [xmlElement addChild:[GDataXMLElement elementWithName:@"inUserBrick" stringValue:@"false" context:self.serializerContext] context:self.serializerContext];
     
     XCTAssertNotNil(xmlElement, @"GDataXMLElement must not be nil");
     
@@ -136,12 +132,6 @@
     GDataXMLElement *xmlElement = [changeVariableBrick xmlElementWithContext:self.serializerContext];
     
     XCTAssertNotNil(xmlElement, @"GDataXMLElement must not be nil");
-    
-    GDataXMLElement *inUserBrickElement = [xmlElement childWithElementName:@"inUserBrick"];
-    XCTAssertNotNil(inUserBrickElement, @"No inUserBrickElement element found");
-    
-    [xmlElement removeChild:inUserBrickElement];
-    
     XCTAssertNil([xmlElement childWithElementName:@"inUserBrick"], @"inUserBrickElement element not removed");
     
     ChangeVariableBrick *parsedChangeVariableBrick = [ChangeVariableBrick parseFromElement:xmlElement withContext:self.parserContext];

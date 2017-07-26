@@ -183,14 +183,15 @@
     GDataXMLElement *xmlElement = [GDataXMLElement elementWithName:@"program" context:context];
     
     [xmlElement addChild:[self.header xmlElementWithContext:context] context:context];
+    
+    // add pseudo element to produce a Catroid equivalent XML (unused at the moment)
+    [xmlElement addChild:[GDataXMLElement elementWithName:@"settings" context:context] context:context];
+    
     [xmlElement addChild:[self scenesElementWithContext:context] context:context];
     [xmlElement addChild:[self programVariableListElementWithContext:context] context:context];
     
     // add pseudo element to produce a Catroid equivalent XML (unused at the moment)
     [xmlElement addChild:[GDataXMLElement elementWithName:@"programListOfLists" context:context] context:context];
-
-    // add pseudo element to produce a Catroid equivalent XML (unused at the moment)
-    [xmlElement addChild:[GDataXMLElement elementWithName:@"settings" context:context] context:context];
     
     return xmlElement;
 }

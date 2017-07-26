@@ -127,6 +127,14 @@
         [XMLError exceptionIf:[class conformsToProtocol:@protocol(CBXMLNodeProtocol)] equals:NO
                       message:@"%@ must have a category %@+CBXMLHandler that implements CBXMLNodeProtocol",
                               brickClassName, brickClassName];
+        
+        if (context.languageVersion > 0.991) {
+            // Check for commentedOut element (unused at the moment)
+            GDataXMLElement *commentOutElement = [brickXmlElement childWithElementName:@"commentedOut"];
+            [XMLError exceptionIfNil:commentOutElement message:@"No commentedOut element in Brick!"];
+            [brickXmlElement removeChild:commentOutElement];
+        }
+        
         Brick *brick = [context parseFromElement:brickXmlElement withClass:class];
         [XMLError exceptionIfNil:brick message:@"Unable to parse brick..."];
         brick.script = script;

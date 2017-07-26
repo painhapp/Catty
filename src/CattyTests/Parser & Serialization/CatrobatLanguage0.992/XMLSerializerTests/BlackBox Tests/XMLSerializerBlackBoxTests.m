@@ -31,39 +31,6 @@
 
 @implementation XMLSerializerBlackBoxTests
 
-- (void)testParseXMLAndSerializeProgramAndCompareXML:(NSString *)xmlFile {
-//    NSString *xmlFileFolder = nil;
-//    if ([xmlFile containsString:@"_098"]) {
-//        xmlFileFolder = [xmlFile stringByReplacingOccurrencesOfString:@"_098" withString:@""];
-//    } else if ([xmlFile containsString:@"098"]) {
-//        xmlFileFolder = [xmlFile stringByReplacingOccurrencesOfString:@"098" withString:@""];
-//    } else {
-//        return;
-//    }
-//    
-//    Program *program = [self getProgramForXML:xmlFile];
-//    GDataXMLDocument *document = [CBXMLSerializer xmlDocumentForProgram:program];
-//    
-//    NSString *pathToXmlFiles = @"/Users/bigdreamer/Desktop/GSoC/Catty/src/CattyTests/Resources/ParserTests/";
-//    
-//    NSString *newXmlFile = [[[[pathToXmlFiles stringByAppendingPathComponent:xmlFileFolder]
-//                              stringByAppendingPathComponent:xmlFile]
-//                             stringByReplacingOccurrencesOfString:@"098" withString:@"0992"]
-//                            stringByAppendingPathExtension:@"xml"];
-//    
-//    NSString *xmlString = [NSString stringWithFormat:@"%@\n%@", kCatrobatHeaderXMLDeclaration,
-//                           [document.rootElement XMLStringPrettyPrinted:YES]];
-//    
-//    NSDebug(@"Generated XML output:\n%@", xmlString);
-//    NSError *error = nil;
-//    
-//    if (! [xmlString writeToFile:newXmlFile atomically:YES encoding:NSUTF8StringEncoding error:&error]) {
-//        NSError(@"Program could not saved to disk! %@", error);
-//    }
-    
-    [super testParseXMLAndSerializeProgramAndCompareXML:xmlFile];
-}
-
 - (void)testAirFight
 {
     [self testParseXMLAndSerializeProgramAndCompareXML:@"Air_fight_0.5_0992"];

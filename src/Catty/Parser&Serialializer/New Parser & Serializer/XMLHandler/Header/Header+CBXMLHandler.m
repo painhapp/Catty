@@ -75,6 +75,14 @@
     return headerProperties;
 }
 
++ (NSMutableArray<CBXMLPropertyMapping*>*)headerPropertiesForLanguageVersion0992
+{
+    NSMutableArray *headerProperties = [self headerPropertiesForLanguageVersion098];
+    [headerProperties addObject:[[CBXMLPropertyMapping alloc]
+                                 initWithClassPropertyName:@"scenesEnabled" andIgnore:YES]];
+    return headerProperties;
+}
+
 #pragma mark - Parsing
 + (instancetype)parseFromElement:(GDataXMLElement*)xmlElement withContext:(CBXMLParserContext*)context
 {
@@ -84,8 +92,10 @@
     
     if (context.languageVersion == 0.95f || context.languageVersion == 0.96f) {
         headerProperties = [self headerPropertiesForLanguageVersion095];
-    } else if (context.languageVersion >= 0.98f) {
+    } else if (context.languageVersion >= 0.98f && context.languageVersion < 0.992f) {
         headerProperties = [self headerPropertiesForLanguageVersion098];
+    } else if (context.languageVersion >= 0.992f) {
+        headerProperties = [self headerPropertiesForLanguageVersion0992];
     } else {
         headerProperties = [self defaultHeaderProperties];
     }
@@ -181,6 +191,9 @@
                        context:context];
     [headerXMLElement addChild:[GDataXMLElement elementWithName:@"remixOf"
                                                     stringValue:self.remixOf context:context]
+                       context:context];
+    [headerXMLElement addChild:[GDataXMLElement elementWithName:@"scenesEnabled"
+                                                    stringValue:@"true" context:context]
                        context:context];
     [headerXMLElement addChild:[GDataXMLElement elementWithName:@"screenHeight"
                                                     stringValue:[self.screenHeight stringValue]

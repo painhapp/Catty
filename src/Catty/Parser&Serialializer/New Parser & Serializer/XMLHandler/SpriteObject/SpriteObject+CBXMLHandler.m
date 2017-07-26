@@ -45,22 +45,28 @@
          xmlElement.name, @"object or pointedObject"];
     }
 
-    NSArray *attributes = [xmlElement attributes];
-    [XMLError exceptionIf:[attributes count] notEquals:1
-                  message:@"Parsed name-attribute of object is invalid or empty!"];
-
     SpriteObject *spriteObject = [self new];
     context.spriteObject = spriteObject; // update context!
 
-    GDataXMLNode *attribute = [attributes firstObject];
+    GDataXMLNode *attributeName = [xmlElement attributeForName:@"name"];
+    GDataXMLNode *attributeReference = [xmlElement attributeForName:@"reference"];
+
     GDataXMLElement *referencedObjectElement = nil;
-    // check if normal or pointed object
-    if ([attribute.name isEqualToString:@"name"]) {
+    
+    if (attributeName != nil) {
         // case: it's a normal object
-        spriteObject.name = [attribute stringValue];
-    } else if ([attribute.name isEqualToString:@"reference"]) {
+        NSInteger numberOfAttributes = context.languageVersion > 0.991 ? 2 : 1;
+        [XMLError exceptionIf:[[xmlElement attributes] count] notEquals:numberOfAttributes
+                      message:@"Object has an invalid number of attributes!"];
+        
+        spriteObject.name = [attributeName stringValue];
+        
+    } else if (attributeReference != nil) {
         // case: it's a pointed object
-        NSString *xPath = [attribute stringValue];
+        [XMLError exceptionIf:[[xmlElement attributes] count] notEquals:1
+                      message:@"Object has an invalid number of attributes!"];
+        
+        NSString *xPath = [attributeReference stringValue];
         referencedObjectElement = [xmlElement singleNodeForCatrobatXPath:xPath];
         if ([referencedObjectElement.name isEqualToString:@"object"]) {
             [XMLError exceptionIfNode:referencedObjectElement isNilOrNodeNameNotEquals:@"object"];
@@ -72,8 +78,9 @@
         spriteObject.name = [nameAttribute stringValue];
         xmlElement = referencedObjectElement;
     } else {
-        [XMLError exceptionWithMessage:@"Unsupported attribute: %@!", attribute.name];
+        [XMLError exceptionWithMessage:@"Unsupported attributes: %@!", [xmlElement attributes]];
     }
+    
     [XMLError exceptionIfNil:spriteObject.name message:@"SpriteObject must contain a name"];
 
     // sprite object could (!) already exist in spriteObjectList or pointedSpriteObjectList at this point!

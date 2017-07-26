@@ -11,6 +11,7 @@
 		3689721E1A530929D06631A0 /* Pods_Catty_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52A0C3ABBED344E2C76956E /* Pods_Catty_Tests.framework */; };
 		4C06A2A71C3D5F0100E9234C /* XMLParserBlackBoxTests097.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C06A2A61C3D5F0100E9234C /* XMLParserBlackBoxTests097.m */; };
 		4C099F6E1C282B3C00E190CA /* CBBackendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C099F6D1C282B3C00E190CA /* CBBackendTests.swift */; };
+		4C12A8D91F28C45D00297615 /* XMLParserBrickTests0992.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12A8D81F28C45D00297615 /* XMLParserBrickTests0992.m */; };
 		4C1329041CD9259900F16E48 /* AudioManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1329031CD9259900F16E48 /* AudioManagerTests.swift */; };
 		4C13290B1CD92D5500F16E48 /* silence.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4C13290A1CD92D5500F16E48 /* silence.mp3 */; };
 		4C14CF1C1EC991DA00E53B25 /* UserVariableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C14CF1B1EC991DA00E53B25 /* UserVariableTests.swift */; };
@@ -909,6 +910,7 @@
 		4C06A2A61C3D5F0100E9234C /* XMLParserBlackBoxTests097.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLParserBlackBoxTests097.m; sourceTree = "<group>"; };
 		4C099F6D1C282B3C00E190CA /* CBBackendTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CBBackendTests.swift; path = PlayerEngine/CBBackendTests.swift; sourceTree = "<group>"; };
 		4C12A8D11F28B88200297615 /* XMLParserBlackBoxTests097.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLParserBlackBoxTests097.m; sourceTree = "<group>"; };
+		4C12A8D81F28C45D00297615 /* XMLParserBrickTests0992.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLParserBrickTests0992.m; sourceTree = "<group>"; };
 		4C1329031CD9259900F16E48 /* AudioManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManagerTests.swift; sourceTree = "<group>"; };
 		4C13290A1CD92D5500F16E48 /* silence.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = silence.mp3; sourceTree = "<group>"; };
 		4C14CF1B1EC991DA00E53B25 /* UserVariableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVariableTests.swift; sourceTree = "<group>"; };
@@ -5585,6 +5587,7 @@
 		C689CA6D1F0F0D17002CDD47 /* Unit Tests */ = {
 			isa = PBXGroup;
 			children = (
+				4C12A8D81F28C45D00297615 /* XMLParserBrickTests0992.m */,
 				C689CA6E1F0F0D17002CDD47 /* XMLParserTests0992.m */,
 			);
 			path = "Unit Tests";
@@ -6883,6 +6886,7 @@
 				4CEB225C1B95E47500B3BE2F /* IfOnEdgeBounceBrickTests.m in Sources */,
 				4C2A00C91B554CBF00CD4492 /* XMLParserTests092.m in Sources */,
 				4CEF0CF01B9C655B003C9B20 /* XMLParserBlackBoxTests096.m in Sources */,
+				4C12A8D91F28C45D00297615 /* XMLParserBrickTests0992.m in Sources */,
 				4C68FC921B25A00B00AB3EE8 /* InternFormulaStateTest.m in Sources */,
 				4C2EE3E51B5554D7006DE9B8 /* XMLParserFormulaTests095.m in Sources */,
 				4CD085DE1CD9EE59009A6428 /* SceneTests.m in Sources */,
