@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <program>
   <header>
-    <applicationBuildName/>
+    <applicationBuildName></applicationBuildName>
     <applicationBuildNumber>0</applicationBuildNumber>
     <applicationName>Pocket Code</applicationName>
     <applicationVersion>0.9.5</applicationVersion>
     <catrobatLanguageVersion>0.992</catrobatLanguageVersion>
-    <dateTimeUpload/>
+    <dateTimeUpload></dateTimeUpload>
     <description>Fly over wooden floor tiles, steering with your device&apos;s inclination.</description>
     <deviceName>HTC Sensation Z710e</deviceName>
     <landscapeMode>false</landscapeMode>
@@ -16,41 +16,45 @@
     <programLicense>http://developer.catrobat.org/agpl_v3</programLicense>
     <programName>Airplane with shadow</programName>
     <remixOf>http://pocketcode.org/details/0</remixOf>
+    <scenesEnabled>true</scenesEnabled>
     <screenHeight>960</screenHeight>
     <screenMode>STRETCH</screenMode>
     <screenWidth>540</screenWidth>
-    <tags/>
+    <tags></tags>
     <url>http://pocketcode.org/details/827</url>
     <userHandle>hej-wickie-hej</userHandle>
   </header>
+  <settings/>
   <scenes>
     <scene>
       <name>Scene 1</name>
       <objectList>
-        <object name="Background">
+        <object type="SingleSprite" name="Background">
           <lookList>
             <look name="background">
               <fileName>5A71C6F41035979503BA294F78A09336_background</fileName>
             </look>
           </lookList>
-          <soundList/>
+          <nfcTagList/>
           <scriptList>
             <script type="StartScript">
               <brickList>
                 <brick type="SetLookBrick">
+                  <commentedOut>false</commentedOut>
                   <look reference="../../../../../lookList/look"/>
                 </brick>
                 <brick type="SetVariableBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="VARIABLE">
                       <type>NUMBER</type>
                       <value>1.2</value>
                     </formula>
                   </formulaList>
-                  <inUserBrick>false</inUserBrick>
                   <userVariable>Scaling factor for tiles</userVariable>
                 </brick>
                 <brick type="SetVariableBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="VARIABLE">
                       <leftChild>
@@ -77,10 +81,10 @@
                       <value>ROUND</value>
                     </formula>
                   </formulaList>
-                  <inUserBrick>false</inUserBrick>
                   <userVariable>Tile half width</userVariable>
                 </brick>
                 <brick type="SetVariableBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="VARIABLE">
                       <leftChild>
@@ -107,24 +111,27 @@
                       <value>ROUND</value>
                     </formula>
                   </formulaList>
-                  <inUserBrick>false</inUserBrick>
                   <userVariable>Tile half height</userVariable>
                 </brick>
                 <brick type="BroadcastWaitBrick">
+                  <commentedOut>false</commentedOut>
                   <broadcastMessage>Initialize!</broadcastMessage>
                 </brick>
-                <brick type="ForeverBrick"/>
+                <brick type="ForeverBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
                 <brick type="SetVariableBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="VARIABLE">
                       <type>SENSOR</type>
                       <value>X_INCLINATION</value>
                     </formula>
                   </formulaList>
-                  <inUserBrick>false</inUserBrick>
                   <userVariable>x speed</userVariable>
                 </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -145,6 +152,7 @@
                   </formulaList>
                 </brick>
                 <brick type="SetVariableBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="VARIABLE">
                       <leftChild>
@@ -175,22 +183,26 @@
                       <value>ROUND</value>
                     </formula>
                   </formulaList>
-                  <inUserBrick>false</inUserBrick>
                   <userVariable reference="../../brick[7]/userVariable"/>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
-                <brick type="IfLogicEndBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
                 <brick type="SetVariableBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="VARIABLE">
                       <type>SENSOR</type>
                       <value>Y_INCLINATION</value>
                     </formula>
                   </formulaList>
-                  <inUserBrick>false</inUserBrick>
                   <userVariable>y speed</userVariable>
                 </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -211,6 +223,7 @@
                   </formulaList>
                 </brick>
                 <brick type="SetVariableBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="VARIABLE">
                       <leftChild>
@@ -241,33 +254,41 @@
                       <value>ROUND</value>
                     </formula>
                   </formulaList>
-                  <inUserBrick>false</inUserBrick>
                   <userVariable reference="../../brick[12]/userVariable"/>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
-                <brick type="IfLogicEndBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
                 <brick type="BroadcastWaitBrick">
+                  <commentedOut>false</commentedOut>
                   <broadcastMessage>Move!</broadcastMessage>
                 </brick>
-                <brick type="LoopEndlessBrick"/>
+                <brick type="LoopEndlessBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
               </brickList>
+              <commentedOut>false</commentedOut>
               <isUserScript>false</isUserScript>
             </script>
           </scriptList>
+          <soundList/>
           <userBricks/>
-          <nfcTagList/>
         </object>
-        <object name="Airplane">
+        <object type="SingleSprite" name="Airplane">
           <lookList>
             <look name="look1">
               <fileName>6BC61066A43990301DB003201BD71ED1_look.png</fileName>
             </look>
           </lookList>
-          <soundList/>
+          <nfcTagList/>
           <scriptList>
             <script type="BroadcastScript">
               <brickList>
                 <brick type="PlaceAtBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION">
                       <type>NUMBER</type>
@@ -284,6 +305,7 @@
                   </formulaList>
                 </brick>
                 <brick type="PointInDirectionBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="DEGREES">
                       <type>NUMBER</type>
@@ -292,6 +314,7 @@
                   </formulaList>
                 </brick>
                 <brick type="SetSizeToBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="SIZE">
                       <type>NUMBER</type>
@@ -300,9 +323,11 @@
                   </formulaList>
                 </brick>
                 <brick type="SetLookBrick">
+                  <commentedOut>false</commentedOut>
                   <look reference="../../../../../lookList/look"/>
                 </brick>
                 <brick type="WaitBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="TIME_TO_WAIT_IN_SECONDS">
                       <type>NUMBER</type>
@@ -310,20 +335,25 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="ComeToFrontBrick"/>
+                <brick type="ComeToFrontBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
               </brickList>
+              <commentedOut>false</commentedOut>
               <receivedMessage>Initialize!</receivedMessage>
             </script>
             <script type="BroadcastScript">
               <brickList>
                 <brick type="PointToBrick">
-                  <pointedObject name="Pointer">
+                  <commentedOut>false</commentedOut>
+                  <pointedObject type="SingleSprite" name="Pointer">
                     <lookList/>
-                    <soundList/>
+                    <nfcTagList/>
                     <scriptList>
                       <script type="BroadcastScript">
                         <brickList>
                           <brick type="PlaceAtBrick">
+                            <commentedOut>false</commentedOut>
                             <formulaList>
                               <formula category="Y_POSITION">
                                 <leftChild>
@@ -360,32 +390,35 @@
                             </formulaList>
                           </brick>
                         </brickList>
+                        <commentedOut>false</commentedOut>
                         <receivedMessage>Move!</receivedMessage>
                       </script>
                     </scriptList>
+                    <soundList/>
                     <userBricks/>
-                    <nfcTagList/>
                   </pointedObject>
                 </brick>
               </brickList>
+              <commentedOut>false</commentedOut>
               <receivedMessage>Move!</receivedMessage>
             </script>
           </scriptList>
+          <soundList/>
           <userBricks/>
-          <nfcTagList/>
         </object>
         <object reference="../object[2]/scriptList/script[2]/brickList/brick/pointedObject"/>
-        <object name="Shadow">
+        <object type="SingleSprite" name="Shadow">
           <lookList>
             <look name="look1">
               <fileName>139843B4866929D6E32C91DEFC627378_look.png</fileName>
             </look>
           </lookList>
-          <soundList/>
+          <nfcTagList/>
           <scriptList>
             <script type="BroadcastScript">
               <brickList>
                 <brick type="PlaceAtBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION">
                       <type>NUMBER</type>
@@ -398,6 +431,7 @@
                   </formulaList>
                 </brick>
                 <brick type="PointInDirectionBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="DEGREES">
                       <type>NUMBER</type>
@@ -406,6 +440,7 @@
                   </formulaList>
                 </brick>
                 <brick type="SetSizeToBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="SIZE">
                       <type>NUMBER</type>
@@ -414,6 +449,7 @@
                   </formulaList>
                 </brick>
                 <brick type="SetTransparencyBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="TRANSPARENCY">
                       <type>NUMBER</type>
@@ -422,23 +458,30 @@
                   </formulaList>
                 </brick>
                 <brick type="SetLookBrick">
+                  <commentedOut>false</commentedOut>
                   <look reference="../../../../../lookList/look"/>
                 </brick>
-                <brick type="ComeToFrontBrick"/>
+                <brick type="ComeToFrontBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
               </brickList>
+              <commentedOut>false</commentedOut>
               <receivedMessage>Initialize!</receivedMessage>
             </script>
             <script type="BroadcastScript">
               <brickList>
                 <brick type="PointToBrick">
+                  <commentedOut>false</commentedOut>
                   <pointedObject reference="../../../../../../object[2]/scriptList/script[2]/brickList/brick/pointedObject"/>
                 </brick>
               </brickList>
+              <commentedOut>false</commentedOut>
               <receivedMessage>Move!</receivedMessage>
             </script>
             <script type="StartScript">
               <brickList>
                 <brick type="WaitBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="TIME_TO_WAIT_IN_SECONDS">
                       <type>NUMBER</type>
@@ -446,8 +489,11 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="ForeverBrick"/>
+                <brick type="ForeverBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -508,6 +554,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeXByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="X_POSITION_CHANGE">
                       <type>NUMBER</type>
@@ -516,6 +563,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeYByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION_CHANGE">
                       <rightChild>
@@ -527,8 +575,11 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -545,6 +596,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeXByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="X_POSITION_CHANGE">
                       <rightChild>
@@ -557,6 +609,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeYByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION_CHANGE">
                       <type>NUMBER</type>
@@ -564,28 +617,38 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
-                <brick type="IfLogicEndBrick"/>
-                <brick type="IfLogicEndBrick"/>
-                <brick type="LoopEndlessBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="LoopEndlessBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
               </brickList>
+              <commentedOut>false</commentedOut>
               <isUserScript>false</isUserScript>
             </script>
           </scriptList>
+          <soundList/>
           <userBricks/>
-          <nfcTagList/>
         </object>
-        <object name="Lower left tile">
+        <object type="SingleSprite" name="Lower left tile">
           <lookList>
             <look name="tiles">
               <fileName>0FE096333242A2A86C4F09C3A6634C15_tiles.png</fileName>
             </look>
           </lookList>
-          <soundList/>
+          <nfcTagList/>
           <scriptList>
             <script type="BroadcastScript">
               <brickList>
                 <brick type="PlaceAtBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION">
                       <type>NUMBER</type>
@@ -598,6 +661,7 @@
                   </formulaList>
                 </brick>
                 <brick type="SetSizeToBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="SIZE">
                       <leftChild>
@@ -614,14 +678,17 @@
                   </formulaList>
                 </brick>
                 <brick type="SetLookBrick">
+                  <commentedOut>false</commentedOut>
                   <look reference="../../../../../lookList/look"/>
                 </brick>
               </brickList>
+              <commentedOut>false</commentedOut>
               <receivedMessage>Initialize!</receivedMessage>
             </script>
             <script type="BroadcastScript">
               <brickList>
                 <brick type="ChangeXByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="X_POSITION_CHANGE">
                       <type>USER_VARIABLE</type>
@@ -630,6 +697,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeYByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION_CHANGE">
                       <type>USER_VARIABLE</type>
@@ -638,6 +706,7 @@
                   </formulaList>
                 </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -688,6 +757,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeXByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="X_POSITION_CHANGE">
                       <leftChild>
@@ -703,8 +773,11 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -751,6 +824,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeXByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="X_POSITION_CHANGE">
                       <leftChild>
@@ -770,10 +844,17 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
-                <brick type="IfLogicEndBrick"/>
-                <brick type="IfLogicEndBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -824,6 +905,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeYByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION_CHANGE">
                       <leftChild>
@@ -839,8 +921,11 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -887,6 +972,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeYByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION_CHANGE">
                       <leftChild>
@@ -906,27 +992,35 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
-                <brick type="IfLogicEndBrick"/>
-                <brick type="IfLogicEndBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
               </brickList>
+              <commentedOut>false</commentedOut>
               <receivedMessage>Move!</receivedMessage>
             </script>
           </scriptList>
+          <soundList/>
           <userBricks/>
-          <nfcTagList/>
         </object>
-        <object name="Lower right tile">
+        <object type="SingleSprite" name="Lower right tile">
           <lookList>
             <look name="tiles">
               <fileName>0FE096333242A2A86C4F09C3A6634C15_tiles.png</fileName>
             </look>
           </lookList>
-          <soundList/>
+          <nfcTagList/>
           <scriptList>
             <script type="BroadcastScript">
               <brickList>
                 <brick type="PlaceAtBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION">
                       <type>NUMBER</type>
@@ -947,6 +1041,7 @@
                   </formulaList>
                 </brick>
                 <brick type="SetSizeToBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="SIZE">
                       <leftChild>
@@ -963,14 +1058,17 @@
                   </formulaList>
                 </brick>
                 <brick type="SetLookBrick">
+                  <commentedOut>false</commentedOut>
                   <look reference="../../../../../lookList/look"/>
                 </brick>
               </brickList>
+              <commentedOut>false</commentedOut>
               <receivedMessage>Initialize!</receivedMessage>
             </script>
             <script type="BroadcastScript">
               <brickList>
                 <brick type="ChangeXByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="X_POSITION_CHANGE">
                       <type>USER_VARIABLE</type>
@@ -979,6 +1077,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeYByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION_CHANGE">
                       <type>USER_VARIABLE</type>
@@ -987,6 +1086,7 @@
                   </formulaList>
                 </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -1015,7 +1115,7 @@
                           <value>SMALLER_OR_EQUAL</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </leftChild>
                       <rightChild>
                         <rightChild>
@@ -1031,7 +1131,7 @@
                           <value>SMALLER_THAN</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </rightChild>
                       <type>OPERATOR</type>
                       <value>LOGICAL_AND</value>
@@ -1039,6 +1139,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeXByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="X_POSITION_CHANGE">
                       <leftChild>
@@ -1054,8 +1155,11 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -1080,7 +1184,7 @@
                           <value>GREATER_OR_EQUAL</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </leftChild>
                       <rightChild>
                         <rightChild>
@@ -1096,7 +1200,7 @@
                           <value>GREATER_THAN</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </rightChild>
                       <type>OPERATOR</type>
                       <value>LOGICAL_AND</value>
@@ -1104,6 +1208,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeXByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="X_POSITION_CHANGE">
                       <leftChild>
@@ -1123,10 +1228,17 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
-                <brick type="IfLogicEndBrick"/>
-                <brick type="IfLogicEndBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -1155,7 +1267,7 @@
                           <value>SMALLER_OR_EQUAL</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </leftChild>
                       <rightChild>
                         <rightChild>
@@ -1171,7 +1283,7 @@
                           <value>SMALLER_THAN</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </rightChild>
                       <type>OPERATOR</type>
                       <value>LOGICAL_AND</value>
@@ -1179,6 +1291,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeYByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION_CHANGE">
                       <leftChild>
@@ -1194,8 +1307,11 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -1220,7 +1336,7 @@
                           <value>GREATER_OR_EQUAL</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </leftChild>
                       <rightChild>
                         <rightChild>
@@ -1236,7 +1352,7 @@
                           <value>GREATER_THAN</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </rightChild>
                       <type>OPERATOR</type>
                       <value>LOGICAL_AND</value>
@@ -1244,6 +1360,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeYByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION_CHANGE">
                       <leftChild>
@@ -1263,27 +1380,35 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
-                <brick type="IfLogicEndBrick"/>
-                <brick type="IfLogicEndBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
               </brickList>
+              <commentedOut>false</commentedOut>
               <receivedMessage>Move!</receivedMessage>
             </script>
           </scriptList>
+          <soundList/>
           <userBricks/>
-          <nfcTagList/>
         </object>
-        <object name="Upper left tile">
+        <object type="SingleSprite" name="Upper left tile">
           <lookList>
             <look name="tiles">
               <fileName>0FE096333242A2A86C4F09C3A6634C15_tiles.png</fileName>
             </look>
           </lookList>
-          <soundList/>
+          <nfcTagList/>
           <scriptList>
             <script type="BroadcastScript">
               <brickList>
                 <brick type="PlaceAtBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION">
                       <leftChild>
@@ -1304,6 +1429,7 @@
                   </formulaList>
                 </brick>
                 <brick type="SetSizeToBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="SIZE">
                       <leftChild>
@@ -1320,14 +1446,17 @@
                   </formulaList>
                 </brick>
                 <brick type="SetLookBrick">
+                  <commentedOut>false</commentedOut>
                   <look reference="../../../../../lookList/look"/>
                 </brick>
               </brickList>
+              <commentedOut>false</commentedOut>
               <receivedMessage>Initialize!</receivedMessage>
             </script>
             <script type="BroadcastScript">
               <brickList>
                 <brick type="ChangeXByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="X_POSITION_CHANGE">
                       <type>USER_VARIABLE</type>
@@ -1336,6 +1465,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeYByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION_CHANGE">
                       <type>USER_VARIABLE</type>
@@ -1344,6 +1474,7 @@
                   </formulaList>
                 </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -1372,7 +1503,7 @@
                           <value>SMALLER_OR_EQUAL</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </leftChild>
                       <rightChild>
                         <rightChild>
@@ -1388,7 +1519,7 @@
                           <value>SMALLER_THAN</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </rightChild>
                       <type>OPERATOR</type>
                       <value>LOGICAL_AND</value>
@@ -1396,6 +1527,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeXByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="X_POSITION_CHANGE">
                       <leftChild>
@@ -1411,8 +1543,11 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -1437,7 +1572,7 @@
                           <value>GREATER_OR_EQUAL</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </leftChild>
                       <rightChild>
                         <rightChild>
@@ -1453,7 +1588,7 @@
                           <value>GREATER_THAN</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </rightChild>
                       <type>OPERATOR</type>
                       <value>LOGICAL_AND</value>
@@ -1461,6 +1596,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeXByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="X_POSITION_CHANGE">
                       <leftChild>
@@ -1480,10 +1616,17 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
-                <brick type="IfLogicEndBrick"/>
-                <brick type="IfLogicEndBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -1512,7 +1655,7 @@
                           <value>SMALLER_OR_EQUAL</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </leftChild>
                       <rightChild>
                         <rightChild>
@@ -1528,7 +1671,7 @@
                           <value>SMALLER_THAN</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </rightChild>
                       <type>OPERATOR</type>
                       <value>LOGICAL_AND</value>
@@ -1536,6 +1679,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeYByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION_CHANGE">
                       <leftChild>
@@ -1551,8 +1695,11 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -1577,7 +1724,7 @@
                           <value>GREATER_OR_EQUAL</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </leftChild>
                       <rightChild>
                         <rightChild>
@@ -1593,7 +1740,7 @@
                           <value>GREATER_THAN</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </rightChild>
                       <type>OPERATOR</type>
                       <value>LOGICAL_AND</value>
@@ -1601,6 +1748,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeYByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION_CHANGE">
                       <leftChild>
@@ -1620,27 +1768,35 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
-                <brick type="IfLogicEndBrick"/>
-                <brick type="IfLogicEndBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
               </brickList>
+              <commentedOut>false</commentedOut>
               <receivedMessage>Move!</receivedMessage>
             </script>
           </scriptList>
+          <soundList/>
           <userBricks/>
-          <nfcTagList/>
         </object>
-        <object name="Upper right tile">
+        <object type="SingleSprite" name="Upper right tile">
           <lookList>
             <look name="tiles">
               <fileName>0FE096333242A2A86C4F09C3A6634C15_tiles.png</fileName>
             </look>
           </lookList>
-          <soundList/>
+          <nfcTagList/>
           <scriptList>
             <script type="BroadcastScript">
               <brickList>
                 <brick type="PlaceAtBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION">
                       <leftChild>
@@ -1669,6 +1825,7 @@
                   </formulaList>
                 </brick>
                 <brick type="SetSizeToBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="SIZE">
                       <leftChild>
@@ -1685,14 +1842,17 @@
                   </formulaList>
                 </brick>
                 <brick type="SetLookBrick">
+                  <commentedOut>false</commentedOut>
                   <look reference="../../../../../lookList/look"/>
                 </brick>
               </brickList>
+              <commentedOut>false</commentedOut>
               <receivedMessage>Initialize!</receivedMessage>
             </script>
             <script type="BroadcastScript">
               <brickList>
                 <brick type="ChangeXByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="X_POSITION_CHANGE">
                       <type>USER_VARIABLE</type>
@@ -1701,6 +1861,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeYByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION_CHANGE">
                       <type>USER_VARIABLE</type>
@@ -1709,6 +1870,7 @@
                   </formulaList>
                 </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -1737,7 +1899,7 @@
                           <value>SMALLER_OR_EQUAL</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </leftChild>
                       <rightChild>
                         <rightChild>
@@ -1753,7 +1915,7 @@
                           <value>SMALLER_THAN</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </rightChild>
                       <type>OPERATOR</type>
                       <value>LOGICAL_AND</value>
@@ -1761,6 +1923,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeXByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="X_POSITION_CHANGE">
                       <leftChild>
@@ -1776,8 +1939,11 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -1802,7 +1968,7 @@
                           <value>GREATER_OR_EQUAL</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </leftChild>
                       <rightChild>
                         <rightChild>
@@ -1818,7 +1984,7 @@
                           <value>GREATER_THAN</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </rightChild>
                       <type>OPERATOR</type>
                       <value>LOGICAL_AND</value>
@@ -1826,6 +1992,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeXByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="X_POSITION_CHANGE">
                       <leftChild>
@@ -1845,10 +2012,17 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
-                <brick type="IfLogicEndBrick"/>
-                <brick type="IfLogicEndBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -1877,7 +2051,7 @@
                           <value>SMALLER_OR_EQUAL</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </leftChild>
                       <rightChild>
                         <rightChild>
@@ -1893,7 +2067,7 @@
                           <value>SMALLER_THAN</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </rightChild>
                       <type>OPERATOR</type>
                       <value>LOGICAL_AND</value>
@@ -1901,6 +2075,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeYByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION_CHANGE">
                       <leftChild>
@@ -1916,8 +2091,11 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
                 <brick type="IfLogicBeginBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="IF_CONDITION">
                       <leftChild>
@@ -1942,7 +2120,7 @@
                           <value>GREATER_OR_EQUAL</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </leftChild>
                       <rightChild>
                         <rightChild>
@@ -1958,7 +2136,7 @@
                           <value>GREATER_THAN</value>
                         </rightChild>
                         <type>BRACKET</type>
-                        <value/>
+                        <value></value>
                       </rightChild>
                       <type>OPERATOR</type>
                       <value>LOGICAL_AND</value>
@@ -1966,6 +2144,7 @@
                   </formulaList>
                 </brick>
                 <brick type="ChangeYByNBrick">
+                  <commentedOut>false</commentedOut>
                   <formulaList>
                     <formula category="Y_POSITION_CHANGE">
                       <leftChild>
@@ -1985,30 +2164,29 @@
                     </formula>
                   </formulaList>
                 </brick>
-                <brick type="IfLogicElseBrick"/>
-                <brick type="IfLogicEndBrick"/>
-                <brick type="IfLogicEndBrick"/>
+                <brick type="IfLogicElseBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
+                <brick type="IfLogicEndBrick">
+                  <commentedOut>false</commentedOut>
+                </brick>
               </brickList>
+              <commentedOut>false</commentedOut>
               <receivedMessage>Move!</receivedMessage>
             </script>
           </scriptList>
+          <soundList/>
           <userBricks/>
-          <nfcTagList/>
         </object>
       </objectList>
       <data>
         <objectListOfList/>
         <objectVariableList>
           <entry>
-            <object reference="../../../../objectList/object[2]/scriptList/script[2]/brickList/brick/pointedObject"/>
-            <list/>
-          </entry>
-          <entry>
-            <object reference="../../../../objectList/object[4]"/>
-            <list/>
-          </entry>
-          <entry>
-            <object reference="../../../../objectList/object[8]"/>
+            <object reference="../../../../objectList/object[7]"/>
             <list/>
           </entry>
           <entry>
@@ -2016,7 +2194,11 @@
             <list/>
           </entry>
           <entry>
-            <object reference="../../../../objectList/object"/>
+            <object reference="../../../../objectList/object[6]"/>
+            <list/>
+          </entry>
+          <entry>
+            <object reference="../../../../objectList/object[2]/scriptList/script[2]/brickList/brick/pointedObject"/>
             <list/>
           </entry>
           <entry>
@@ -2024,11 +2206,15 @@
             <list/>
           </entry>
           <entry>
-            <object reference="../../../../objectList/object[7]"/>
+            <object reference="../../../../objectList/object[8]"/>
             <list/>
           </entry>
           <entry>
-            <object reference="../../../../objectList/object[6]"/>
+            <object reference="../../../../objectList/object"/>
+            <list/>
+          </entry>
+          <entry>
+            <object reference="../../../../objectList/object[4]"/>
             <list/>
           </entry>
         </objectVariableList>
@@ -2046,5 +2232,4 @@
     <userVariable reference="../../scenes/scene/objectList/object/scriptList/script/brickList/brick[12]/userVariable"/>
   </programVariableList>
   <programListOfLists/>
-  <settings/>
 </program>

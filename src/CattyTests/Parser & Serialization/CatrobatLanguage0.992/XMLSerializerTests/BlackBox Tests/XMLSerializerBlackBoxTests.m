@@ -42,7 +42,7 @@
     SpriteObject *background = (SpriteObject*)[program098.objectList objectAtIndex:0];
     background.name = @"Invalid";
     BOOL equal = [self isProgram:program098 equalToXML:@"Air_fight_0.5_0992"];
-    XCTAssertFalse(equal, @"Serialized program and XML are not equal");
+    XCTAssertFalse(equal, @"Serialized program and XML should not equal");
 }
 
 - (void)testAirplaneWithShadow06

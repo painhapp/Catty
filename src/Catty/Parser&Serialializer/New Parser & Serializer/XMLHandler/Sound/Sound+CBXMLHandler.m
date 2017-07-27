@@ -34,6 +34,20 @@
 + (instancetype)parseFromElement:(GDataXMLElement*)xmlElement withContext:(CBXMLParserContext*)context
 {
     [XMLError exceptionIfNode:xmlElement isNilOrNodeNameNotEquals:@"sound"];
+    
+    GDataXMLNode *attributeReference = [xmlElement attributeForName:@"reference"];
+    
+    if (attributeReference != nil) {
+        [XMLError exceptionIf:[[xmlElement attributes] count] notEquals:1
+                      message:@"Sound has an invalid number of attributes!"];
+        
+        NSString *xPath = [attributeReference stringValue];
+        GDataXMLElement *referencedSoundElement = [xmlElement singleNodeForCatrobatXPath:xPath];
+        
+        [XMLError exceptionIfNode:referencedSoundElement isNilOrNodeNameNotEquals:@"sound"];
+        xmlElement = referencedSoundElement;
+    }
+    
     Sound *sound = [self new];
     NSArray *soundChildElements = [xmlElement children];
     [XMLError exceptionIf:[soundChildElements count] notEquals:2 message:@"Sound must contain two child nodes"];

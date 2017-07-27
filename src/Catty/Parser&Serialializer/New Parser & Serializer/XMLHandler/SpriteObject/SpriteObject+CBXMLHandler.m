@@ -55,9 +55,15 @@
     
     if (attributeName != nil) {
         // case: it's a normal object
-        NSInteger numberOfAttributes = context.languageVersion > 0.991 ? 2 : 1;
-        [XMLError exceptionIf:[[xmlElement attributes] count] notEquals:numberOfAttributes
-                      message:@"Object has an invalid number of attributes!"];
+        
+        if (context.languageVersion > 0.991) {
+            [XMLError exceptionIf:[[xmlElement attributes] count] notEquals:2
+                          message:@"Object has an invalid number of attributes!"];
+            [XMLError exceptionIfNil:[xmlElement attributeForName:@"type"] message:@"Type attribute not present"];
+        } else {
+            [XMLError exceptionIf:[[xmlElement attributes] count] notEquals:1
+                          message:@"Object has an invalid number of attributes!"];
+        }
         
         spriteObject.name = [attributeName stringValue];
         
@@ -179,6 +185,9 @@
     if (! asPointedObject) {
         NSUInteger indexOfSpriteObject = [CBXMLSerializerHelper indexOfElement:self inArray:context.spriteObjectList];
         xmlElement = [GDataXMLElement elementWithName:@"object" xPathIndex:(indexOfSpriteObject+1) context:context];
+        
+        // Unused at the moment
+        [xmlElement addAttribute:[GDataXMLElement attributeWithName:@"type" escapedStringValue:@"SingleSprite"]];
     } else {
         xmlElement = [GDataXMLElement elementWithName:@"pointedObject" context:context];
     }
@@ -207,7 +216,21 @@
         [lookListXmlElement addChild:[((Look*)look) xmlElementWithContext:context] context:context];
     }
     [xmlElement addChild:lookListXmlElement context:context];
+    
+    
+    // add pseudo <nfcTagList/> element to produce a Catroid equivalent XML (unused at the moment)
+    [xmlElement addChild:[GDataXMLElement elementWithName:@"nfcTagList" context:nil]];
 
+    
+    GDataXMLElement *scriptListXmlElement = [GDataXMLElement elementWithName:@"scriptList" context:context];
+    for (id script in self.scriptList) {
+        [XMLError exceptionIf:[script isKindOfClass:[Script class]] equals:NO
+                      message:@"Invalid script instance given"];
+        [scriptListXmlElement addChild:[((Script*)script) xmlElementWithContext:context] context:context];
+    }
+    [xmlElement addChild:scriptListXmlElement context:context];
+    
+    
     GDataXMLElement *soundListXmlElement = [GDataXMLElement elementWithName:@"soundList" context:context];
     for (id sound in self.soundList) {
         [XMLError exceptionIf:[sound isKindOfClass:[Sound class]] equals:NO
@@ -216,23 +239,13 @@
     }
     [xmlElement addChild:soundListXmlElement context:context];
 
-    GDataXMLElement *scriptListXmlElement = [GDataXMLElement elementWithName:@"scriptList" context:context];
-    for (id script in self.scriptList) {
-        [XMLError exceptionIf:[script isKindOfClass:[Script class]] equals:NO
-                      message:@"Invalid script instance given"];
-        [scriptListXmlElement addChild:[((Script*)script) xmlElementWithContext:context] context:context];
-    }
-    [xmlElement addChild:scriptListXmlElement context:context];
-
+    
     //  Unused at the moment => implement this after Catroid has decided to officially activate this!
     //    GDataXMLElement *userBricksXmlElement = [GDataXMLElement elementWithName:@"userBricks" context:context];
     //    [xmlElement addChild:userBricksXmlElement context:context];
     
     // add pseudo <userBricks/> element to produce a Catroid equivalent XML (unused at the moment)
     [xmlElement addChild:[GDataXMLElement elementWithName:@"userBricks" context:nil]];
-    
-    // add pseudo <nfcTagList/> element to produce a Catroid equivalent XML (unused at the moment)
-    [xmlElement addChild:[GDataXMLElement elementWithName:@"nfcTagList" context:nil]];
 
     return xmlElement;
 }

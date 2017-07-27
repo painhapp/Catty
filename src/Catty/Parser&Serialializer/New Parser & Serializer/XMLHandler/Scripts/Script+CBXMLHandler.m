@@ -174,28 +174,35 @@
     NSString *scriptTypeName = NSStringFromClass([self class]);
     [xmlElement addAttribute:[GDataXMLElement attributeWithName:@"type" escapedStringValue:scriptTypeName]];
     [xmlElement addChild:[self xmlElementForBrickList:self.brickList withContext:context] context:context];
+    
     if ([self isKindOfClass:[StartScript class]]) {
-        //  Unused at the moment => TODO: implement this after Catroid has decided to officially use this feature!
-//        GDataXMLElement *isUserScriptXmlElement = [GDataXMLElement elementWithName:@"isUserScript" stringValue:@"false" context:context];
-//        [xmlElement addChild:isUserScriptXmlElement context:context];
+        
+        [XMLError exceptionIf:[xmlElement.attributes count] notEquals:1 message:@"Invalid number of attributes!"];
+
     } else if ([self isKindOfClass:[BroadcastScript class]]) {
+        
         BroadcastScript *broadcastScript = (BroadcastScript*)self;
-        [XMLError exceptionIfNil:broadcastScript.receivedMessage
-                         message:@"BroadcastScript contains invalid receivedMessage string"];
+        [XMLError exceptionIfNil:broadcastScript.receivedMessage message:@"BroadcastScript contains invalid receivedMessage string"];
         GDataXMLElement *receivedMessageXmlElement = [GDataXMLElement elementWithName:@"receivedMessage"
                                                                           stringValue:broadcastScript.receivedMessage
                                                                               context:context];
         [xmlElement addChild:receivedMessageXmlElement context:context];
+        
     } else if ([self isKindOfClass:[WhenScript class]]) {
+        
         WhenScript *whenScript = (WhenScript*)self;
         [XMLError exceptionIfNil:whenScript.action message:@"WhenScript contains invalid action string"];
         [XMLError exceptionIf:[kWhenScriptDefaultAction isEqualToString:whenScript.action] equals:NO
                       message:@"WhenScript contains invalid action string %@", whenScript.action];
         GDataXMLElement *actionXmlElement = [GDataXMLElement elementWithName:@"action" stringValue:whenScript.action context:context];
         [xmlElement addChild:actionXmlElement context:context];
+        
     } else {
-        [XMLError exceptionWithMessage:@"Unsupported script type: %@!", NSStringFromClass([self class])];
+        [XMLError exceptionWithMessage:@"Unsupported script type: %@", NSStringFromClass([self class])];
     }
+    
+    // add pseudo <commentedOut> element to produce a Catroid equivalent XML (unused at the moment)
+    [xmlElement addChild:[GDataXMLElement elementWithName:@"commentedOut" stringValue:@"false" context:context] context:context];
     
     // add pseudo <isUserScript> element for StartScript to produce a Catroid equivalent XML (unused at the moment)
     if ([self isKindOfClass:[StartScript class]]) {
@@ -219,7 +226,13 @@
                       message:@"Invalid brick instance given"];
         [XMLError exceptionIf:[brick conformsToProtocol:@protocol(CBXMLNodeProtocol)] equals:NO
                       message:@"Brick does not have a CBXMLHandler category that implements CBXMLNodeProtocol"];
-        [xmlElement addChild:[((Brick<CBXMLNodeProtocol>*)brick) xmlElementWithContext:context] context:context];
+        
+        GDataXMLElement *brickElement = [((Brick<CBXMLNodeProtocol>*)brick) xmlElementWithContext:context];
+        
+        // add pseudo <commentedOut> element to produce a Catroid equivalent XML (unused at the moment)
+        [brickElement addChild:[GDataXMLElement elementWithName:@"commentedOut" stringValue:@"false" context:context] context:context];
+
+        [xmlElement addChild:brickElement context:context];
     }
     [XMLError exceptionIf:[openedNestingBricksStack isEmpty] equals:NO
                   message:@"FATAL ERROR: there are still some unclosed nesting bricks (e.g. IF, \

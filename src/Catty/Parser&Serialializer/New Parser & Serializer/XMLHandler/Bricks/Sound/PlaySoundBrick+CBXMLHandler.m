@@ -53,8 +53,9 @@
         sound = [CBXMLParserHelper findSoundInArray:soundList withName:[nameElement stringValue]];
         [XMLError exceptionIfNil:sound message:@"Fatal error: no sound found in list, but should already exist!"];
     } else {
-        // OMG!! a sound has been defined within the brick element...
-        sound = [context parseFromElement:xmlElement withClass:[Sound class]];
+        GDataXMLElement *soundElement = [xmlElement childWithElementName:@"sound"];
+        sound = [context parseFromElement:soundElement withClass:[Sound class]];
+        
         [XMLError exceptionIfNil:sound message:@"Unable to parse sound..."];
         [soundList addObject:sound];
     }
