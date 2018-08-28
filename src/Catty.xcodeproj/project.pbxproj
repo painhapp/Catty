@@ -10,6 +10,8 @@
 		2D6E3F39210A0A9F00FB8139 /* ChartProgramStoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6E3F38210A0A9F00FB8139 /* ChartProgramStoreDataSource.swift */; };
 		2D6E3F3B210A0AB700FB8139 /* ChartProgramStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6E3F3A210A0AB700FB8139 /* ChartProgramStoreViewController.swift */; };
 		2D6EC6982134093600CBAEC2 /* StoreProgramDownloaderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6EC6972134093500CBAEC2 /* StoreProgramDownloaderMock.swift */; };
+		2D6EC69A213512F600CBAEC2 /* ProgramDetailStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6EC699213512F600CBAEC2 /* ProgramDetailStoreViewController.swift */; };
+		2D6EC69C2135131200CBAEC2 /* ProgramDetailStoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6EC69B2135131200CBAEC2 /* ProgramDetailStoreDataSource.swift */; };
 		2D8E23C32123134B003E7EE4 /* ChartProgramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8E23C22123134B003E7EE4 /* ChartProgramCell.swift */; };
 		2DA8790C212B443500FE0585 /* SearchStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA8790B212B443500FE0585 /* SearchStoreViewController.swift */; };
 		2DA8790E212B444E00FE0585 /* SearchStoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA8790D212B444E00FE0585 /* SearchStoreDataSource.swift */; };
@@ -650,7 +652,6 @@
 		92FF31571A24DEB300093DA7 /* ObjectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF312F1A24DEB300093DA7 /* ObjectTableViewController.m */; };
 		92FF31581A24DEB300093DA7 /* ProgramTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF31311A24DEB300093DA7 /* ProgramTableViewController.m */; };
 		92FF31591A24DEB300093DA7 /* DownloadTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF31341A24DEB300093DA7 /* DownloadTabBarController.m */; };
-		92FF315B1A24DEB300093DA7 /* ProgramDetailStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF31381A24DEB300093DA7 /* ProgramDetailStoreViewController.m */; };
 		92FF315E1A24DEB300093DA7 /* HelpWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF313F1A24DEB300093DA7 /* HelpWebViewController.m */; };
 		92FF315F1A24DEB300093DA7 /* MyProgramsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF31421A24DEB300093DA7 /* MyProgramsViewController.m */; };
 		92FF31601A24DEB300093DA7 /* SaveToProjectActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF31451A24DEB300093DA7 /* SaveToProjectActivity.m */; };
@@ -1064,6 +1065,8 @@
 		2D6E3F38210A0A9F00FB8139 /* ChartProgramStoreDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartProgramStoreDataSource.swift; sourceTree = "<group>"; };
 		2D6E3F3A210A0AB700FB8139 /* ChartProgramStoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartProgramStoreViewController.swift; sourceTree = "<group>"; };
 		2D6EC6972134093500CBAEC2 /* StoreProgramDownloaderMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreProgramDownloaderMock.swift; sourceTree = "<group>"; };
+		2D6EC699213512F600CBAEC2 /* ProgramDetailStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramDetailStoreViewController.swift; sourceTree = "<group>"; };
+		2D6EC69B2135131200CBAEC2 /* ProgramDetailStoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramDetailStoreDataSource.swift; sourceTree = "<group>"; };
 		2D8E23C22123134B003E7EE4 /* ChartProgramCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartProgramCell.swift; sourceTree = "<group>"; };
 		2DA8790B212B443500FE0585 /* SearchStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStoreViewController.swift; sourceTree = "<group>"; };
 		2DA8790D212B444E00FE0585 /* SearchStoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStoreDataSource.swift; sourceTree = "<group>"; };
@@ -2027,8 +2030,6 @@
 		92FF31311A24DEB300093DA7 /* ProgramTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramTableViewController.m; sourceTree = "<group>"; };
 		92FF31331A24DEB300093DA7 /* DownloadTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTabBarController.h; sourceTree = "<group>"; };
 		92FF31341A24DEB300093DA7 /* DownloadTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTabBarController.m; sourceTree = "<group>"; };
-		92FF31371A24DEB300093DA7 /* ProgramDetailStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramDetailStoreViewController.h; sourceTree = "<group>"; };
-		92FF31381A24DEB300093DA7 /* ProgramDetailStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramDetailStoreViewController.m; sourceTree = "<group>"; };
 		92FF313E1A24DEB300093DA7 /* HelpWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpWebViewController.h; sourceTree = "<group>"; };
 		92FF313F1A24DEB300093DA7 /* HelpWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpWebViewController.m; sourceTree = "<group>"; };
 		92FF31411A24DEB300093DA7 /* MyProgramsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProgramsViewController.h; sourceTree = "<group>"; };
@@ -5204,8 +5205,8 @@
 				2DA87910212BD6C000FE0585 /* SearchStore */,
 				92FF31331A24DEB300093DA7 /* DownloadTabBarController.h */,
 				92FF31341A24DEB300093DA7 /* DownloadTabBarController.m */,
-				92FF31371A24DEB300093DA7 /* ProgramDetailStoreViewController.h */,
-				92FF31381A24DEB300093DA7 /* ProgramDetailStoreViewController.m */,
+				2D6EC699213512F600CBAEC2 /* ProgramDetailStoreViewController.swift */,
+				2D6EC69B2135131200CBAEC2 /* ProgramDetailStoreDataSource.swift */,
 			);
 			path = Download;
 			sourceTree = "<group>";
@@ -7573,6 +7574,7 @@
 				92FF314E1A24DEB300093DA7 /* LookImageViewController.m in Sources */,
 				AA74F0A41BC05FCE00D1E954 /* LoopEndBrickCell.m in Sources */,
 				921E84E81CC9F3E400F7EE9F /* TextInputViewController.m in Sources */,
+				2D6EC69A213512F600CBAEC2 /* ProgramDetailStoreViewController.swift in Sources */,
 				921D467D1BDF61350086AD20 /* ComeToFrontBrick+Instruction.swift in Sources */,
 				9218B20F1CC4AB75007B4C60 /* MirrorRotationZoomTool.m in Sources */,
 				AA74EEF91BC057C900D1E954 /* ChangeTransparencyByNBrick+CBXMLHandler.m in Sources */,
@@ -7738,6 +7740,7 @@
 				E4668B3820FDC1B90021FA0B /* FeaturedProgramsStoreTableViewController.swift in Sources */,
 				AA74EE2D1BC0541E00D1E954 /* MoveNStepsBrick+Instruction.swift in Sources */,
 				9218B2091CC4AB75007B4C60 /* UIImage+Rotate.m in Sources */,
+				2D6EC69C2135131200CBAEC2 /* ProgramDetailStoreDataSource.swift in Sources */,
 				4CE9ADA51EEB2DAF00F5766B /* TextFieldAlertController.swift in Sources */,
 				AA74F0CC1BC05FCE00D1E954 /* BroadcastScriptCell.m in Sources */,
 				59697DA8201F4D0400A0071A /* MediaItem.swift in Sources */,
@@ -7836,7 +7839,6 @@
 				BA1FA9A21F02B0C80084184D /* InsertItemIntoUserListBrick+Instruction.swift in Sources */,
 				92FF2EBF1A24C8A700093DA7 /* CatrobatProgram.m in Sources */,
 				AA74EFE61BC05B5F00D1E954 /* IfLogicEndBrick.m in Sources */,
-				92FF315B1A24DEB300093DA7 /* ProgramDetailStoreViewController.m in Sources */,
 				AA74EFE91BC05B5F00D1E954 /* NoteBrick.m in Sources */,
 				92DFB00F1A38949E00FA9B0F /* ExternToken.m in Sources */,
 				92DFB0191A38949E00FA9B0F /* InternToExternGenerator.m in Sources */,

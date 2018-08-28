@@ -61,7 +61,7 @@ class ChartProgramsStoreViewController: UIViewController, SelectedChartProgramsD
         if segue.identifier == kSegueToProgramDetail {
             if let programDetailStoreViewController = segue.destination as? ProgramDetailStoreViewController,
                 let catrobatProject = programForSegue {
-                programDetailStoreViewController.project = mapStoreProgramToCatrobatProgram(program: catrobatProject)
+                programDetailStoreViewController.project = catrobatProject
             }
         }
     }
@@ -80,27 +80,6 @@ class ChartProgramsStoreViewController: UIViewController, SelectedChartProgramsD
     }
     
     // MARK: - Helper Methods
-    
-    private func mapStoreProgramToCatrobatProgram(program: StoreProgram) -> CatrobatProgram {
-        var programDictionary = [String: Any]()
-        programDictionary["ProjectName"] = program.projectName
-        programDictionary["Author"] =  program.author
-        programDictionary["Description"] = program.description ?? ""
-        programDictionary["DownloadUrl"] = program.downloadUrl ?? ""
-        programDictionary["Downloads"] = program.downloads ?? 0
-        programDictionary["ProjectId"] = program.projectId
-        programDictionary["ProjectName"] = program.projectName
-        programDictionary["ProjectUrl"] = program.projectUrl ?? ""
-        programDictionary["ScreenshotBig"] = program.screenshotBig ?? ""
-        programDictionary["ScreenshotSmall"] = program.screenshotSmall ?? ""
-        programDictionary["FeaturedImage"] = program.featuredImage ?? ""
-        programDictionary["Uploaded"] = program.uploaded ?? 0
-        programDictionary["Version"] = program.version ?? ""
-        programDictionary["Views"] = program.views ?? 0
-        programDictionary["FileSize"] = program.fileSize ?? 0.0
-        
-        return CatrobatProgram(dict: programDictionary, andBaseUrl: kFeaturedImageBaseUrl)
-    }
     
     func initSegmentedControl() {
         chartProgramsSegmentedControl?.setTitle(kLocalizedMostDownloaded, forSegmentAt: 0)
