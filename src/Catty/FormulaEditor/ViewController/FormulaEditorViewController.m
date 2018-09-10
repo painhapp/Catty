@@ -211,29 +211,13 @@ NS_ENUM(NSInteger, ButtonIndex) {
     
     [self localizeView];
     
-    CGFloat topInsetNavigationBar = 0.0f;
-    if (@available(iOS 11, *)) {
-        topInsetNavigationBar = [UIApplication sharedApplication].statusBarFrame.size.height;
-        UIView *insetNavBarView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, topInsetNavigationBar)];
-        insetNavBarView.backgroundColor = [UIColor globalTintColor];
-        [self.view addSubview:insetNavBarView];
-    }
-    UINavigationBar *myNav = [[UINavigationBar alloc]initWithFrame:CGRectMake(0.0f, topInsetNavigationBar, self.view.frame.size.width, kFormulaEditorTopOffset)];
-    [UINavigationBar appearance].barTintColor = [UIColor globalTintColor];
-    myNav.translucent = NO;
-    [self.view addSubview:myNav];
-    
-
-    
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:kLocalizedCancel
                                                       style:UIBarButtonItemStylePlain
                                                      target:self
                                                             action:@selector(dismissFormulaEditorViewController)];
-    
     item.tintColor = [UIColor navTintColor];
-    UINavigationItem *navigItem = [[UINavigationItem alloc] initWithTitle:@""];
-    navigItem.leftBarButtonItem = item;
-    myNav.items = [NSArray arrayWithObjects: navigItem,nil];
+    self.navigationItem.leftBarButtonItem = item;
+    
     self.deleteButton.shapeStrokeColor = [UIColor navTintColor];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(formulaTextViewTextDidChangeNotification:) name:UITextViewTextDidChangeNotification object:self.formulaEditorTextView];
@@ -585,7 +569,6 @@ NS_ENUM(NSInteger, ButtonIndex) {
 
 - (void)updateFormula
 {
-
     if(self.formula != nil && self.internFormula != nil)
     {
         [self.formula setDisplayString:[self.internFormula getExternFormulaString]];
@@ -660,6 +643,7 @@ NS_ENUM(NSInteger, ButtonIndex) {
 //    [self.logicalOperatorsMenu show];
 //    [self.logicalOperatorsMenu becomeFirstResponder];
 //}
+
 - (IBAction)showCalc:(UIButton *)sender {
     [self hideScrollViews];
     self.calcScrollView.hidden = NO;

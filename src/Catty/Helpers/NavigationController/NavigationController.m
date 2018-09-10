@@ -51,11 +51,6 @@
         CatrobatTableViewController *ctvc = (CatrobatTableViewController*)currentViewController;
         return ctvc.tableView.scrollEnabled;
     }
-    
-    if ([currentViewController isKindOfClass:[ScriptCollectionViewController class]]) {
-        ScriptCollectionViewController *scv = (ScriptCollectionViewController*)currentViewController;
-        return ![scv.presentedViewController isKindOfClass:[FormulaEditorViewController class]];
-    }
 
     return YES;
 }

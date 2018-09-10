@@ -26,7 +26,6 @@
 #import "StartScript.h"
 #import "CatrobatReorderableCollectionViewFlowLayout.h"
 #import "BrickManager.h"
-#import "BrickTransition.h"
 #import "PlaceHolderView.h"
 #import "BroadcastScriptCell.h"
 #import "LoopBeginBrick.h"
@@ -86,7 +85,6 @@
                                              BrickCellDataDelegate,
                                              UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong) BrickTransition *brickScaleTransition;
 //@property (nonatomic, strong) NSMutableArray *selectedIndexPositions;  // refactor
 @property (nonatomic, strong) NSIndexPath *variableIndexPath;
 @property (nonatomic, assign) BOOL isEditingBrickMode;
@@ -174,27 +172,6 @@
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:bsvc];
         [self presentViewController:navController animated:YES completion:NULL];
     }
-}
-
-#pragma mark - UIViewControllerAnimatedTransitioning delegate
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController*)presented
-                                                                  presentingController:(UIViewController*)presenting
-                                                                      sourceController:(UIViewController*)source
-{
-    if ([presented isKindOfClass:[FormulaEditorViewController class]]) {
-        self.brickScaleTransition.transitionMode = TransitionModePresent;
-        return self.brickScaleTransition;
-    }
-    return nil;
-}
-
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController*)dismissed
-{
-    if ([dismissed isKindOfClass:[FormulaEditorViewController class]]) {
-        self.brickScaleTransition.transitionMode = TransitionModeDismiss;
-        return self.brickScaleTransition;
-    }
-    return nil;
 }
 
 - (CGSize)collectionView:(UICollectionView*)collectionView
@@ -735,7 +712,7 @@ willBeginDraggingItemAtIndexPath:(NSIndexPath*)indexPath
     if (self.isEditingBrickMode && event) {
         return;
     }
-    if ([self.presentedViewController isKindOfClass:[FormulaEditorViewController class]]) {
+    /*if ([self.presentedViewController isKindOfClass:[FormulaEditorViewController class]]) {
         FormulaEditorViewController *formulaEditorViewController = (FormulaEditorViewController*)self.presentedViewController;
         BOOL forceChange = NO;
         if (event != nil && ((UITouch*)[[event allTouches] anyObject]).tapCount == 2)
@@ -747,15 +724,16 @@ willBeginDraggingItemAtIndexPath:(NSIndexPath*)indexPath
     // Check if already presenting a view controller.
     if (self.presentedViewController.isViewLoaded && self.presentedViewController.view.window) {
         [self.presentedViewController dismissViewControllerAnimated:NO completion:NULL];
-    }
+    }*/
 
     FormulaEditorViewController *formulaEditorViewController = [[FormulaEditorViewController alloc] initWithBrickCellFormulaData:formulaData andFormulaManager:self.formulaManager];
     formulaEditorViewController.object = self.object;
     formulaEditorViewController.transitioningDelegate = self;
     formulaEditorViewController.modalPresentationStyle = UIModalPresentationCustom;
 
-    [self.brickScaleTransition updateAnimationViewWithView:formulaData.brickCell];
-    [self presentViewController:formulaEditorViewController animated:YES completion:^{
+    UINavigationController *navigationController = [[UINavigationController alloc]
+                                                    initWithRootViewController:formulaEditorViewController];
+    [self presentViewController:navigationController animated:YES completion:^{
         [formulaEditorViewController setBrickCellFormulaData:formulaData];
     }];
 }
@@ -1060,7 +1038,6 @@ willBeginDraggingItemAtIndexPath:(NSIndexPath*)indexPath
     UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithTitle:kLocalizedDelete style:UIBarButtonItemStylePlain target:self action:@selector(enterDeleteMode)];
     self.navigationItem.rightBarButtonItem = deleteButton;
     [self changeDeleteBarButtonState];
-    self.brickScaleTransition = [[BrickTransition alloc] initWithViewToAnimate:nil];
     [[BrickSelectionManager sharedInstance] reset];
     // register brick cells for current brick category
     NSDictionary *allBrickTypes = [[BrickManager sharedBrickManager] classNameBrickTypeMap];

@@ -34,12 +34,6 @@
                 <key>Type</key>
                 <string>PSGroupSpecifier</string>
                 <key>FooterText</key>
-                <string>Catty/Resources/Licenses/FXBlurView</string>
-            </dict>
-            <dict>
-                <key>Type</key>
-                <string>PSGroupSpecifier</string>
-                <key>FooterText</key>
                 <string>Catty/Resources/Licenses/GDataXMLNode</string>
             </dict>
             <dict>

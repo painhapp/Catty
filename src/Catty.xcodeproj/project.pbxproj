@@ -394,7 +394,6 @@
 		4CDE4CEE203DBBF500B43034 /* minizip.license in Resources */ = {isa = PBXBuildFile; fileRef = 4CDE4CD6203DBBF300B43034 /* minizip.license */; };
 		4CDE4CF0203DBBF500B43034 /* SPUserResizableView.license in Resources */ = {isa = PBXBuildFile; fileRef = 4CDE4CD8203DBBF300B43034 /* SPUserResizableView.license */; };
 		4CDE4CF1203DBBF500B43034 /* YKImageCropperView.license in Resources */ = {isa = PBXBuildFile; fileRef = 4CDE4CD9203DBBF300B43034 /* YKImageCropperView.license */; };
-		4CDE4CF3203DBBF500B43034 /* FXBlurView.license in Resources */ = {isa = PBXBuildFile; fileRef = 4CDE4CDB203DBBF300B43034 /* FXBlurView.license */; };
 		4CDE4CF4203DBBF500B43034 /* HMSegmentedControl.license in Resources */ = {isa = PBXBuildFile; fileRef = 4CDE4CDC203DBBF300B43034 /* HMSegmentedControl.license */; };
 		4CDE4CF5203DBBF500B43034 /* UIImage+FloodFill.license in Resources */ = {isa = PBXBuildFile; fileRef = 4CDE4CDD203DBBF400B43034 /* UIImage+FloodFill.license */; };
 		4CDE4CF6203DBBF500B43034 /* SharkfoodMuteSwitchDetector.license in Resources */ = {isa = PBXBuildFile; fileRef = 4CDE4CDE203DBBF400B43034 /* SharkfoodMuteSwitchDetector.license */; };
@@ -815,8 +814,6 @@
 		92FF325C1A24E2F400093DA7 /* LICENSE_BDKNotifyHUD in Resources */ = {isa = PBXBuildFile; fileRef = 92FF31711A24E2F400093DA7 /* LICENSE_BDKNotifyHUD */; };
 		92FF325D1A24E2F400093DA7 /* EVCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF31741A24E2F400093DA7 /* EVCircularProgressView.m */; };
 		92FF325E1A24E2F400093DA7 /* LICENSE_EVCircularProgressView in Resources */ = {isa = PBXBuildFile; fileRef = 92FF31751A24E2F400093DA7 /* LICENSE_EVCircularProgressView */; };
-		92FF32631A24E2F400093DA7 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF31811A24E2F400093DA7 /* FXBlurView.m */; };
-		92FF32641A24E2F400093DA7 /* LICENSE_FXBlurView in Resources */ = {isa = PBXBuildFile; fileRef = 92FF31821A24E2F400093DA7 /* LICENSE_FXBlurView */; };
 		92FF32B11A24E2F400093DA7 /* CreateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF322B1A24E2F400093DA7 /* CreateView.m */; };
 		92FF32B21A24E2F400093DA7 /* RoundBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF322D1A24E2F400093DA7 /* RoundBorderedButton.m */; };
 		92FF32B31A24E2F400093DA7 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF32301A24E2F400093DA7 /* LoadingView.m */; };
@@ -829,8 +826,6 @@
 		92FF32BB1A24E2F400093DA7 /* DarkBlueGradientImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF32491A24E2F400093DA7 /* DarkBlueGradientImageCell.m */; };
 		92FF32BC1A24E2F400093DA7 /* DarkBlueGradientImageDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF324B1A24E2F400093DA7 /* DarkBlueGradientImageDetailCell.m */; };
 		92FF32BD1A24E2F400093DA7 /* ProgramTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF324E1A24E2F400093DA7 /* ProgramTableHeaderView.m */; };
-		92FF32BE1A24E2F400093DA7 /* BaseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF32511A24E2F400093DA7 /* BaseTransition.m */; };
-		92FF32BF1A24E2F400093DA7 /* BrickTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF32531A24E2F400093DA7 /* BrickTransition.m */; };
 		92FF32C31A24E33B00093DA7 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92FF32C21A24E33B00093DA7 /* iPhone.storyboard */; };
 		99B2C36B1D884C1300736769 /* FlashBrick+CBXMLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B2C36A1D884C1300736769 /* FlashBrick+CBXMLHandler.m */; };
 		99B2C3701D884D2900736769 /* FlashBrick.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B2C36F1D884D2900736769 /* FlashBrick.m */; };
@@ -1737,7 +1732,6 @@
 		4CDE4CD6203DBBF300B43034 /* minizip.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = minizip.license; sourceTree = "<group>"; };
 		4CDE4CD8203DBBF300B43034 /* SPUserResizableView.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SPUserResizableView.license; sourceTree = "<group>"; };
 		4CDE4CD9203DBBF300B43034 /* YKImageCropperView.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YKImageCropperView.license; sourceTree = "<group>"; };
-		4CDE4CDB203DBBF300B43034 /* FXBlurView.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FXBlurView.license; sourceTree = "<group>"; };
 		4CDE4CDC203DBBF300B43034 /* HMSegmentedControl.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HMSegmentedControl.license; sourceTree = "<group>"; };
 		4CDE4CDD203DBBF400B43034 /* UIImage+FloodFill.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "UIImage+FloodFill.license"; sourceTree = "<group>"; };
 		4CDE4CDE203DBBF400B43034 /* SharkfoodMuteSwitchDetector.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SharkfoodMuteSwitchDetector.license; sourceTree = "<group>"; };
@@ -2386,9 +2380,6 @@
 		92FF31731A24E2F400093DA7 /* EVCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCircularProgressView.h; sourceTree = "<group>"; };
 		92FF31741A24E2F400093DA7 /* EVCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCircularProgressView.m; sourceTree = "<group>"; };
 		92FF31751A24E2F400093DA7 /* LICENSE_EVCircularProgressView */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_EVCircularProgressView; sourceTree = "<group>"; };
-		92FF31801A24E2F400093DA7 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
-		92FF31811A24E2F400093DA7 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
-		92FF31821A24E2F400093DA7 /* LICENSE_FXBlurView */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_FXBlurView; sourceTree = "<group>"; };
 		92FF322A1A24E2F400093DA7 /* CreateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateView.h; sourceTree = "<group>"; };
 		92FF322B1A24E2F400093DA7 /* CreateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateView.m; sourceTree = "<group>"; };
 		92FF322C1A24E2F400093DA7 /* RoundBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundBorderedButton.h; sourceTree = "<group>"; };
@@ -2414,10 +2405,6 @@
 		92FF324B1A24E2F400093DA7 /* DarkBlueGradientImageDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DarkBlueGradientImageDetailCell.m; sourceTree = "<group>"; };
 		92FF324D1A24E2F400093DA7 /* ProgramTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramTableHeaderView.h; sourceTree = "<group>"; };
 		92FF324E1A24E2F400093DA7 /* ProgramTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramTableHeaderView.m; sourceTree = "<group>"; };
-		92FF32501A24E2F400093DA7 /* BaseTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTransition.h; sourceTree = "<group>"; };
-		92FF32511A24E2F400093DA7 /* BaseTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTransition.m; sourceTree = "<group>"; };
-		92FF32521A24E2F400093DA7 /* BrickTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrickTransition.h; sourceTree = "<group>"; };
-		92FF32531A24E2F400093DA7 /* BrickTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrickTransition.m; sourceTree = "<group>"; };
 		92FF32C21A24E33B00093DA7 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
 		9990BB6C1D89D89A0088357A /* BrickStaticChoiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrickStaticChoiceProtocol.h; sourceTree = "<group>"; };
 		99B2C3691D884C1300736769 /* FlashBrick+CBXMLHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FlashBrick+CBXMLHandler.h"; path = "Catty/Parser&Serialializer/New Parser & Serializer/XMLHandler/Bricks/IO/FlashBrick+CBXMLHandler.h"; sourceTree = SOURCE_ROOT; };
@@ -4274,7 +4261,6 @@
 				4CDE4CD4203DBBF300B43034 /* BDKNotifyHUD.license */,
 				4CDE4CFF203DBD0B00B43034 /* DVR.license */,
 				4CDE4CDF203DBBF400B43034 /* EVCircularProgressView.license */,
-				4CDE4CDB203DBBF300B43034 /* FXBlurView.license */,
 				4CDE4CCE203DBBF200B43034 /* GDataXMLNode.license */,
 				4CDE4CDC203DBBF300B43034 /* HMSegmentedControl.license */,
 				4CDE4CCD203DBBF200B43034 /* ImageHelper.license */,
@@ -6138,7 +6124,6 @@
 			children = (
 				92FF316E1A24E2F400093DA7 /* BDKNotifyHUD */,
 				92FF31721A24E2F400093DA7 /* EVCircularProgressView */,
-				92FF317F1A24E2F400093DA7 /* FXBlurView */,
 			);
 			path = 3rdParty;
 			sourceTree = "<group>";
@@ -6163,16 +6148,6 @@
 			path = EVCircularProgressView;
 			sourceTree = "<group>";
 		};
-		92FF317F1A24E2F400093DA7 /* FXBlurView */ = {
-			isa = PBXGroup;
-			children = (
-				92FF31801A24E2F400093DA7 /* FXBlurView.h */,
-				92FF31811A24E2F400093DA7 /* FXBlurView.m */,
-				92FF31821A24E2F400093DA7 /* LICENSE_FXBlurView */,
-			);
-			path = FXBlurView;
-			sourceTree = "<group>";
-		};
 		92FF31A21A24E2F400093DA7 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -6186,7 +6161,6 @@
 				92FF32311A24E2F400093DA7 /* MotionEffect */,
 				92FF32341A24E2F400093DA7 /* PlaceHolderView */,
 				92FF32371A24E2F400093DA7 /* TableView */,
-				92FF324F1A24E2F400093DA7 /* ViewControllerTransitions */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -6302,17 +6276,6 @@
 				92FF324E1A24E2F400093DA7 /* ProgramTableHeaderView.m */,
 			);
 			path = Header;
-			sourceTree = "<group>";
-		};
-		92FF324F1A24E2F400093DA7 /* ViewControllerTransitions */ = {
-			isa = PBXGroup;
-			children = (
-				92FF32501A24E2F400093DA7 /* BaseTransition.h */,
-				92FF32511A24E2F400093DA7 /* BaseTransition.m */,
-				92FF32521A24E2F400093DA7 /* BrickTransition.h */,
-				92FF32531A24E2F400093DA7 /* BrickTransition.m */,
-			);
-			path = ViewControllerTransitions;
 			sourceTree = "<group>";
 		};
 		92FF32C11A24E33B00093DA7 /* Storyboard+XIB */ = {
@@ -8020,14 +7983,12 @@
 				4CDE4CF9203DBBF500B43034 /* TTTAttributedLabel.license in Resources */,
 				92FF325E1A24E2F400093DA7 /* LICENSE_EVCircularProgressView in Resources */,
 				BAD47DC51F12938D001C38BC /* AddItemToUserListBrick098.xml in Resources */,
-				4CDE4CF3203DBBF500B43034 /* FXBlurView.license in Resources */,
 				4CDE4CEE203DBBF500B43034 /* minizip.license in Resources */,
 				92D346BD1B8DDC0A009EB8F7 /* LaunchScreen.storyboard in Resources */,
 				598319951FBB813C00639BBF /* Introduction.storyboard in Resources */,
 				4CDE4CE7203DBBF500B43034 /* LXReorderableCollectionViewFlowLayout.license in Resources */,
 				4CDE4CE6203DBBF500B43034 /* GDataXMLNode.license in Resources */,
 				92FF2E951A24C7D800093DA7 /* LoggerProperties.plist in Resources */,
-				92FF32641A24E2F400093DA7 /* LICENSE_FXBlurView in Resources */,
 				4CDE4CFA203DBBF500B43034 /* MXSegmentedPager.license in Resources */,
 				9218B1FD1CC4AB75007B4C60 /* nko_brightness_guide@2x.png in Resources */,
 				4CDE4CF4203DBBF500B43034 /* HMSegmentedControl.license in Resources */,
@@ -8522,7 +8483,6 @@
 				4CB0F9F420A173B700D1BE2F /* RotationSensor.swift in Sources */,
 				CAD740E31AF2D2E800C32937 /* CBStack.m in Sources */,
 				9200C2C91C808006002F5CA4 /* HideTextBrick.m in Sources */,
-				92FF32631A24E2F400093DA7 /* FXBlurView.m in Sources */,
 				AA74F0BB1BC05FCE00D1E954 /* IfOnEdgeBounceBrickCell.m in Sources */,
 				BAEE49BE1F165CBA00F06741 /* ReplaceItemInUserListBrick+CBXMLHandler.m in Sources */,
 				92FF2EA41A24C7D800093DA7 /* Util.m in Sources */,
@@ -8707,7 +8667,6 @@
 				4C0F9F3D204ADC5900E71B2D /* SetBackgroundBrick.m in Sources */,
 				AA74EEE21BC057B900D1E954 /* LoopEndBrick+CBXMLHandler.m in Sources */,
 				4C0F9F50204BD0B400E71B2D /* BubbleBrickHelper.m in Sources */,
-				92FF32BF1A24E2F400093DA7 /* BrickTransition.m in Sources */,
 				4CEFFADB2105E46500DC5CFE /* ObjectDoubleSensor.swift in Sources */,
 				921D46871BDF698A0086AD20 /* ChangeBrightnessBrick+Instruction.swift in Sources */,
 				92FF31081A24DCAA00093DA7 /* UserVariable.m in Sources */,
@@ -8985,7 +8944,6 @@
 				9218B2031CC4AB75007B4C60 /* ImagePicker.m in Sources */,
 				92FF30FC1A24DCAA00093DA7 /* Operators.m in Sources */,
 				AA74EF711BC0588A00D1E954 /* SpeakBrick+CBXMLHandler.m in Sources */,
-				92FF32BE1A24E2F400093DA7 /* BaseTransition.m in Sources */,
 				BA1FA99D1F02AEDC0084184D /* InsertItemIntoUserListBrick.m in Sources */,
 				59D008ED208E4249000539E7 /* LocationManager.swift in Sources */,
 				9218B2061CC4AB75007B4C60 /* RGBAHelper.m in Sources */,
