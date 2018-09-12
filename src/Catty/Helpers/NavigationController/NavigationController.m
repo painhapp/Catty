@@ -51,6 +51,8 @@
         CatrobatTableViewController *ctvc = (CatrobatTableViewController*)currentViewController;
         return ctvc.tableView.scrollEnabled;
     }
+    if ([currentViewController isKindOfClass:[FormulaEditorViewController class]])
+        return NO;
 
     return YES;
 }

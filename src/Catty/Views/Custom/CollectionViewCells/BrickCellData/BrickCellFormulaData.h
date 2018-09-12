@@ -22,9 +22,15 @@
 
 
 #import "BrickCellDataProtocol.h"
-#import "FormulaEditorViewController.h"
+#import "Formula.h"
+
+@protocol FormulaEditorViewControllerDelegate;
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Weverything" //ignore delegate from swift warning
 
 @interface BrickCellFormulaData : UIButton<BrickCellDataProtocol, FormulaEditorViewControllerDelegate>
+#pragma clang diagnostic pop
 
 @property (nonatomic, weak) BrickCell *brickCell;
 @property (nonatomic) NSInteger lineNumber;
@@ -32,5 +38,6 @@
 
 - (void)drawBorder:(BOOL)isActive;
 - (Formula*)formula;
+- (id)copy;
 
 @end

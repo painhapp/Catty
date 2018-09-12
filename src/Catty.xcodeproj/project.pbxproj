@@ -591,9 +591,11 @@
 		59D008ED208E4249000539E7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D008EC208E4249000539E7 /* LocationManager.swift */; };
 		59D9EC65206117000019EC10 /* DVR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D9EC62206117000019EC10 /* DVR.framework */; };
 		59D9EC672061171F0019EC10 /* DVR.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 59D9EC62206117000019EC10 /* DVR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5E6A5DB221494339001DD450 /* FormulaEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6A5DB121494338001DD450 /* FormulaEditorViewController.swift */; };
+		5E6A5DB42149440F001DD450 /* ShapeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6A5DB32149440E001DD450 /* ShapeButton.swift */; };
+		5E6A5DB621494758001DD450 /* FormulaEditorTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6A5DB521494758001DD450 /* FormulaEditorTextView.swift */; };
 		811FB6EA1A4980EF00957E10 /* ScriptCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811FB6E91A4980EF00957E10 /* ScriptCollectionViewController.m */; };
 		81C0A67F1A4EE8CF003A77C5 /* BrickSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C0A67E1A4EE8CF003A77C5 /* BrickSelectionViewController.m */; };
-		81D46EA41CC29E3000653EAB /* ShapeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D46EA31CC29E3000653EAB /* ShapeButton.m */; };
 		91FC87CEFA4B1008B213EA31 /* AlertControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FC8B4C21851D2F18232470 /* AlertControllerBuilder.swift */; };
 		91FC8B6AB3345BC25B02DF81 /* BaseAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FC8E53F7F6FEA7225F910E /* BaseAlertController.swift */; };
 		9200C2C91C808006002F5CA4 /* HideTextBrick.m in Sources */ = {isa = PBXBuildFile; fileRef = 9200C2C61C808006002F5CA4 /* HideTextBrick.m */; };
@@ -726,8 +728,6 @@
 		92DFB0171A38949E00FA9B0F /* InternFormulaTokenSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DFAFFD1A38949E00FA9B0F /* InternFormulaTokenSelection.m */; };
 		92DFB0191A38949E00FA9B0F /* InternToExternGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DFB0011A38949E00FA9B0F /* InternToExternGenerator.m */; };
 		92DFB01A1A38949E00FA9B0F /* InternToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DFB0031A38949E00FA9B0F /* InternToken.m */; };
-		92DFB01B1A38949E00FA9B0F /* FormulaEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DFB0061A38949E00FA9B0F /* FormulaEditorViewController.m */; };
-		92DFB01D1A38949E00FA9B0F /* FormulaEditorTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DFB00B1A38949E00FA9B0F /* FormulaEditorTextView.m */; };
 		92EC985C1BC3ABB90003A891 /* PhiroMotorMoveBackwardBrick+CBXMLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EC98531BC3ABB90003A891 /* PhiroMotorMoveBackwardBrick+CBXMLHandler.m */; };
 		92EC985D1BC3ABB90003A891 /* PhiroMotorMoveForwardBrick+CBXMLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EC98551BC3ABB90003A891 /* PhiroMotorMoveForwardBrick+CBXMLHandler.m */; };
 		92EC985E1BC3ABB90003A891 /* PhiroMotorStopBrick+CBXMLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EC98571BC3ABB90003A891 /* PhiroMotorStopBrick+CBXMLHandler.m */; };
@@ -817,7 +817,6 @@
 		92FF32B11A24E2F400093DA7 /* CreateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF322B1A24E2F400093DA7 /* CreateView.m */; };
 		92FF32B21A24E2F400093DA7 /* RoundBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF322D1A24E2F400093DA7 /* RoundBorderedButton.m */; };
 		92FF32B31A24E2F400093DA7 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF32301A24E2F400093DA7 /* LoadingView.m */; };
-		92FF32B41A24E2F400093DA7 /* CellMotionEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF32331A24E2F400093DA7 /* CellMotionEffect.m */; };
 		92FF32B51A24E2F400093DA7 /* PlaceHolderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF32361A24E2F400093DA7 /* PlaceHolderView.m */; };
 		92FF32B61A24E2F400093DA7 /* CatrobatBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF323B1A24E2F400093DA7 /* CatrobatBaseCell.m */; };
 		92FF32B81A24E2F400093DA7 /* ContinueImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF32421A24E2F400093DA7 /* ContinueImageCell.m */; };
@@ -1159,7 +1158,6 @@
 		F45AF6FD212960A3000F88A6 /* FacePositionXSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45AF6FC212960A3000F88A6 /* FacePositionXSensor.swift */; };
 		F45AF701212960B4000F88A6 /* FaceSizeSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45AF700212960B4000F88A6 /* FaceSizeSensor.swift */; };
 		F45AF703212960D4000F88A6 /* FacePositionYSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45AF702212960D4000F88A6 /* FacePositionYSensor.swift */; };
-		F4664F9220DD7A1700E1519A /* FormulaEditorViewController+Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4664F9120DD7A1700E1519A /* FormulaEditorViewController+Section.swift */; };
 		F470A2E32129DAFB005EC9A3 /* ElementFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F470A2E22129DAFB005EC9A3 /* ElementFunction.swift */; };
 		F470A2E52129DF42005EC9A3 /* NumberOfItemsFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F470A2E42129DF42005EC9A3 /* NumberOfItemsFunction.swift */; };
 		F470A2E72129DFD5005EC9A3 /* ContainsFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F470A2E62129DFD5005EC9A3 /* ContainsFunction.swift */; };
@@ -1928,6 +1926,9 @@
 		59D008E8208E3FDC000539E7 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 		59D008EC208E4249000539E7 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		59D9EC62206117000019EC10 /* DVR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVR.framework; path = Carthage/Build/iOS/DVR.framework; sourceTree = "<group>"; };
+		5E6A5DB121494338001DD450 /* FormulaEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormulaEditorViewController.swift; sourceTree = "<group>"; };
+		5E6A5DB32149440E001DD450 /* ShapeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeButton.swift; sourceTree = "<group>"; };
+		5E6A5DB521494758001DD450 /* FormulaEditorTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormulaEditorTextView.swift; sourceTree = "<group>"; };
 		811FB6E81A4980EF00957E10 /* ScriptCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptCollectionViewController.h; sourceTree = "<group>"; };
 		811FB6E91A4980EF00957E10 /* ScriptCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScriptCollectionViewController.m; sourceTree = "<group>"; };
 		811FB6EB1A49812700957E10 /* BrickCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrickCategoryViewController.h; sourceTree = "<group>"; };
@@ -1935,8 +1936,6 @@
 		81C0A67D1A4EE8CF003A77C5 /* BrickSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrickSelectionViewController.h; sourceTree = "<group>"; };
 		81C0A67E1A4EE8CF003A77C5 /* BrickSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrickSelectionViewController.m; sourceTree = "<group>"; };
 		81C27425189EF94600827A95 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		81D46EA21CC29E3000653EAB /* ShapeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeButton.h; sourceTree = "<group>"; };
-		81D46EA31CC29E3000653EAB /* ShapeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShapeButton.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* App-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "App-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		91FC8B4C21851D2F18232470 /* AlertControllerBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertControllerBuilder.swift; sourceTree = "<group>"; };
 		91FC8B8C0B21945B560F7272 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
@@ -2198,10 +2197,6 @@
 		92DFB0011A38949E00FA9B0F /* InternToExternGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternToExternGenerator.m; sourceTree = "<group>"; };
 		92DFB0021A38949E00FA9B0F /* InternToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternToken.h; sourceTree = "<group>"; };
 		92DFB0031A38949E00FA9B0F /* InternToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternToken.m; sourceTree = "<group>"; };
-		92DFB0051A38949E00FA9B0F /* FormulaEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormulaEditorViewController.h; sourceTree = "<group>"; };
-		92DFB0061A38949E00FA9B0F /* FormulaEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FormulaEditorViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		92DFB00A1A38949E00FA9B0F /* FormulaEditorTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormulaEditorTextView.h; sourceTree = "<group>"; };
-		92DFB00B1A38949E00FA9B0F /* FormulaEditorTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormulaEditorTextView.m; sourceTree = "<group>"; };
 		92EC98521BC3ABB90003A891 /* PhiroMotorMoveBackwardBrick+CBXMLHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PhiroMotorMoveBackwardBrick+CBXMLHandler.h"; sourceTree = "<group>"; };
 		92EC98531BC3ABB90003A891 /* PhiroMotorMoveBackwardBrick+CBXMLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PhiroMotorMoveBackwardBrick+CBXMLHandler.m"; sourceTree = "<group>"; };
 		92EC98541BC3ABB90003A891 /* PhiroMotorMoveForwardBrick+CBXMLHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PhiroMotorMoveForwardBrick+CBXMLHandler.h"; sourceTree = "<group>"; };
@@ -2386,8 +2381,6 @@
 		92FF322D1A24E2F400093DA7 /* RoundBorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundBorderedButton.m; sourceTree = "<group>"; };
 		92FF322F1A24E2F400093DA7 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		92FF32301A24E2F400093DA7 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
-		92FF32321A24E2F400093DA7 /* CellMotionEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellMotionEffect.h; sourceTree = "<group>"; };
-		92FF32331A24E2F400093DA7 /* CellMotionEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellMotionEffect.m; sourceTree = "<group>"; };
 		92FF32351A24E2F400093DA7 /* PlaceHolderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceHolderView.h; sourceTree = "<group>"; };
 		92FF32361A24E2F400093DA7 /* PlaceHolderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceHolderView.m; sourceTree = "<group>"; };
 		92FF323A1A24E2F400093DA7 /* CatrobatBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatrobatBaseCell.h; sourceTree = "<group>"; };
@@ -2914,7 +2907,6 @@
 		F45AF6FC212960A3000F88A6 /* FacePositionXSensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacePositionXSensor.swift; sourceTree = "<group>"; };
 		F45AF700212960B4000F88A6 /* FaceSizeSensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceSizeSensor.swift; sourceTree = "<group>"; };
 		F45AF702212960D4000F88A6 /* FacePositionYSensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacePositionYSensor.swift; sourceTree = "<group>"; };
-		F4664F9120DD7A1700E1519A /* FormulaEditorViewController+Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormulaEditorViewController+Section.swift"; sourceTree = "<group>"; };
 		F470A2E22129DAFB005EC9A3 /* ElementFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementFunction.swift; sourceTree = "<group>"; };
 		F470A2E42129DF42005EC9A3 /* NumberOfItemsFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfItemsFunction.swift; sourceTree = "<group>"; };
 		F470A2E62129DFD5005EC9A3 /* ContainsFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainsFunction.swift; sourceTree = "<group>"; };
@@ -5322,9 +5314,7 @@
 		92DFB0041A38949E00FA9B0F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				92DFB0051A38949E00FA9B0F /* FormulaEditorViewController.h */,
-				92DFB0061A38949E00FA9B0F /* FormulaEditorViewController.m */,
-				F4664F9120DD7A1700E1519A /* FormulaEditorViewController+Section.swift */,
+				5E6A5DB121494338001DD450 /* FormulaEditorViewController.swift */,
 				4C4EE29A210901E70045F890 /* FormulaEditorSection.swift */,
 			);
 			path = ViewController;
@@ -5334,10 +5324,8 @@
 			isa = PBXGroup;
 			children = (
 				4CE67895210C668C00D90B5D /* FormulaEditorButton.swift */,
-				92DFB00A1A38949E00FA9B0F /* FormulaEditorTextView.h */,
-				92DFB00B1A38949E00FA9B0F /* FormulaEditorTextView.m */,
-				81D46EA21CC29E3000653EAB /* ShapeButton.h */,
-				81D46EA31CC29E3000653EAB /* ShapeButton.m */,
+				5E6A5DB521494758001DD450 /* FormulaEditorTextView.swift */,
+				5E6A5DB32149440E001DD450 /* ShapeButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -6158,7 +6146,6 @@
 				92289A441A42F2A3008C771A /* ComboBox */,
 				92FF32291A24E2F400093DA7 /* CreateView */,
 				92FF322E1A24E2F400093DA7 /* LoadingView */,
-				92FF32311A24E2F400093DA7 /* MotionEffect */,
 				92FF32341A24E2F400093DA7 /* PlaceHolderView */,
 				92FF32371A24E2F400093DA7 /* TableView */,
 			);
@@ -6196,15 +6183,6 @@
 				92FF32301A24E2F400093DA7 /* LoadingView.m */,
 			);
 			path = LoadingView;
-			sourceTree = "<group>";
-		};
-		92FF32311A24E2F400093DA7 /* MotionEffect */ = {
-			isa = PBXGroup;
-			children = (
-				92FF32321A24E2F400093DA7 /* CellMotionEffect.h */,
-				92FF32331A24E2F400093DA7 /* CellMotionEffect.m */,
-			);
-			path = MotionEffect;
 			sourceTree = "<group>";
 		};
 		92FF32341A24E2F400093DA7 /* PlaceHolderView */ = {
@@ -8435,6 +8413,7 @@
 				AABCB3DE1BB364F2009F67D2 /* CBBackend.swift in Sources */,
 				AABCB3DD1BB364DD009F67D2 /* CBIfConditionalSequence.swift in Sources */,
 				4C0F9F82204BD20A00E71B2D /* SpeakAndWaitBrick+Instruction.swift in Sources */,
+				5E6A5DB221494339001DD450 /* FormulaEditorViewController.swift in Sources */,
 				AA74EFF21BC05B5F00D1E954 /* ChangeTransparencyByNBrick.m in Sources */,
 				929CC0CD1BC39B0A0027DEC0 /* PhiroMotorMoveForwardBrick.m in Sources */,
 				4C0F9F8E204BD27200E71B2D /* RepeatUntilBrickCell.m in Sources */,
@@ -8464,7 +8443,6 @@
 				4CB2CFA11D7AD762009F3034 /* SetColorBrick.m in Sources */,
 				4C0F9F94204BD29600E71B2D /* ChooseCameraBrickCell.m in Sources */,
 				CABF43B91B115E6400419A55 /* CBOperationSequence.swift in Sources */,
-				81D46EA41CC29E3000653EAB /* ShapeButton.m in Sources */,
 				AA74F0B41BC05FCE00D1E954 /* ShowBrickCell.m in Sources */,
 				AA74EEFE1BC057C900D1E954 /* SetLookBrick+CBXMLHandler.m in Sources */,
 				CA2D444F1B1251BF00A3B53D /* CBSchedulingAlgorithms.swift in Sources */,
@@ -8655,13 +8633,11 @@
 				921D46881BDF698A0086AD20 /* ChangeTransparencyBrick+Instruction.swift in Sources */,
 				F48E946B20D6F869007E782E /* DateDaySensor.swift in Sources */,
 				92FF32BA1A24E2F400093DA7 /* DarkBlueGradientFeaturedCell.m in Sources */,
-				92DFB01D1A38949E00FA9B0F /* FormulaEditorTextView.m in Sources */,
 				4CE67899210C6EEE00D90B5D /* SinFunction.swift in Sources */,
 				929CC0F81BC3A2420027DEC0 /* PhiroMotorMoveBackwardBrick+Instruction.swift in Sources */,
 				AA74F0AC1BC05FCE00D1E954 /* ChangeTransparencyByNBrickCell.m in Sources */,
 				92D56C371BF2059F00A54750 /* PhiroDevice.swift in Sources */,
 				925819881C0208E8003247A9 /* CALayer+XibConfiguration.m in Sources */,
-				F4664F9220DD7A1700E1519A /* FormulaEditorViewController+Section.swift in Sources */,
 				4C0F9F65204BD18600E71B2D /* PreviousLookBrick+CBXMLHandler.m in Sources */,
 				5977B2A620298BD0008753ED /* MediaLibraryDownloader.swift in Sources */,
 				4C0F9F3D204ADC5900E71B2D /* SetBackgroundBrick.m in Sources */,
@@ -8737,7 +8713,6 @@
 				59697DA4201F46AD00A0071A /* LibraryImageCollectionViewCell.swift in Sources */,
 				AA74EFF41BC05B5F00D1E954 /* HideBrick.m in Sources */,
 				AAF6D9DC1BC0BFFE00686849 /* SetSizeToBrick+Instruction.swift in Sources */,
-				92DFB01B1A38949E00FA9B0F /* FormulaEditorViewController.m in Sources */,
 				92EC994A1BC3CA870003A891 /* Firmata.swift in Sources */,
 				5947F6D9200D08430079DBCE /* MediaType.swift in Sources */,
 				92EC985D1BC3ABB90003A891 /* PhiroMotorMoveForwardBrick+CBXMLHandler.m in Sources */,
@@ -8772,6 +8747,7 @@
 				9218B20D1CC4AB75007B4C60 /* HandTool.m in Sources */,
 				4C0F9F49204ADD0C00E71B2D /* OrderedDictionary.swift in Sources */,
 				4C0F9F46204ADC7900E71B2D /* SpeakAndWaitBrick.m in Sources */,
+				5E6A5DB42149440F001DD450 /* ShapeButton.swift in Sources */,
 				4CE6788D210C503600D90B5D /* FunctionManager.swift in Sources */,
 				929CC0BD1BC39AD60027DEC0 /* BluetoothBrick.m in Sources */,
 				4C0F9F7A204BD1E300E71B2D /* SayBubbleBrick+Instruction.swift in Sources */,
@@ -8958,6 +8934,7 @@
 				92FF2E361A24C5A700093DA7 /* NSDate+CustomExtensions.m in Sources */,
 				92289A491A42F2A3008C771A /* BSKeyboardControls.m in Sources */,
 				4C724E231B4D3E8C00E27479 /* CBXMLSerializerHelper.m in Sources */,
+				5E6A5DB621494758001DD450 /* FormulaEditorTextView.swift in Sources */,
 				92FF2EC11A24C8A700093DA7 /* OrderedMapTable.m in Sources */,
 				92FF325D1A24E2F400093DA7 /* EVCircularProgressView.m in Sources */,
 				AA74F0BC1BC05FCE00D1E954 /* MoveNStepsBrickCell.m in Sources */,
@@ -9062,7 +9039,6 @@
 				59ABDC622021BBFB00061403 /* LooksTableViewController+MediaLibrary.swift in Sources */,
 				811FB6EA1A4980EF00957E10 /* ScriptCollectionViewController.m in Sources */,
 				4C4EE29D210901E70045F890 /* FormulaEditorSection.swift in Sources */,
-				92FF32B41A24E2F400093DA7 /* CellMotionEffect.m in Sources */,
 				92FF314F1A24DEB300093DA7 /* LooksTableViewController.m in Sources */,
 				929CC0D01BC39B0A0027DEC0 /* PhiroRGBLightBrick.m in Sources */,
 				92FF32B51A24E2F400093DA7 /* PlaceHolderView.m in Sources */,

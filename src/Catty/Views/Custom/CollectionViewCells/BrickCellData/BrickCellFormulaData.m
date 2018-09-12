@@ -26,6 +26,7 @@
 #import "BrickFormulaProtocol.h"
 #import "PlaceAtBrickCell.h"
 #import "GlideToBrickCell.h"
+#import "Pocket_Code-Swift.h"
 
 @interface BrickCellFormulaData()
 @property (nonatomic, strong) CAShapeLayer *border;
@@ -147,6 +148,12 @@
     return [formulaBrick formulaForLineNumber:self.lineNumber andParameterNumber:self.parameterNumber];
 }
 
+- (id)copy {
+    NSData *buffer;
+    buffer = [NSKeyedArchiver archivedDataWithRootObject:self];
+    BrickCellFormulaData *copy = [NSKeyedUnarchiver unarchiveObjectWithData: buffer];
+    return copy;
+}
 
 # pragma mark - Delegate
 - (void)saveFormula:(Formula *)formula

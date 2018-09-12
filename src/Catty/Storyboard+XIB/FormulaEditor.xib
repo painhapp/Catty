@@ -13,6 +13,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FormulaEditorViewController">
             <connections>
                 <outlet property="additionButton" destination="3DA-2p-zn4" id="CAM-4y-0og"/>
+                <outlet property="bottomConstraintDoneButton" destination="T7a-WE-ifU" id="REh-wO-nno"/>
+                <outlet property="bottomConstraintVarButton" destination="ogx-mb-gUh" id="m3f-sf-bIj"/>
                 <outlet property="calcButton" destination="Tgc-kx-DJP" id="Ui6-qE-9ZX"/>
                 <outlet property="calcScrollView" destination="OK4-Wq-asm" id="mAD-cC-Hlv"/>
                 <outlet property="computeButton" destination="oQN-vf-ZdE" id="dbs-ff-alX"/>
@@ -39,31 +41,31 @@
                 <outlet property="variablePicker" destination="EC0-vt-5UA" id="92G-vd-uKY"/>
                 <outlet property="variableScrollView" destination="AR6-D2-lLT" id="SMS-E5-5xR"/>
                 <outlet property="variableSegmentedControl" destination="aAn-6g-gNG" id="bNh-Hk-62d"/>
-                <outletCollection property="buttons" destination="SUT-4U-uAA" id="dDu-m8-miC"/>
-                <outletCollection property="buttons" destination="DpH-97-0s2" id="NhG-yw-iRl"/>
-                <outletCollection property="buttons" destination="Wxl-Bw-XuK" id="5H8-uT-J6l"/>
-                <outletCollection property="buttons" destination="oQN-vf-ZdE" id="U0n-Iv-hyC"/>
-                <outletCollection property="buttons" destination="djM-xq-Ekh" id="sLg-g1-LPZ"/>
-                <outletCollection property="buttons" destination="OfS-bX-KPI" id="33k-jw-eMn"/>
-                <outletCollection property="buttons" destination="U9K-ue-3bh" id="Irj-Ky-hWZ"/>
-                <outletCollection property="buttons" destination="BjT-SP-YH6" id="GPs-DM-gVk"/>
-                <outletCollection property="orangeTypeButton" destination="3NS-4e-r3K" id="DzM-Hu-zCi"/>
-                <outletCollection property="orangeTypeButton" destination="3DA-2p-zn4" id="2l9-DU-S0V"/>
-                <outletCollection property="orangeTypeButton" destination="huL-az-i7Z" id="7qf-xX-Ag1"/>
-                <outletCollection property="orangeTypeButton" destination="Rkk-tV-mbQ" id="ZIi-3o-flt"/>
-                <outletCollection property="toolTypeButton" destination="U9K-ue-3bh" id="QzR-Ck-K8l"/>
-                <outletCollection property="toolTypeButton" destination="BjT-SP-YH6" id="S9d-Ca-44d"/>
-                <outletCollection property="toolTypeButton" destination="Tgc-kx-DJP" id="OU5-c1-RI6"/>
-                <outletCollection property="toolTypeButton" destination="Lon-kh-Yxw" id="k57-ok-Y05"/>
-                <outletCollection property="toolTypeButton" destination="NJw-CT-Ced" id="v4y-3E-T2g"/>
-                <outletCollection property="toolTypeButton" destination="MGd-da-Hvk" id="CBE-kb-EW4"/>
-                <outletCollection property="highlightedButtons" destination="SUT-4U-uAA" id="pca-ke-O4G"/>
-                <outletCollection property="highlightedButtons" destination="Wxl-Bw-XuK" id="1Ro-2b-D1B"/>
-                <outletCollection property="highlightedButtons" destination="DpH-97-0s2" id="YSb-z1-vNA"/>
-                <outletCollection property="orangeTypeButton" destination="OfS-bX-KPI" id="rIu-R7-tQO"/>
-                <outletCollection property="orangeTypeButton" destination="djM-xq-Ekh" id="VSB-7s-3UX"/>
-                <outletCollection property="highlightedButtons" destination="uCt-gq-t2x" id="S7K-4n-VAc"/>
-                <outletCollection property="highlightedButtons" destination="oQN-vf-ZdE" id="EIj-0X-1RS"/>
+                <outletCollection property="buttons" destination="SUT-4U-uAA" collectionClass="NSMutableArray" id="dDu-m8-miC"/>
+                <outletCollection property="buttons" destination="DpH-97-0s2" collectionClass="NSMutableArray" id="NhG-yw-iRl"/>
+                <outletCollection property="buttons" destination="Wxl-Bw-XuK" collectionClass="NSMutableArray" id="5H8-uT-J6l"/>
+                <outletCollection property="buttons" destination="oQN-vf-ZdE" collectionClass="NSMutableArray" id="U0n-Iv-hyC"/>
+                <outletCollection property="buttons" destination="djM-xq-Ekh" collectionClass="NSMutableArray" id="sLg-g1-LPZ"/>
+                <outletCollection property="buttons" destination="OfS-bX-KPI" collectionClass="NSMutableArray" id="33k-jw-eMn"/>
+                <outletCollection property="buttons" destination="U9K-ue-3bh" collectionClass="NSMutableArray" id="Irj-Ky-hWZ"/>
+                <outletCollection property="buttons" destination="BjT-SP-YH6" collectionClass="NSMutableArray" id="GPs-DM-gVk"/>
+                <outletCollection property="orangeTypeButton" destination="3NS-4e-r3K" collectionClass="NSMutableArray" id="DzM-Hu-zCi"/>
+                <outletCollection property="orangeTypeButton" destination="3DA-2p-zn4" collectionClass="NSMutableArray" id="2l9-DU-S0V"/>
+                <outletCollection property="orangeTypeButton" destination="huL-az-i7Z" collectionClass="NSMutableArray" id="7qf-xX-Ag1"/>
+                <outletCollection property="orangeTypeButton" destination="Rkk-tV-mbQ" collectionClass="NSMutableArray" id="ZIi-3o-flt"/>
+                <outletCollection property="toolTypeButton" destination="U9K-ue-3bh" collectionClass="NSMutableArray" id="QzR-Ck-K8l"/>
+                <outletCollection property="toolTypeButton" destination="BjT-SP-YH6" collectionClass="NSMutableArray" id="S9d-Ca-44d"/>
+                <outletCollection property="toolTypeButton" destination="Tgc-kx-DJP" collectionClass="NSMutableArray" id="OU5-c1-RI6"/>
+                <outletCollection property="toolTypeButton" destination="Lon-kh-Yxw" collectionClass="NSMutableArray" id="k57-ok-Y05"/>
+                <outletCollection property="toolTypeButton" destination="NJw-CT-Ced" collectionClass="NSMutableArray" id="v4y-3E-T2g"/>
+                <outletCollection property="toolTypeButton" destination="MGd-da-Hvk" collectionClass="NSMutableArray" id="CBE-kb-EW4"/>
+                <outletCollection property="highlightedButtons" destination="SUT-4U-uAA" collectionClass="NSMutableArray" id="pca-ke-O4G"/>
+                <outletCollection property="highlightedButtons" destination="Wxl-Bw-XuK" collectionClass="NSMutableArray" id="1Ro-2b-D1B"/>
+                <outletCollection property="highlightedButtons" destination="DpH-97-0s2" collectionClass="NSMutableArray" id="YSb-z1-vNA"/>
+                <outletCollection property="orangeTypeButton" destination="OfS-bX-KPI" collectionClass="NSMutableArray" id="rIu-R7-tQO"/>
+                <outletCollection property="orangeTypeButton" destination="djM-xq-Ekh" collectionClass="NSMutableArray" id="VSB-7s-3UX"/>
+                <outletCollection property="highlightedButtons" destination="uCt-gq-t2x" collectionClass="NSMutableArray" id="S7K-4n-VAc"/>
+                <outletCollection property="highlightedButtons" destination="oQN-vf-ZdE" collectionClass="NSMutableArray" id="EIj-0X-1RS"/>
                 <outletCollection property="normalTypeButton" destination="9PE-QR-T7L" collectionClass="NSMutableArray" id="NL5-rf-09c"/>
                 <outletCollection property="normalTypeButton" destination="l2g-9f-3DE" collectionClass="NSMutableArray" id="VaY-s3-hI6"/>
                 <outletCollection property="normalTypeButton" destination="0lq-nh-st4" collectionClass="NSMutableArray" id="W9d-q8-rfo"/>
@@ -253,7 +255,7 @@
                         <action selector="showVariable:" destination="-1" eventType="touchUpInside" id="IWl-z4-Z2P"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCt-gq-t2x" userLabel="del" customClass="ShapeButton">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCt-gq-t2x" userLabel="del" customClass="ShapeButton" customModule="Pocket_Code">
                     <rect key="frame" x="327" y="0.0" width="82" height="44"/>
                     <color key="backgroundColor" red="0.66666668653488159" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <userDefinedRuntimeAttributes>
@@ -1044,7 +1046,7 @@
                 <constraint firstItem="3DA-2p-zn4" firstAttribute="top" secondItem="3NS-4e-r3K" secondAttribute="bottom" id="SUw-qG-oVv"/>
                 <constraint firstItem="g3B-5h-Pt8" firstAttribute="top" secondItem="ENM-qD-Noo" secondAttribute="bottom" id="SZP-sj-Tac"/>
                 <constraint firstItem="djM-xq-Ekh" firstAttribute="leading" secondItem="U9K-ue-3bh" secondAttribute="trailing" id="ScC-Rr-P6J"/>
-                <constraint firstAttribute="bottom" secondItem="SUT-4U-uAA" secondAttribute="bottom" id="T7a-WE-ifU"/>
+                <constraint firstAttribute="bottom" secondItem="SUT-4U-uAA" secondAttribute="bottom" identifier="doneButtonBottom" id="T7a-WE-ifU"/>
                 <constraint firstAttribute="bottom" secondItem="NiC-Qd-lpd" secondAttribute="bottom" id="TMq-xK-DHX"/>
                 <constraint firstItem="Wxl-Bw-XuK" firstAttribute="top" secondItem="a9y-Es-7Fa" secondAttribute="top" id="TQK-SQ-bf4"/>
                 <constraint firstItem="3NS-4e-r3K" firstAttribute="top" secondItem="Rkk-tV-mbQ" secondAttribute="bottom" id="Tb1-dg-V9y"/>
@@ -1098,7 +1100,7 @@
                 <constraint firstItem="Ucn-Rs-3Al" firstAttribute="top" secondItem="vDC-bZ-7bh" secondAttribute="bottom" id="nzJ-tS-f9f"/>
                 <constraint firstItem="mHs-Sk-VFV" firstAttribute="top" secondItem="djM-xq-Ekh" secondAttribute="bottom" id="nzL-Qq-LOJ"/>
                 <constraint firstItem="OxW-wM-0H7" firstAttribute="height" secondItem="UA3-V7-bkn" secondAttribute="height" id="oUi-lo-Jkj"/>
-                <constraint firstAttribute="bottom" secondItem="MGd-da-Hvk" secondAttribute="bottom" id="ogx-mb-gUh"/>
+                <constraint firstAttribute="bottom" secondItem="MGd-da-Hvk" secondAttribute="bottom" identifier="varButtonBottom" id="ogx-mb-gUh"/>
                 <constraint firstAttribute="trailing" secondItem="3DA-2p-zn4" secondAttribute="trailing" id="pnI-sx-7L7"/>
                 <constraint firstItem="OxW-wM-0H7" firstAttribute="height" secondItem="uCt-gq-t2x" secondAttribute="height" id="q2t-jh-5o6"/>
                 <constraint firstAttribute="bottom" secondItem="P2q-1G-P93" secondAttribute="bottom" id="qPy-Nj-tgQ"/>

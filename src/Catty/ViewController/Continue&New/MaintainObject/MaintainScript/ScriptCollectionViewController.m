@@ -71,6 +71,7 @@
 #import "BrickPhiroLightProtocol.h"
 #import "BrickPhiroToneProtocol.h"
 #import "BrickPhiroIfSensorProtocol.h"
+#import "NavigationController.h"
 #import "Pocket_Code-Swift.h"
 
 #define kSelectAllItemsTag 0
@@ -79,7 +80,6 @@
 
 @interface ScriptCollectionViewController() <UICollectionViewDelegate,
                                              UICollectionViewDataSource,
-                                             UIViewControllerTransitioningDelegate,
                                              BrickCellDelegate,
                                              iOSComboboxDelegate,
                                              BrickCellDataDelegate,
@@ -89,7 +89,6 @@
 @property (nonatomic, strong) NSIndexPath *variableIndexPath;
 @property (nonatomic, assign) BOOL isEditingBrickMode;
 @property (nonatomic) PageIndexCategoryType lastSelectedBrickCategoryType;
-@property (nonatomic, strong) FormulaManager *formulaManager;
 @end
 
 @implementation ScriptCollectionViewController
@@ -112,7 +111,6 @@
     self.placeHolderView.hidden = (self.object.scriptList.count != 0);
     [[BrickInsertManager sharedInstance] reset];
     self.isEditingBrickMode = NO;
-    self.formulaManager = [FormulaManager new];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -726,16 +724,19 @@ willBeginDraggingItemAtIndexPath:(NSIndexPath*)indexPath
         [self.presentedViewController dismissViewControllerAnimated:NO completion:NULL];
     }*/
 
-    FormulaEditorViewController *formulaEditorViewController = [[FormulaEditorViewController alloc] initWithBrickCellFormulaData:formulaData andFormulaManager:self.formulaManager];
+    BrickCellFormulaData *formulaDataCopy = [formulaData copy];
+    [formulaData.superview addSubview:formulaDataCopy];
+    
+    FormulaEditorViewController *formulaEditorViewController = [[FormulaEditorViewController alloc] initWithBrickCellFormulaData:formulaData];
     formulaEditorViewController.object = self.object;
-    formulaEditorViewController.transitioningDelegate = self;
     formulaEditorViewController.modalPresentationStyle = UIModalPresentationCustom;
-
-    UINavigationController *navigationController = [[UINavigationController alloc]
+    
+    NavigationController *navigationController = [[NavigationController alloc]
                                                     initWithRootViewController:formulaEditorViewController];
     [self presentViewController:navigationController animated:YES completion:^{
         [formulaEditorViewController setBrickCellFormulaData:formulaData];
-    }];
+        [formulaDataCopy removeFromSuperview];
+    }]; 
 }
 
 #pragma mark - Helpers

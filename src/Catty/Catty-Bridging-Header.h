@@ -118,6 +118,20 @@
 #import "FormulaElement.h"
 #import "Operators.h"
 
+// Formula Editor
+#import "BDKNotifyHUD.h"
+#import "BrickCellFormulaData.h"
+#import "BrickCell.h"
+#import "InternFormula.h"
+#import "InternFormulaState.h"
+#import "FormulaEditorHistory.h"
+#import "UIColor+CatrobatUIColorExtensions.h"
+#import "VariablePickerData.h"
+#import "VariablesContainer.h"
+#import "SpriteObject.h"
+#import "UserVariable.h"
+#import "Brick+UserVariable.h"
+
 // UserVariable
 #import "UserVariable.h"
 
@@ -152,7 +166,6 @@
 
 #import "BaseTableViewController.h"
 #import "LooksTableViewController.h"
-#import "FormulaEditorViewController.h"
 
 //------------------------------------------------------------------------------------------------------------
 
@@ -165,7 +178,6 @@
 
 //#import "LanguageTranslationDefines.h"
 #import "BrickFormulaProtocol.h"
-
 
 //-----------------------------------------------------------------------------------------------------------
 // Headers to sort
