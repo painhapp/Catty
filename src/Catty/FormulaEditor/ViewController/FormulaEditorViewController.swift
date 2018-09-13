@@ -235,31 +235,25 @@ enum ButtonIndex : Int {
 
         edgesForExtendedLayout = [.top, .left, .right, .bottom]
         extendedLayoutIncludesOpaqueBars = true
+        
+        brickSuperView = brickCellData?.brickCell.superview
+        brickFrame = brickCellData?.brickCell.frame ?? CGRect.zero
+        if let aCell = brickCellData?.brickCell {
+            view.addSubview(aCell)
+            var navTopAnchor = view.safeTopAnchor;
+            if (self.navigationController != nil) {
+                navTopAnchor = topLayoutGuide.bottomAnchor
+            }
+            aCell.setAnchors(top: navTopAnchor, left: view.safeLeftAnchor, right: view.safeRightAnchor, bottom: nil, topPadding:0, leftPadding: 0, rightPadding: 0, bottomPadding: 0, width: 0, height: aCell.frame.height)
+            formulaEditorTextView?.setAnchors(top: aCell.bottomAnchor, left: view.safeLeftAnchor, right: view.safeRightAnchor, bottom: nil, topPadding: 10, leftPadding: 10, rightPadding: 10)
+            formulaEditorTextView?.isScrollEnabled = false
+        }
 
         NotificationCenter.default.addObserver(self, selector: #selector(FormulaEditorViewController.formulaTextViewTextDidChange(_:)), name: .UITextViewTextDidChange, object: formulaEditorTextView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        brickSuperView = brickCellData?.brickCell.superview
-        brickFrame = brickCellData?.brickCell.frame ?? CGRect.zero
-
-        //Safe Area Padding for Formula Editor Input
-        /*var top: CGFloat
-        if #available(iOS 11.0, *) {
-            let window: UIWindow? = UIApplication.shared.keyWindow
-            top = window?.safeAreaInsets.top ?? 0.0
-        } else {
-            top = 0
-        }
-        top += navigationController?.navigationBar.frame.size.height ?? 0.0
-        top += UIApplication.shared.statusBarFrame.size.height
-        brickCellData?.brickCell.frame = CGRect(x: 0, y: top, width: UIScreen.main.bounds.size.width, height: brickCellData?.brickCell.frame.size.height ?? 0.0)*/
-
-        if let aCell = brickCellData?.brickCell {
-            view.addSubview(aCell)
-        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -281,6 +275,7 @@ enum ButtonIndex : Int {
 
         brickCellData?.brickCell.frame = brickFrame
         if let aCell = brickCellData?.brickCell {
+            aCell.unsetAnchors()
             brickSuperView?.addSubview(aCell)
         }
     }
@@ -483,7 +478,7 @@ enum ButtonIndex : Int {
 
     // MARK: UI
     func showFormulaEditor() {
-        formulaEditorTextView = FormulaEditorTextView(frame: CGRect(x: 1, y: (brickCellData?.brickCell.frame.size.height)! + 64, width: view.frame.size.width - 2, height: 0), andFormulaEditorViewController: self)
+        formulaEditorTextView = FormulaEditorTextView(formulaEditorViewController: self)
         if let aView = formulaEditorTextView {
             view.addSubview(aView)
         }

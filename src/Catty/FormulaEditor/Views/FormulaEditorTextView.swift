@@ -37,14 +37,12 @@ class FormulaEditorTextView: UITextView, UITextViewDelegate {
         super.init(coder: aDecoder)
     }
     
-    init(frame: CGRect, andFormulaEditorViewController formulaEditorViewController: FormulaEditorViewController?) {
-        let rect = CGRect(x: frame.origin.x + 5, y: frame.origin.y + 2, width: frame.size.width - 10, height: frame.size.height)
-        super.init(frame: rect, textContainer:nil)
+    init(formulaEditorViewController: FormulaEditorViewController?) {
+        super.init(frame: CGRect.zero, textContainer:nil)
         self.formulaEditorViewController = formulaEditorViewController
         
         delegate = self
         gestureRecognizers = nil
-        //self.selectable = NO;
         if let aRecognizer = tapRecognizer {
             addGestureRecognizer(aRecognizer)
         }
@@ -54,10 +52,8 @@ class FormulaEditorTextView: UITextView, UITextViewDelegate {
         inputView?.backgroundColor = UIColor.background()
         isUserInteractionEnabled = true
         autocorrectionType = .no
-        backgroundColor = UIColor.white
         layer.borderColor = UIColor.gray.cgColor
         layer.borderWidth = 1.0
-        layer.cornerRadius = 1
         font = UIFont.boldSystemFont(ofSize: 20.0)
         
         contentInset = .zero
@@ -67,16 +63,16 @@ class FormulaEditorTextView: UITextView, UITextViewDelegate {
         backspaceButton?.setImage(UIImage(named: "del_active"), for: .normal)
         backspaceButton?.setImage(UIImage(named: "del"), for: .disabled)
         backspaceButton?.tintColor = UIColor.globalTint()
-        backspaceButton?.frame = CGRect(x: self.frame.size.width - CGFloat(BACKSPACE_WIDTH), y: 0, width: CGFloat(BACKSPACE_HEIGHT), height: CGFloat(BACKSPACE_WIDTH))
+        //backspaceButton?.frame = CGRect(x: self.frame.size.width - CGFloat(BACKSPACE_WIDTH), y: 0, width: CGFloat(BACKSPACE_HEIGHT), height: CGFloat(BACKSPACE_WIDTH))
         backspaceButton?.addTarget(self, action: #selector(FormulaEditorTextView.clear), for: .touchUpInside)
         if let aButton = backspaceButton {
             addSubview(aButton)
+            backspaceButton?.setAnchors(top: self.topAnchor, left: nil, right: self.rightAnchor, bottom: self.bottomAnchor)
         }
-        
     }
     
     func update() {
-        formulaEditorViewController?.internFormula?.generateExternFormulaStringAndInternExternMapping()
+    formulaEditorViewController?.internFormula?.generateExternFormulaStringAndInternExternMapping()
         formulaEditorViewController?.internFormula?.updateInternCursorPosition()
         let formulaString = NSMutableAttributedString(string: formulaEditorViewController?.internFormula?.getExternFormulaString() ?? "", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20.0)])
         
@@ -202,7 +198,7 @@ class FormulaEditorTextView: UITextView, UITextViewDelegate {
         if fraction > 0.5 {
             cursorPostionIndex = (cursorPostionIndex ?? 0) + 1
         }
-        formulaEditorViewController?.internFormula?.setCursorAndSelection(Int32(Int(cursorPostionIndex ?? 0)), selected: false)
+    formulaEditorViewController?.internFormula?.setCursorAndSelection(Int32(Int(cursorPostionIndex ?? 0)), selected: false)
         let startIndex = formulaEditorViewController?.internFormula?.getExternSelectionStartIndex()
         let endIndex = formulaEditorViewController?.internFormula?.getExternSelectionEndIndex()
         
@@ -219,14 +215,14 @@ class FormulaEditorTextView: UITextView, UITextViewDelegate {
         set(attributedText) {
             let attributedText = attributedText
             super.attributedText = attributedText
-            layoutIfNeeded()
+            /*layoutIfNeeded()
             
             var frame: CGRect = self.frame
             frame.size.height = contentSize.height
             
-            /*float maxHeight = [[UIScreen mainScreen] bounds].size.height - self.frame.origin.y - self.inputView.frame.size.height - TEXT_FIELD_MARGIN_BOTTOM;
+            float maxHeight = [[UIScreen mainScreen] bounds].size.height - self.frame.origin.y - self.inputView.frame.size.height - TEXT_FIELD_MARGIN_BOTTOM;
              if(frame.size.height > maxHeight)
-             frame.size.height = maxHeight;*/
+             frame.size.height = maxHeight;
             
             self.frame = frame
             scrollRangeToVisible(NSRange(location: text.count - 1, length: 1))
@@ -234,7 +230,7 @@ class FormulaEditorTextView: UITextView, UITextViewDelegate {
             var backspaceFrame: CGRect? = backspaceButton?.frame
             backspaceFrame?.origin.y = 150
             //TODO: backspaceFrame?.origin.y = (contentSize.height - CGFloat(TEXT_FIELD_PADDING_VERTICAL) - (font?.lineHeight ?? 0.0) / 2 - (backspaceButton?.frame.size.height ?? 0.0) / 2)
-            backspaceButton?.frame = backspaceFrame ?? CGRect.zero
+            backspaceButton?.frame = backspaceFrame ?? CGRect.zero*/
         }
     }
     

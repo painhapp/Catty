@@ -166,6 +166,8 @@
 
 #import "BaseTableViewController.h"
 #import "LooksTableViewController.h"
+#import "MyProgramsViewController.h"
+#import "ProgramTableViewController.h"
 
 //------------------------------------------------------------------------------------------------------------
 
@@ -175,6 +177,7 @@
 #import "NetworkDefines.h"
 #import "ProgramDefines.h"
 #import "KeychainUserDefaultsDefines.h"
+#import "CatrobatLanguageDefines.h"
 
 //#import "LanguageTranslationDefines.h"
 #import "BrickFormulaProtocol.h"
