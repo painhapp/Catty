@@ -56,14 +56,14 @@ final class FaceDetectionManagerTest: XCTestCase {
 
     func testCameraPosition() {
         var position = AVCaptureDevice.Position.front
-        CameraPreviewHandler.shared().switchCameraPosition(to: position)
+        CameraPreviewHandler.shared.switchCameraPosition(position: position)
 
-        XCTAssertEqual(position, manager.cameraPosition())
+        XCTAssertEqual(position, CameraManager.shared.cameraPosition)
 
         position = AVCaptureDevice.Position.back
-        CameraPreviewHandler.shared().switchCameraPosition(to: position)
+        CameraPreviewHandler.shared.switchCameraPosition(position: position)
 
-        XCTAssertEqual(position, manager.cameraPosition())
+        XCTAssertEqual(position, CameraManager.shared.cameraPosition)
     }
 
     func testCaptureFaceDetected() {
@@ -110,12 +110,12 @@ final class FaceDetectionManagerTest: XCTestCase {
         let centerOfFace = CGPoint(x: faceDimensions.origin.x + faceDimensions.size.width / 2,
                                    y: faceDimensions.origin.y + faceDimensions.size.height / 2)
 
-        CameraPreviewHandler.shared().switchCameraPosition(to: AVCaptureDevice.Position.back)
+        CameraPreviewHandler.shared.switchCameraPosition(position: AVCaptureDevice.Position.back)
 
         manager.captureFace(for: [feature], in: imageDimensions)
         XCTAssertEqual(Double(centerOfFace.y / imageDimensions.height), manager.facePositionRatioFromBottom!)
 
-        CameraPreviewHandler.shared().switchCameraPosition(to: AVCaptureDevice.Position.front)
+        CameraPreviewHandler.shared.switchCameraPosition(position: AVCaptureDevice.Position.front)
 
         manager.captureFace(for: [feature], in: imageDimensions)
         XCTAssertEqual(Double(centerOfFace.y / imageDimensions.height), manager.facePositionRatioFromBottom!)
@@ -129,12 +129,12 @@ final class FaceDetectionManagerTest: XCTestCase {
         let centerOfFace = CGPoint(x: faceDimensions.origin.x + faceDimensions.size.width / 2,
                                    y: faceDimensions.origin.y + faceDimensions.size.height / 2)
 
-        CameraPreviewHandler.shared().switchCameraPosition(to: AVCaptureDevice.Position.back)
+        CameraPreviewHandler.shared.switchCameraPosition(position: AVCaptureDevice.Position.back)
 
         manager.captureFace(for: [feature], in: imageDimensions)
         XCTAssertEqual(Double(centerOfFace.x / imageDimensions.width), manager.facePositionRatioFromLeft!)
 
-        CameraPreviewHandler.shared().switchCameraPosition(to: AVCaptureDevice.Position.front)
+        CameraPreviewHandler.shared.switchCameraPosition(position: AVCaptureDevice.Position.front)
 
         manager.captureFace(for: [feature], in: imageDimensions)
         XCTAssertEqual(1 - Double(centerOfFace.x / imageDimensions.width), manager.facePositionRatioFromLeft!)
