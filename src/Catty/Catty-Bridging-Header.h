@@ -144,7 +144,6 @@
 #import "LanguageTranslationDefines.h"
 #import "RuntimeImageCache.h"
 #import "CBMutableCopyContext.h"
-#import "CameraPreviewHandler.h"
 #import "BubbleBrickHelper.h"
 
 //------------------------------------------------------------------------------------------------------------

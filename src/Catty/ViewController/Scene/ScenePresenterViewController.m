@@ -25,7 +25,6 @@
 #import "Script.h"
 #import "AudioManager.h"
 #import "FlashHelper.h"
-#import "CameraPreviewHandler.h"
 #import "CatrobatLanguageDefines.h"
 #import "Pocket_Code-Swift.h"
 #import "RuntimeImageCache.h"
@@ -90,7 +89,6 @@
     [self setUpLabels];
     [self setUpGridView];
     [self checkAspectRatio];
-    
     [self setupSceneAndStart];
 }
 
