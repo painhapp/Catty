@@ -44,6 +44,10 @@
     static func setRawValue(userInput: Double, for spriteObject: SpriteObject) {
         let rawValue = self.convertToRaw(userInput: userInput, for: spriteObject)
         spriteObject.spriteNode.zRotation = CGFloat(rawValue)
+
+        for n: SKNode in spriteObject.spriteNode.children {
+            n.zRotation = -spriteObject.spriteNode.zRotation
+        }
     }
 
     // raw value is in radians, standardized value is in degrees

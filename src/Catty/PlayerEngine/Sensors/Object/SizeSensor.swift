@@ -43,6 +43,11 @@ class SizeSensor: ObjectDoubleSensor {
         let rawValue = self.convertToRaw(userInput: userInput, for: spriteObject)
         spriteObject.spriteNode.xScale = CGFloat(rawValue)
         spriteObject.spriteNode.yScale = CGFloat(rawValue)
+
+        for n: SKNode in spriteObject.spriteNode.children {
+            n.xScale = CGFloat(1 / spriteObject.spriteNode.xScale)
+            n.yScale = CGFloat(1 / spriteObject.spriteNode.yScale)
+        }
     }
 
     static func convertToStandardized(rawValue: Double, for spriteObject: SpriteObject) -> Double {

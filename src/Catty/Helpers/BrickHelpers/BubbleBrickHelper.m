@@ -64,15 +64,24 @@
     sayBubble.fillColor = [UIColor whiteColor];
     sayBubble.strokeColor = [UIColor blackColor];
     sayBubble.lineWidth = 3.5;
-    
+
+    //
+    CGFloat memoryRotation = spriteNode.zRotation;
+    spriteNode.zRotation = 0.0f;
     sayBubble.position = [sayBubble convertPoint:CGPointMake(spriteNode.position.x + spriteNode.frame.size.width / 2, spriteNode.position.y + spriteNode.frame.size.height / 2) toNode:spriteNode];
+    spriteNode.zRotation = memoryRotation;
 
     if (type == CBBubbleTypeThought) {
         label.position = CGPointMake(sayBubble.frame.size.width/2, sayBubble.frame.size.height/2 + 21);
     } else {
         label.position = CGPointMake(sayBubble.frame.size.width/2 + 6.0 * bubbleWidth/kMaxBubbleWidth, sayBubble.frame.size.height/2 + 16.0);
     }
-    
+
+    //invert rotation and scaling of parent
+    sayBubble.zRotation = -spriteNode.zRotation;
+    sayBubble.xScale = 1 / spriteNode.xScale;
+    sayBubble.yScale = 1 / spriteNode.yScale;
+
     [sayBubble addChild:label];
     [spriteNode addChild:sayBubble];
 }
