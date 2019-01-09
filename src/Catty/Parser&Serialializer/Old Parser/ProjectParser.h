@@ -24,6 +24,6 @@
 
 @interface ProjectParser : NSObject
 
-- (id)loadProject:(NSData*)xmlData;
+- (id)loadProject:(NSData*)xmlData ;
 
 @end
