@@ -23,7 +23,7 @@
 extension IfLogicBeginBrick: CBConditionProtocol {
 
     func checkCondition(formulaInterpreter: FormulaInterpreterProtocol) -> Bool {
-        let condition = formulaInterpreter.interpretBool(self.ifCondition, for: self.script.object)
+        let condition = formulaInterpreter.interpretBool(self.ifCondition!, for: self.script!.object!)
         return condition
     }
 
@@ -32,6 +32,6 @@ extension IfLogicBeginBrick: CBConditionProtocol {
     }
 
     func conditionFormulas() -> [Formula] {
-        return self.getFormulas()
+        return self.getFormulas()!
     }
 }

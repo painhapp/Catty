@@ -22,17 +22,12 @@
 
 #import "ProjectParser.h"
 #import "GDataXMLNode.h"
-#import "Program.h"
 #import "VariablesContainer.h"
 #import <objc/runtime.h>
-#import "Sound.h"
-#import "Formula.h"
-#import "Script.h"
 #import "XMLObjectReference.h"
 #import "OrderedMapTable.h"
 #import "NSString+CatrobatNSStringExtensions.h"
-#import "SpriteObject.h"
-#import "NoteBrick.h"
+#import "Pocket_Code-Swift.h"
 
 #define kCatroidXMLPrefix               @"org.catrobat.catroid.content."
 #define kCatroidXMLSpriteList           @"spriteList"

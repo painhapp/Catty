@@ -21,6 +21,7 @@
  */
 
 #import "BubbleBrickHelper.h"
+#import "SpriteObject.h"
 #import "Pocket_Code-Swift.h"
 
 @implementation BubbleBrickHelper

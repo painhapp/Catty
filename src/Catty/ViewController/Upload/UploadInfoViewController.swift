@@ -111,7 +111,7 @@
         programNameTextField.autocorrectionType = .no
         programNameTextField.autocapitalizationType = .none
         programNameTextField.keyboardType = .default
-        programNameTextField.text = program?.header.programName!
+        programNameTextField.text = program?.header.programName
     }
 
     func initSizeViewElements() {
@@ -148,7 +148,7 @@
         descriptionTextView.text = program?.header.programDescription ?? ""
 
         descriptionTextView.layer.borderWidth = 1.0
-        descriptionTextView.layer.borderColor = UIColor.textViewBorderGray().cgColor
+        descriptionTextView.layer.borderColor = UIColor.textViewBorderGray()!.cgColor
         descriptionTextView.layer.cornerRadius = 8
     }
 
@@ -222,7 +222,7 @@
         }
         //RemixOF
         if program?.header.url != nil && program?.header.userHandle != nil {
-            program?.header.remixOf = program?.header.url
+            program?.header.remixOf = (program?.header.url)!
             program?.header.url = nil
             program?.header.userHandle = nil
         }
@@ -280,10 +280,10 @@
             var body = Data()
 
             //Program Name
-            setFormDataParameter(programNameTag, with: program?.header.programName.data(using: .utf8), forHTTPBody: &body)
+            setFormDataParameter(programNameTag, with: program?.header.programName!.data(using: .utf8), forHTTPBody: &body)
 
             //Program Description
-            setFormDataParameter(programDescriptionTag, with: program?.header.programDescription.data(using: .utf8), forHTTPBody: &body)
+            setFormDataParameter(programDescriptionTag, with: program?.header.programDescription!.data(using: .utf8), forHTTPBody: &body)
 
             //User Email
             if UserDefaults.standard.value(forKey: kcEmail) != nil {
@@ -348,7 +348,7 @@
                         var projectId: String?
                         if let aTag = dictionary?[self.projectIDTag] {
                             projectId = "\(aTag)"
-                            self.program?.header.programID = projectId
+                            self.program?.header.programID = projectId!
                             self.program?.saveToDisk(withNotification: true)
                         }
 

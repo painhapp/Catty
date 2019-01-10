@@ -20,32 +20,30 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-import Foundation
-
 @objc extension PhiroPlayToneBrick: CBInstructionProtocol {
 
     @nonobjc func instruction() -> CBInstruction {
         guard let object = self.script?.object
             else { fatalError("This should never happen!") }
         return CBInstruction.execClosure { context, _ in
-            let durationInterpretation = context.formulaInterpreter.interpretDouble(self.durationFormula, for: object)
+            let durationInterpretation = context.formulaInterpreter.interpretDouble(self.durationFormula!, for: object)
 
             guard let phiro = BluetoothService.swiftSharedInstance.phiro else { return }
 
             switch self.phiroTone() {
-            case .DO:
+            case Tone.doX:
                 phiro.playTone(262, duration: durationInterpretation)
-            case .RE:
+            case Tone.re:
                 phiro.playTone(294, duration: durationInterpretation)
-            case .MI:
+            case Tone.mi:
                 phiro.playTone(330, duration: durationInterpretation)
-            case .FA:
+            case Tone.fa:
                 phiro.playTone(349, duration: durationInterpretation)
-            case .SO:
+            case Tone.so:
                 phiro.playTone(392, duration: durationInterpretation)
-            case .LA:
+            case Tone.la:
                 phiro.playTone(440, duration: durationInterpretation)
-            case .TI:
+            case Tone.ti:
                 phiro.playTone(494, duration: durationInterpretation)
             }
             context.state = .runnable

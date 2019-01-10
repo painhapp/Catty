@@ -25,7 +25,7 @@
     static let tag = "front_right"
     static let name = kUIFESensorPhiroFrontRight
     static let defaultRawValue = 0.0
-    static let requiredResource = ResourceType.bluetoothPhiro
+    static var requiredResource = ResourceType.bluetoothPhiro
     static let pinNumber = 1
     static let position = 310
 

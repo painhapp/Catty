@@ -42,7 +42,6 @@ class NumberOfItemsFunction: SingleParameterDoubleFunction {
             let elements = list.value as? [AnyObject] else {
                 return type(of: self).defaultValue
         }
-
         return Double(elements.count)
     }
 

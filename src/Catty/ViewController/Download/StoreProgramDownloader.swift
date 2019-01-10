@@ -45,7 +45,7 @@ final class StoreProgramDownloader: StoreProgramDownloaderProtocol {
                                                 kProgramsOffset,
                                                 0,
                                                 kMaxVersion,
-                                                Util.catrobatLanguageVersion()))
+                                                Util.catrobatLanguageVersion()!))
             else { return }
 
         self.session.dataTask(with: indexURL) { data, response, error in
@@ -75,7 +75,7 @@ final class StoreProgramDownloader: StoreProgramDownloaderProtocol {
     func fetchPrograms(forType: ProgramType, offset: Int, completion: @escaping (StoreProgramCollection.StoreProgramCollectionText?, StoreProgramDownloaderError?) -> Void) {
 
         let indexURL: URL
-        let version: String = Util.catrobatLanguageVersion()
+        let version: String = Util.catrobatLanguageVersion()!
 
         switch forType {
         case .featured:

@@ -21,7 +21,6 @@
  */
 
 #import "DarkBlueGradientFeaturedCell.h"
-#import "Util.h"
 
 @implementation DarkBlueGradientFeaturedCell
 

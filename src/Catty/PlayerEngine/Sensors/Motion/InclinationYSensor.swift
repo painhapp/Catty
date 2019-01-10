@@ -28,7 +28,7 @@ import CoreMotion
     static let name = kUIFESensorInclinationY
     static let defaultRawValue = 0.0
     static let position = 60
-    static let requiredResource = ResourceType.accelerometerAndDeviceMotion
+    static var requiredResource = ResourceType.accelerometerAndDeviceMotion
 
     let getMotionManager: () -> MotionManager?
 

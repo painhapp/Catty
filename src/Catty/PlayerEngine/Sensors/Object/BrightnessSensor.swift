@@ -26,7 +26,7 @@
     static let name = kUIFEObjectBrightness
     @objc static let defaultRawValue = 0.0
     static let position = 20
-    static let requiredResource = ResourceType.noResources
+    static var requiredResource = ResourceType.noResources
 
     func tag() -> String {
         return type(of: self).tag
@@ -39,7 +39,7 @@
 
     static func setRawValue(userInput: Double, for spriteObject: SpriteObject) {
         let rawValue = self.convertToRaw(userInput: userInput, for: spriteObject)
-        spriteObject.spriteNode.ciBrightness = CGFloat(rawValue)
+        spriteObject.spriteNode!.ciBrightness = CGFloat(rawValue)
     }
 
     // f:[-1, 1] -> [0, 200]

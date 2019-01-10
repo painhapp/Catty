@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+import SpriteKit
+
 @objc extension PointInDirectionBrick: CBInstructionProtocol {
 
     @nonobjc func instruction() -> CBInstruction {
@@ -32,7 +34,7 @@
             else { fatalError("This should never happen!") }
 
         return {
-            spriteNode.catrobatRotation = formulaInterpreter.interpretDouble(self.degrees, for: object)
+            spriteNode.catrobatRotation = formulaInterpreter.interpretDouble(self.degrees!, for: object)
         }
     }
 }

@@ -23,6 +23,7 @@
 #import "ProgramLoadingInfo.h"
 #import "ProgramDefines.h"
 #import "Util.h"
+#import "Pocket_Code-Swift.h"
 
 @implementation ProgramLoadingInfo
 

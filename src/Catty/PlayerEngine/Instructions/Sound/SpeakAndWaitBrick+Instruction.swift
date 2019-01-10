@@ -31,7 +31,7 @@
             let condition = NSCondition()
             condition.accessibilityHint = "0"
 
-            var speakText = context.formulaInterpreter.interpretString(self.formula, for: object)
+            var speakText = context.formulaInterpreter.interpretString(self.formula!, for: object)
             if Double(speakText) != nil {
                 let num = (speakText as NSString).doubleValue
                 speakText = (num as NSNumber).stringValue

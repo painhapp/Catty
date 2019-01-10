@@ -28,18 +28,18 @@ import Foundation
         guard let object = self.script?.object
             else { fatalError("This should never happen!") }
         return CBInstruction.execClosure { context, _ in
-            let speedValue = context.formulaInterpreter.interpretInteger(self.formula, for: object)
+            let speedValue = context.formulaInterpreter.interpretInteger(self.formula!, for: object)
 
             guard let phiro = BluetoothService.swiftSharedInstance.phiro else {
                 return
             }
 
             switch self.phiroMotor() {
-            case .Left:
+            case Motor.left:
                 phiro.moveLeftMotorForward(speedValue)
-            case .Right:
+            case Motor.right:
                 phiro.moveRightMotorForward(speedValue)
-            case .Both:
+            case Motor.both:
                 phiro.moveRightMotorForward(speedValue)
                 phiro.moveLeftMotorForward(speedValue)
             }

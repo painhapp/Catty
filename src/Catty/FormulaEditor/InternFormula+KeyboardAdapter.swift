@@ -63,36 +63,36 @@ extension InternFormula {
             return buildNumber(numberValue: "9")
 
         // PERIOD
-        case Int(Operator.DECIMAL_MARK.rawValue):
+        case Int(Operator.decimalMark.rawValue):
             return buildPeriod()
 
         // OPERATOR
-        case Operator.PLUS.rawValue:
-            return buildOperator(mathOperator: Operator.PLUS)
-        case Operator.MINUS.rawValue:
-            return buildOperator(mathOperator: Operator.MINUS)
-        case Operator.MULT.rawValue:
-            return buildOperator(mathOperator: Operator.MULT)
-        case Operator.DIVIDE.rawValue:
-            return buildOperator(mathOperator: Operator.DIVIDE)
-        case Operator.EQUAL.rawValue:
-            return buildOperator(mathOperator: Operator.EQUAL)
-        case Operator.NOT_EQUAL.rawValue:
-            return buildOperator(mathOperator: Operator.NOT_EQUAL)
-        case Operator.SMALLER_THAN.rawValue:
-            return buildOperator(mathOperator: Operator.SMALLER_THAN)
-        case Operator.SMALLER_OR_EQUAL.rawValue:
-            return buildOperator(mathOperator: Operator.SMALLER_OR_EQUAL)
-        case Operator.GREATER_THAN.rawValue:
-            return buildOperator(mathOperator: Operator.GREATER_THAN)
-        case Operator.GREATER_OR_EQUAL.rawValue:
-            return buildOperator(mathOperator: Operator.GREATER_OR_EQUAL)
-        case Operator.LOGICAL_AND.rawValue:
-            return buildOperator(mathOperator: Operator.LOGICAL_AND)
-        case Operator.LOGICAL_OR.rawValue:
-            return buildOperator(mathOperator: Operator.LOGICAL_OR)
-        case Operator.LOGICAL_NOT.rawValue:
-            return buildOperator(mathOperator: Operator.LOGICAL_NOT)
+        case Operator.plus.rawValue:
+            return buildOperator(mathOperator: Operator.plus)
+        case Operator.minus.rawValue:
+            return buildOperator(mathOperator: Operator.minus)
+        case Operator.mult.rawValue:
+            return buildOperator(mathOperator: Operator.mult)
+        case Operator.divide.rawValue:
+            return buildOperator(mathOperator: Operator.divide)
+        case Operator.equal.rawValue:
+            return buildOperator(mathOperator: Operator.equal)
+        case Operator.notEqual.rawValue:
+            return buildOperator(mathOperator: Operator.notEqual)
+        case Operator.smallerThan.rawValue:
+            return buildOperator(mathOperator: Operator.smallerThan)
+        case Operator.smallerOrEqual.rawValue:
+            return buildOperator(mathOperator: Operator.smallerOrEqual)
+        case Operator.greaterThan.rawValue:
+            return buildOperator(mathOperator: Operator.greaterThan)
+        case Operator.greaterOrEqual.rawValue:
+            return buildOperator(mathOperator: Operator.greaterOrEqual)
+        case Operator.logicalAnd.rawValue:
+            return buildOperator(mathOperator: Operator.logicalAnd)
+        case Operator.logicalOr.rawValue:
+            return buildOperator(mathOperator: Operator.logicalOr)
+        case Operator.logicalNot.rawValue:
+            return buildOperator(mathOperator: Operator.logicalNot)
 
         // BRACKETS
         case Int(BRACKET_OPEN.rawValue):
@@ -152,11 +152,13 @@ extension InternFormula {
     }
 
     private func buildOperator(mathOperator: Operator) -> [InternToken] {
-        return [InternToken.init(type: TOKEN_TYPE_OPERATOR, andValue: Operators.getName(mathOperator))]
+        return [InternToken.init(type: TOKEN_TYPE_OPERATOR,
+                                 andValue: Operators.getName(mathOperator))]
     }
 
     private func buildSensor(sensor: Sensor) -> [InternToken] {
-        return [InternToken.init(type: TOKEN_TYPE_SENSOR, andValue: sensor.tag())]
+        return [InternToken.init(type: TOKEN_TYPE_SENSOR,
+                                 andValue: sensor.tag())]
     }
 
     private func buildFunction(function: Function) -> [InternToken] {
@@ -164,7 +166,8 @@ extension InternFormula {
         let parameters = function.parameters()
         var count = 0
 
-        tokenList.append(InternToken.init(type: TOKEN_TYPE_FUNCTION_NAME, andValue: function.tag()))
+        tokenList.append(InternToken.init(type: TOKEN_TYPE_FUNCTION_NAME,
+                                          andValue: function.tag()))
         if parameters.isEmpty {
             return tokenList    // no parameter
         }
@@ -188,11 +191,14 @@ extension InternFormula {
 
         switch parameter {
         case .number:
-            return InternToken.init(type: TOKEN_TYPE_NUMBER, andValue: defaultValueString)
+            return InternToken.init(type: TOKEN_TYPE_NUMBER,
+                                    andValue: defaultValueString)
         case .string:
-            return InternToken.init(type: TOKEN_TYPE_STRING, andValue: defaultValueString)
+            return InternToken.init(type: TOKEN_TYPE_STRING,
+                                    andValue: defaultValueString)
         case .list:
-            return InternToken.init(type: TOKEN_TYPE_USER_LIST, andValue: defaultValueString)
+            return InternToken.init(type: TOKEN_TYPE_USER_LIST,
+                                    andValue: defaultValueString)
         }
     }
 }

@@ -34,27 +34,27 @@ final class FormulaManagerIdempotenceTests: XCTestCase {
 
     func testIsIdempotentDefaultValue() {
         let formula = Formula(formulaElement: FormulaElement())!
-        XCTAssertEqual(IdempotenceState.NOT_CHECKED, formula.formulaTree.idempotenceState)
+        XCTAssertEqual(IdempotenceState.notChecked, formula.formulaTree.idempotenceState)
         XCTAssertFalse(interpreter.isIdempotent(formula))
     }
 
     func testCaching() {
         let formula = Formula(integer: 1)!
-        formula.formulaTree.idempotenceState = .IDEMPOTENT
+        formula.formulaTree.idempotenceState = IdempotenceState.idempotent
         XCTAssertTrue(interpreter.isIdempotent(formula))
 
-        formula.formulaTree.idempotenceState = .NOT_IDEMPOTENT
+        formula.formulaTree.idempotenceState = IdempotenceState.notIdempotent
         XCTAssertFalse(interpreter.isIdempotent(formula))
 
-        formula.formulaTree.idempotenceState = .NOT_CHECKED
+        formula.formulaTree.idempotenceState = IdempotenceState.notChecked
         XCTAssertTrue(interpreter.isIdempotent(formula))
-        XCTAssertEqual(IdempotenceState.IDEMPOTENT, formula.formulaTree.idempotenceState)
+        XCTAssertEqual(IdempotenceState.idempotent, formula.formulaTree.idempotenceState)
     }
 
     func testSingleNumber() {
         let formula = Formula(integer: 1)!
         XCTAssertTrue(interpreter.isIdempotent(formula))
-        XCTAssertEqual(IdempotenceState.IDEMPOTENT, formula.formulaTree.idempotenceState)
+        XCTAssertEqual(IdempotenceState.idempotent, formula.formulaTree.idempotenceState)
     }
 
     func testAddition() {

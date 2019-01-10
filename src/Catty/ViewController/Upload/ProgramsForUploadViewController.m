@@ -23,20 +23,15 @@
 #import "ProgramsForUploadViewController.h"
 #import "LanguageTranslationDefines.h"
 #import "CellTagDefines.h"
-#import "UIColor+CatrobatUIColorExtensions.h"
 #import "CatrobatImageCell.h"
 #import "CatrobatBaseCell.h"
-#import "TableUtil.h"
 #import "ProgramLoadingInfo.h"
 #import "UIDefines.h"
 #import "UIImageView+CatrobatUIImageViewExtensions.h"
 #import "CBFileManager.h"
 #import "RuntimeImageCache.h"
-#import "AppDelegate.h"
-#import "Util.h"
 #import "BDKNotifyHUD.h"
 #import "Pocket_Code-Swift.h"
-
 
 @interface ProgramsForUploadViewController ()
 
@@ -47,7 +42,6 @@
 @property (nonatomic, strong) NSMutableArray *uploadingProgramInfos;
 
 @end
-
 
 @implementation ProgramsForUploadViewController
 

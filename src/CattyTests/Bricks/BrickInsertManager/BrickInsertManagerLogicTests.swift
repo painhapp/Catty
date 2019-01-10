@@ -72,7 +72,8 @@ final class BrickInsertManagerLogicTests: BrickInsertManagerAbstractTest {
                             itemAt: indexPathFrom,
                             canInsertTo: indexPathTo,
                             andObject: spriteObject)
-        XCTAssertTrue(canMoveInsideIfBrickInsertMode, "Should be allowed to move ForeverBrick inside if-branch IfLogicBeginBrick")
+        XCTAssertTrue(canMoveInsideIfBrickInsertMode,
+                      "Should be allowed to move ForeverBrick inside if-branch IfLogicBeginBrick")
 
         // else-branch
         indexPathFrom = IndexPath(row: 4, section: 0)
@@ -80,7 +81,8 @@ final class BrickInsertManagerLogicTests: BrickInsertManagerAbstractTest {
 
         foreverBrick.isAnimatedInsertBrick = true
         canMoveInsideIfBrickInsertMode = BrickInsertManager.sharedInstance().collectionView(viewController!.collectionView, itemAt: indexPathFrom, canInsertTo: indexPathTo, andObject: spriteObject)
-        XCTAssertTrue(canMoveInsideIfBrickInsertMode, "Should be allowed to move ForeverBrick inside else-branch of IfLogicBeginBrick")
+        XCTAssertTrue(canMoveInsideIfBrickInsertMode,
+                      "Should be allowed to move ForeverBrick inside else-branch of IfLogicBeginBrick")
     }
 
     func testInsertForeverBrickInsideIfThenBrick() {
@@ -121,7 +123,8 @@ final class BrickInsertManagerLogicTests: BrickInsertManagerAbstractTest {
                             itemAt: indexPathFrom,
                             canInsertTo: indexPathTo,
                             andObject: spriteObject)
-        XCTAssertTrue(canMoveInsideIfBrickInsertMode, "Should be allowed to move ForeverBrick inside if-branch IfLogicBeginBrick")
+        XCTAssertTrue(canMoveInsideIfBrickInsertMode,
+                      "Should be allowed to move ForeverBrick inside if-branch IfLogicBeginBrick")
     }
 
     func testInsertIfBrickAboveIfBrick() {
@@ -181,7 +184,8 @@ final class BrickInsertManagerLogicTests: BrickInsertManagerAbstractTest {
                             itemAt: indexPathFrom,
                             canInsertTo: indexPathTo,
                             andObject: spriteObject)
-        XCTAssertTrue(canInsertAboveIfBrickInsertMode, "Should be allowed to insert nested IfLogicBeginBrick above main IfLogicBeginBrick")
+        XCTAssertTrue(canInsertAboveIfBrickInsertMode,
+                      "Should be allowed to insert nested IfLogicBeginBrick above main IfLogicBeginBrick")
     }
 
     func testInsertIfLogicBeginBricksInsideElseBranch() {
@@ -241,7 +245,8 @@ final class BrickInsertManagerLogicTests: BrickInsertManagerAbstractTest {
                             itemAt: indexPathFrom,
                             canInsertTo: indexPathTo,
                             andObject: spriteObject)
-        XCTAssertTrue(canInsertAboveIfBrickInsertMode, "Should be allowed to insert nested IfLogicBeginBrick above main IfLogicElseBrick")
+        XCTAssertTrue(canInsertAboveIfBrickInsertMode,
+                      "Should be allowed to insert nested IfLogicBeginBrick above main IfLogicElseBrick")
 
         // main else brick
         ifLogicBeginBrick2.isAnimatedInsertBrick = false
@@ -255,7 +260,8 @@ final class BrickInsertManagerLogicTests: BrickInsertManagerAbstractTest {
                             itemAt: indexPathFrom,
                             canInsertTo: indexPathTo,
                             andObject: spriteObject)
-        XCTAssertTrue(canInsertBelowIfBrickInsertMode, "Should be allowed to insert main IfLogicElseBrick below nested IfLogicElseBrick")
+        XCTAssertTrue(canInsertBelowIfBrickInsertMode,
+                      "Should be allowed to insert main IfLogicElseBrick below nested IfLogicElseBrick")
     }
 
     func testInsertIfThenLogicBeginBricksInsideElseBranch() {
@@ -307,7 +313,8 @@ final class BrickInsertManagerLogicTests: BrickInsertManagerAbstractTest {
                             itemAt: indexPathFrom,
                             canInsertTo: indexPathTo,
                             andObject: spriteObject)
-        XCTAssertTrue(canInsertAboveIfBrickInsertMode, "Should be allowed to insert nested IfThenLogicBeginBrick above main IfLogicElseBrick")
+        XCTAssertTrue(canInsertAboveIfBrickInsertMode,
+                      "Should be allowed to insert nested IfThenLogicBeginBrick above main IfLogicElseBrick")
     }
 
     func testInsertMoveLogicBricks() {
@@ -365,7 +372,8 @@ final class BrickInsertManagerLogicTests: BrickInsertManagerAbstractTest {
                             itemAt: indexPathFrom,
                             canInsertTo: indexPathTo,
                             andObject: spriteObject)
-        XCTAssertTrue(canInsertAboveEndBrickInsertMode, "Should be allowed to insert IfLogicBeginBrick above IfLogicEndBrick")
+        XCTAssertTrue(canInsertAboveEndBrickInsertMode,
+                      "Should be allowed to insert IfLogicBeginBrick above IfLogicEndBrick")
 
         // first end brick (move down)
         ifLogicBeginBrick2.isAnimatedInsertBrick = false

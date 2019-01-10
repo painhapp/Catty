@@ -29,7 +29,7 @@
 @property (nonatomic, strong) id<ScriptProtocol> scriptOrBrick;
 @property (nonatomic) BOOL enabled;
 
-- (kBrickShapeType)brickShapeType;
+- (NSInteger)brickShapeType;
 + (CGFloat)cellHeight;
 
 @end

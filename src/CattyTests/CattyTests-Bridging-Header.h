@@ -28,14 +28,6 @@
 
 //Bricks
 #import "ScriptCollectionViewController.h"
-#import "BrickManager.h"
-#import "BrickInsertManager.h"
-#import "BrickMoveManager.h"
-#import "FormulaElement.h"
 
 //Formula
 #import "InternFormula.h"
-#import "InternFormulaParserException.h"
-
-//Program
-#import "VariablesContainer.h"

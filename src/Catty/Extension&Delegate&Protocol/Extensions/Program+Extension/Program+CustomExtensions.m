@@ -22,8 +22,7 @@
 
 #import "Program+CustomExtensions.h"
 #import "SpriteObject.h"
-#import "Brick.h"
-#import "Script.h"
+#import "Pocket_Code-Swift.h"
 
 @implementation Program (CustomExtensions)
 

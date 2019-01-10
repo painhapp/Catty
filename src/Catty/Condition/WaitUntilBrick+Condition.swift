@@ -23,8 +23,8 @@
 extension WaitUntilBrick: CBConditionProtocol {
 
     func checkCondition(formulaInterpreter: FormulaInterpreterProtocol) -> Bool {
-        guard let object = self.script.object else { return false }
-        let condition = formulaInterpreter.interpretBool(self.waitCondition, for: object)
+        guard let object = self.script!.object else { return false }
+        let condition = formulaInterpreter.interpretBool(self.waitCondition!, for: object)
         return !condition
     }
 
@@ -33,6 +33,6 @@ extension WaitUntilBrick: CBConditionProtocol {
     }
 
     func conditionFormulas() -> [Formula] {
-        return self.getFormulas()
+        return self.getFormulas()!
     }
 }

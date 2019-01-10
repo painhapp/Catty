@@ -21,18 +21,8 @@
  */
 
 #import "BrickManager.h"
-#import "BrickProtocol.h"
-#import "BrickFormulaProtocol.h"
-#import "WhenScript.h"
-#import "LoopEndBrick.h"
-#import "LoopBeginBrick.h"
-#import "IfLogicBeginBrick.h"
-#import "IfThenLogicEndBrick.h"
-#import "IfThenLogicBeginBrick.h"
-#import "IfLogicElseBrick.h"
-#import "IfLogicEndBrick.h"
 #import "CBMutableCopyContext.h"
-#import "ForeverBrick.h"
+#import "Pocket_Code-Swift.h"
 
 @implementation BrickManager {
     NSDictionary *_brickHeightDictionary;
@@ -174,11 +164,11 @@
     return scripts;
 }
 
-- (NSArray*)selectableBricksForCategoryType:(kBrickCategoryType)categoryType {
+- (NSArray*)selectableBricksForCategoryType:(NSInteger)categoryType {
     return [self selectableBricksForCategoryType:categoryType inBackground:false];
 }
 
-- (NSArray*)selectableBricksForCategoryType:(kBrickCategoryType)categoryType inBackground:(BOOL)inBackground
+- (NSArray*)selectableBricksForCategoryType:(NSInteger)categoryType inBackground:(BOOL)inBackground
 {
     NSArray *selectableBricks = [self selectableBricks];
     NSMutableArray *selectableBricksForCategoryMutable = [NSMutableArray arrayWithCapacity:[selectableBricks count]];
@@ -209,12 +199,12 @@
     return (NSArray*)selectableBricksForCategoryMutable;
 }
 
-- (kBrickType)brickTypeForCategoryType:(kBrickCategoryType)categoryType andBrickIndex:(NSUInteger)index
+- (NSInteger)brickTypeForCategoryType:(NSInteger)categoryType andBrickIndex:(NSUInteger)index
 {
     return (kBrickType)((categoryType-1) * 100 + index);
 }
 
-- (NSUInteger)brickIndexForBrickType:(kBrickType)brickType
+- (NSUInteger)brickIndexForBrickType:(NSInteger)brickType
 {
     return (brickType % 100);
 }
@@ -227,7 +217,7 @@
     return size;
 }
 
-- (BOOL)isScript:(kBrickType)type
+- (BOOL)isScript:(NSInteger)type
 {
     if (type == kProgramStartedBrick || type == kTappedBrick || type == kReceiveBrick) {
         return YES;

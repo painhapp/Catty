@@ -22,9 +22,8 @@
 
 #import "Parser.h"
 #import "ProjectParser.h"
-#import "SpriteObject.h"
-#import "Script.h"
 #import "Program+CustomExtensions.h"
+#import "Pocket_Code-Swift.h"
 
 @implementation Parser
 

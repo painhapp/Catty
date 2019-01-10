@@ -26,7 +26,7 @@ class FaceDetectedSensor: DeviceSensor {
     static let name = kUIFESensorFaceDetected
     static let defaultRawValue = 0.0
     static let position = 190
-    static let requiredResource = ResourceType.faceDetection
+    static var requiredResource = ResourceType.faceDetection
 
     let getFaceDetectionManager: () -> FaceDetectionManagerProtocol?
 

@@ -55,7 +55,7 @@ final class CBBackend: CBBackendProtocol {
         guard let instructionBrick = brick as? CBInstructionProtocol else {
             fatalError("All Bricks should implement the CBInstructionProtocol")
         }
-        if (brick.getRequiredResources() & ResourceType.bluetoothArduino.rawValue) > 0 {
+        if (brick.getRequiredResources() & ResourceType.bluetoothArduino) > 0 {
             guard let formulaBufferBrick = brick as? BrickFormulaProtocol else {
                 fatalError("All Bricks with formulas should implement the BrickFormulaProtocol")
             }

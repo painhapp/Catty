@@ -22,7 +22,6 @@
 
 #import "InternFormulaParser.h"
 #import "InternFormulaUtils.h"
-#import "InternFormulaParserException.h"
 #import "InternFormulaParserEmptyStackException.h"
 #import "SpriteObject.h"
 #import "Pocket_Code-Swift.h"
@@ -151,7 +150,7 @@ const int MAXIMUM_TOKENS_TO_PARSE = 1000;
 {
     FormulaElement *termListTree = [self termListForSpriteObject:object];
     InternFormulaParserException *exception = [[InternFormulaParserException alloc] initWithName:@"Parse Error" reason:nil userInfo:nil];
-    if (termListTree.type == STRING) {
+    if (termListTree.type == ElementType.string) {
         self.errorTokenIndex = FORMULA_PARSER_STRING;
     }
     if ([self.currentToken isEndOfFileToken]) {

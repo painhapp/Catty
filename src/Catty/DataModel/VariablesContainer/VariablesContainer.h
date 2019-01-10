@@ -22,7 +22,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @class SpriteObject;
 @class UserVariable;
 @class OrderedMapTable;

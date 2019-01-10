@@ -26,7 +26,7 @@
     static let name = kUIFESensorCompass
     static let defaultRawValue = 0.0
     static let position = 70
-    static let requiredResource = ResourceType.compass
+    static var requiredResource = ResourceType.compass
 
     let getLocationManager: () -> LocationManager?
 

@@ -26,7 +26,7 @@
     static let name = kUIFEObjectBackgroundNumber
     static let defaultRawValue = 0.0
     static let position = 40
-    static let requiredResource = ResourceType.noResources
+    static var requiredResource = ResourceType.noResources
 
     func tag() -> String {
         return type(of: self).tag
@@ -36,7 +36,7 @@
         guard let spriteNode = spriteObject.spriteNode else { return BackgroundNumberSensor.defaultRawValue }
         guard let currentLook = spriteNode.currentLook else { return BackgroundNumberSensor.defaultRawValue }
         let index = spriteObject.lookList.index(of: currentLook)
-        return Double(index)
+        return Double(index!)
     }
 
     static func convertToStandardized(rawValue: Double, for spriteObject: SpriteObject) -> Double {

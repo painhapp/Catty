@@ -21,10 +21,9 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "Brick.h"
-#import "SpriteObject.h"
 #import "BrickCell.h"
-#import "SelectButton.h"
+
+@class SelectButton, Script;
 
 @interface BrickSelectionManager : NSObject
 

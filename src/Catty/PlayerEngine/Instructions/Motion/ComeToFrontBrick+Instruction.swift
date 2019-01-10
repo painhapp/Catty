@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+import SpriteKit
+
 @objc extension ComeToFrontBrick: CBInstructionProtocol {
 
     @nonobjc func instruction() -> CBInstruction {
@@ -39,7 +41,7 @@
             currentSpriteNode.catrobatLayer = frontValue
 
             for obj in objectList {
-                guard let spriteObject = obj as? SpriteObject, let spriteNode = spriteObject.spriteNode else {
+                guard let spriteObject = obj, let spriteNode = spriteObject.spriteNode else {
                     continue
                 }
                 if spriteNode.catrobatLayer > currentLayer && spriteNode.catrobatLayer <= frontValue && spriteObject != currentObject {

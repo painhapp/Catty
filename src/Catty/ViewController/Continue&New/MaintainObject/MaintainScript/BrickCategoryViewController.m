@@ -21,7 +21,7 @@
  */
 
 #import "BrickCategoryViewController.h"
-#import "BrickManager.h"
+#import "Pocket_Code-Swift.h"
 
 @interface BrickCategoryViewController ()
 @property (nonatomic, assign) PageIndexCategoryType pageIndexCategoryType;
@@ -177,7 +177,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 }
 
 #pragma mark - Helpers
-- (kBrickCategoryType)brickCategoryTypForPageIndex:(NSUInteger)pageIndex {
+- (BrickCategoryType)brickCategoryTypForPageIndex:(NSUInteger)pageIndex {
 
     return pageIndex;
 }

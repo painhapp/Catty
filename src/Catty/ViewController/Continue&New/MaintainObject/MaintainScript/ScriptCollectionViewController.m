@@ -21,36 +21,13 @@
  */
 
 #import "ScriptCollectionViewController.h"
-#import "BrickCell.h"
-#import "Script.h"
-#import "StartScript.h"
 #import "CatrobatReorderableCollectionViewFlowLayout.h"
-#import "BrickManager.h"
 #import "BrickTransition.h"
 #import "PlaceHolderView.h"
-#import "BroadcastScriptCell.h"
-#import "LoopBeginBrick.h"
-#import "IfLogicBeginBrick.h"
-#import "IfThenLogicBeginBrick.h"
-#import "IfLogicElseBrick.h"
-#import "IfLogicEndBrick.h"
 #import "BrickCellFormulaData.h"
 #import "NoteBrick.h"
 #import "BrickSelectionViewController.h"
-#import "BrickLookProtocol.h"
-#import "BrickSoundProtocol.h"
-#import "BrickObjectProtocol.h"
-#import "BrickMessageProtocol.h"
-#import "BrickStaticChoiceProtocol.h"
-#import "BrickVariableProtocol.h"
 #import "BrickListProtocol.h"
-#import "BrickCellLookData.h"
-#import "BrickCellSoundData.h"
-#import "BrickCellObjectData.h"
-#import "BrickCellTextData.h"
-#import "BrickCellMessageData.h"
-#import "BrickCellVariableData.h"
-#import "BrickCellListData.h"
 #import "LooksTableViewController.h"
 #import "SoundsTableViewController.h"
 #import "ProgramTableViewController.h"
@@ -60,18 +37,7 @@
 #import "CBMutableCopyContext.h"
 #import "RepeatBrick.h"
 #import "OrderedMapTable.h"
-#import "BrickInsertManager.h"
-#import "BrickMoveManager.h"
 #import "BrickSelectionManager.h"
-#import "BrickCellPhiroMotorData.h"
-#import "BrickCellPhiroLightData.h"
-#import "BrickCellPhiroToneData.h"
-#import "BrickCellPhiroIfSensorData.h"
-#import "BrickCellStaticChoiceData.h"
-#import "BrickPhiroMotorProtocol.h"
-#import "BrickPhiroLightProtocol.h"
-#import "BrickPhiroToneProtocol.h"
-#import "BrickPhiroIfSensorProtocol.h"
 #import "Pocket_Code-Swift.h"
 
 #define kSelectAllItemsTag 0
@@ -592,6 +558,9 @@ willBeginDraggingItemAtIndexPath:(NSIndexPath*)indexPath
         brickCell.userInteractionEnabled = YES;
         brickCell.alpha = self.isEditingBrickMode ? kBrickCellInactiveWhileEditingOpacity : kBrickCellActiveOpacity;
     }
+
+    [brickCell addTarget:brickCell.delegate action:@selector(openFormulaEditor:withEvent:) forControlEvents:UIControlEventTouchUpInside];
+    [brickCell addTarget:brickCell.delegate action:@selector(openFormulaEditor:withEvent:) forControlEvents:UIControlEventTouchDownRepeat];
 
     return brickCell;
 }

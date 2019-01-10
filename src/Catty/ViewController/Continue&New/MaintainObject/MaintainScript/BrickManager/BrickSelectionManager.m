@@ -21,13 +21,8 @@
  */
 
 #import "BrickSelectionManager.h"
-#import "Script.h"
-#import "LoopBeginBrick.h"
-#import "IfLogicBeginBrick.h"
-#import "IfThenLogicBeginBrick.h"
-#import "IfThenLogicEndBrick.h"
-#import "IfLogicElseBrick.h"
-#import "IfLogicEndBrick.h"
+#import "SpriteObject.h"
+#import "Pocket_Code-Swift.h"
 
 @interface BrickSelectionManager()
 

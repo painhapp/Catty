@@ -21,12 +21,11 @@
  */
 
 protocol Function {
-
     // Display name (e.g. for formula editor)
     static var name: String { get }
 
     // Resources required in order to get value of this function (e.g. Accelerometer)
-    static var requiredResource: ResourceType { get }
+    static var requiredResource: Int { get }
 
     // True if the value does not change when executed multiple times (e.g. sin(0)) or false if the value changes (e.g. random(0, 1))
     static var isIdempotent: Bool { get }
@@ -53,7 +52,6 @@ extension Function {
             parameters.append(function.firstParameter())
             parameters.append(function.secondParameter())
         }
-
         return parameters
     }
 

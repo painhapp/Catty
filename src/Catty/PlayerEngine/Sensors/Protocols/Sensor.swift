@@ -28,7 +28,7 @@ protocol Sensor {
     // Default value for the iOS specific raw value (rawValue)
     static var defaultRawValue: Double { get }
 
-    static var requiredResource: ResourceType { get }
+    static var requiredResource: Int { get }
 
     // Tag for serialization
     func tag() -> String

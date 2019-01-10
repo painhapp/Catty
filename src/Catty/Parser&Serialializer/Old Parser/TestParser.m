@@ -23,12 +23,7 @@
 #import "TestParser.h"
 //#import "enums.h"
 
-#import "SpriteObject.h"
-#import "StartScript.h"
-#import "BroadcastScript.h"
-#import "Brick.h"
-#import "PlaceAtBrick.h"
-#import "ForeverBrick.h"
+#import "Pocket_Code-Swift.h"
 
 #define IMAGE_FILE_NAME @"tmp.png"
 

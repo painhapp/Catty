@@ -45,3 +45,11 @@ let kSearchStoreMaxResults = 50
 
 let kUploadUrl = kBaseUrl.appending("api/upload")
 let kTestUploadUrl = kTestUrl.appending("api/upload")
+
+//************************************************************************************************************
+//***********************************   ProgramDetailStoreViewController   ***********************************
+//************************************************************************************************************
+
+let kReportProgramExtension = "api/reportProgram/reportProgram.json"
+let kReportProgramUrl = kBaseUrl.appending(kReportProgramExtension)
+let kTestReportProgramUrl = kTestUrl.appending(kReportProgramExtension)

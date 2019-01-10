@@ -21,7 +21,7 @@
  */
 
 #import "ProgramTableHeaderView.h"
-#import "UIColor+CatrobatUIColorExtensions.h"
+#import "Pocket_Code-Swift.h"
 
 @interface ProgramTableHeaderView ()
 @property (strong, nonatomic) CALayer *bottomBoarder;

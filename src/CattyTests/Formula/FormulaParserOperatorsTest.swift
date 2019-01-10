@@ -32,19 +32,29 @@ final class FormulaParserOperatorsTest: XCTestCase {
         formulaManager = FormulaManager(sceneSize: Util.screenSize(true))
     }
 
-    func buildBinaryOperator(_ firstTokenType: InternTokenType, firstValue: String?, with `operator`: Operator, secondTokenType: InternTokenType, secondValue: String?) -> [AnyHashable]? {
+    func buildBinaryOperator(_ firstTokenType: InternTokenType,
+                             firstValue: String?,
+                             with operatorValue: Operator,
+                             secondTokenType: InternTokenType,
+                             secondValue: String?) -> [AnyHashable]? {
         var internTokens: [AnyHashable] = []
-        internTokens.append(InternToken(type: firstTokenType, andValue: firstValue))
-        internTokens.append(InternToken(type: TOKEN_TYPE_OPERATOR, andValue: Operators.getName(`operator`)))
-        internTokens.append(InternToken(type: secondTokenType, andValue: secondValue))
+        internTokens.append(InternToken(type: firstTokenType,
+                                        andValue: firstValue))
+        internTokens.append(InternToken(type: TOKEN_TYPE_OPERATOR,
+                                        andValue: Operators.getName(operatorValue)))
+        internTokens.append(InternToken(type: secondTokenType,
+                                        andValue: secondValue))
 
         return internTokens
     }
 
-    func mergeOperatorLists(_ firstList: [AnyHashable]?, with `operator`: Operator, andSecondList secondList: [AnyHashable]?) -> [AnyHashable]? {
+    func mergeOperatorLists(_ firstList: [AnyHashable]?,
+                            with operatorValue: Operator,
+                            andSecondList secondList: [AnyHashable]?) -> [AnyHashable]? {
         var firstList = firstList
         let secondList = secondList
-        firstList?.append(InternToken(type: TOKEN_TYPE_OPERATOR, andValue: Operators.getName(`operator`)))
+        firstList?.append(InternToken(type: TOKEN_TYPE_OPERATOR,
+                                      andValue: Operators.getName(operatorValue)))
         if let aList = secondList {
             firstList?.append(contentsOf: aList)
         }
@@ -52,221 +62,459 @@ final class FormulaParserOperatorsTest: XCTestCase {
         return firstList
     }
 
-    func appendOperation(toList internTokenList: [AnyHashable]?, with `operator`: Operator, andTokenType tokenType: InternTokenType, withValue value: String?) -> [AnyHashable]? {
+    func appendOperation(toList internTokenList: [AnyHashable]?,
+                         with operatorValue: Operator,
+                         andTokenType tokenType: InternTokenType,
+                         withValue value: String?) -> [AnyHashable]? {
         var internTokenList = internTokenList
-        internTokenList?.append(InternToken(type: TOKEN_TYPE_OPERATOR, andValue: Operators.getName(`operator`)))
+        internTokenList?.append(InternToken(type: TOKEN_TYPE_OPERATOR,
+                                            andValue: Operators.getName(operatorValue)))
         internTokenList?.append(InternToken(type: tokenType, andValue: value))
 
         return internTokenList
     }
 
-    func binaryOperatorTest(_ internTokens: [AnyHashable]?, withExpectedResult result: String?) {
+    func binaryOperatorTest(_ internTokens: [AnyHashable]?,
+                            withExpectedResult result: String?) {
         let internTokens = internTokens
-        let parser = InternFormulaParser(tokens: (internTokens as! [InternToken]), andFormulaManager: formulaManager)
+        let parser = InternFormulaParser(tokens: (internTokens as! [InternToken]),
+                                         andFormulaManager: formulaManager)
         let parseTree: FormulaElement? = parser!.parseFormula(for: nil)
         XCTAssertNotNil(parseTree, "Formula is not parsed correctly!")
 
         let formula = Formula(formulaElement: parseTree)
-        //TODO XCTAssertEqual(formulaManager?.interpretInteger(formula!, for: SpriteObject()), Int(result!), "Formula interpretation is not as expected!")
+        /* TODO: XCTAssertEqual(formulaManager?.interpretInteger(formula!,
+                                                        for: SpriteObject()),
+                       Int(result!),
+                       "Formula interpretation is not as expected!")*/
     }
 
     func testOperatorChain() {
-        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.PLUS, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "2")
-        firstTerm = appendOperation(toList: firstTerm, with: Operator.MULT, andTokenType: TOKEN_TYPE_NUMBER, withValue: "3")
-        var secontTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "2", with: Operator.PLUS, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "1")
-        firstTerm = mergeOperatorLists(firstTerm, with: Operator.MULT, andSecondList: secontTerm)
+        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                            firstValue: "1",
+                                            with: Operator.PLUS,
+                                            secondTokenType: TOKEN_TYPE_NUMBER,
+                                            secondValue: "2")
+        firstTerm = appendOperation(toList: firstTerm,
+                                    with: Operator.MULT,
+                                    andTokenType: TOKEN_TYPE_NUMBER,
+                                    withValue: "3")
+        var secontTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                             firstValue: "2",
+                                             with: Operator.PLUS,
+                                             secondTokenType: TOKEN_TYPE_NUMBER,
+                                             secondValue: "1")
+        firstTerm = mergeOperatorLists(firstTerm,
+                                       with: Operator.MULT,
+                                       andSecondList: secontTerm)
 
         binaryOperatorTest(firstTerm, withExpectedResult: "14")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.PLUS, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "2")
-        secontTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "3", with: Operator.MULT, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "2")
-        firstTerm = mergeOperatorLists(firstTerm, with: Operator.MULT, andSecondList: secontTerm)
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "1",
+                                        with: Operator.PLUS,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: "2")
+        secontTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                         firstValue: "3",
+                                         with: Operator.MULT,
+                                         secondTokenType: TOKEN_TYPE_NUMBER,
+                                         secondValue: "2")
+        firstTerm = mergeOperatorLists(firstTerm,
+                                       with: Operator.MULT,
+                                       andSecondList: secontTerm)
 
         binaryOperatorTest(firstTerm, withExpectedResult: "13")
     }
 
     func testOperatorLeftBinding() {
-        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "5", with: Operator.MINUS, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "4")
-        _ = appendOperation(toList: firstTerm, with: Operator.MINUS, andTokenType: TOKEN_TYPE_NUMBER, withValue: "1")
+        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                            firstValue: "5",
+                                            with: Operator.MINUS,
+                                            secondTokenType: TOKEN_TYPE_NUMBER,
+                                            secondValue: "4")
+        _ = appendOperation(toList: firstTerm,
+                            with: Operator.MINUS,
+                            andTokenType: TOKEN_TYPE_NUMBER,
+                            withValue: "1")
 
         binaryOperatorTest(firstTerm, withExpectedResult: "0")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "100", with: Operator.DIVIDE, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "10")
-        _ = appendOperation(toList: firstTerm, with: Operator.DIVIDE, andTokenType: TOKEN_TYPE_NUMBER, withValue: "10")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "100",
+                                        with: Operator.DIVIDE,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: "10")
+        _ = appendOperation(toList: firstTerm,
+                            with: Operator.DIVIDE,
+                            andTokenType: TOKEN_TYPE_NUMBER,
+                            withValue: "10")
 
         binaryOperatorTest(firstTerm, withExpectedResult: "1")
     }
 
     func testOperatorPriority() {
-        let firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.MINUS, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "2")
-        _ = appendOperation(toList: firstTerm, with: Operator.MULT, andTokenType: TOKEN_TYPE_NUMBER, withValue: "2")
+        let firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                            firstValue: "1",
+                                            with: Operator.MINUS,
+                                            secondTokenType: TOKEN_TYPE_NUMBER,
+                                            secondValue: "2")
+        _ = appendOperation(toList: firstTerm,
+                            with: Operator.MULT,
+                            andTokenType: TOKEN_TYPE_NUMBER,
+                            withValue: "2")
 
         binaryOperatorTest(firstTerm, withExpectedResult: "-3")
     }
 
     func testUnaryMinus() {
         let internTokenList = NSMutableArray()
-        internTokenList.add(InternToken(type: TOKEN_TYPE_OPERATOR, andValue: Operators.getName(Operator.MINUS)))
-        internTokenList.add(InternToken(type: TOKEN_TYPE_NUMBER, andValue: "42.42"))
+        internTokenList.add(InternToken(type: TOKEN_TYPE_OPERATOR,
+                                        andValue: Operators.getName(Operator.MINUS)))
+        internTokenList.add(InternToken(type: TOKEN_TYPE_NUMBER,
+                                        andValue: "42.42"))
 
-        let internParser = InternFormulaParser(tokens: (internTokenList as! [InternToken]), andFormulaManager: formulaManager)
+        let internParser = InternFormulaParser(tokens: (internTokenList as! [InternToken]),
+                                               andFormulaManager: formulaManager)
         let parseTree: FormulaElement? = internParser!.parseFormula(for: nil)
         XCTAssertNotNil(parseTree, "Formula is not parsed correctly: - 42.42")
 
         let formula = Formula(formulaElement: parseTree)
-        XCTAssertEqual(formulaManager?.interpretDouble(formula!, for: SpriteObject()), -42.42, "Formula interpretation is not as expected")
+        XCTAssertEqual(formulaManager?.interpretDouble(formula!,
+                                                       for: SpriteObject()),
+                       -42.42,
+                       "Formula interpretation is not as expected")
     }
 
     func testGreaterThan() {
-        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "2", with: Operator.GREATER_THAN, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "1")
+        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                            firstValue: "2",
+                                            with: Operator.GREATER_THAN,
+                                            secondTokenType: TOKEN_TYPE_NUMBER,
+                                            secondValue: "1")
         binaryOperatorTest(firstTerm, withExpectedResult: "1")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.GREATER_THAN, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "1")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "1",
+                                        with: Operator.GREATER_THAN,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: "1")
         binaryOperatorTest(firstTerm, withExpectedResult: "0")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.GREATER_THAN, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "2")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "1",
+                                        with: Operator.GREATER_THAN,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: "2")
         binaryOperatorTest(firstTerm, withExpectedResult: "0")
 
-        var secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "2", with: Operator.GREATER_THAN, secondTokenType: TOKEN_TYPE_STRING, secondValue: "1")
+        var secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                             firstValue: "2",
+                                             with: Operator.GREATER_THAN,
+                                             secondTokenType: TOKEN_TYPE_STRING,
+                                             secondValue: "1")
         binaryOperatorTest(secondTerm, withExpectedResult: "1")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "1", with: Operator.GREATER_THAN, secondTokenType: TOKEN_TYPE_STRING, secondValue: "1")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "1",
+                                         with: Operator.GREATER_THAN,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "1")
         binaryOperatorTest(secondTerm, withExpectedResult: "0")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "1", with: Operator.GREATER_THAN, secondTokenType: TOKEN_TYPE_STRING, secondValue: "2")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "1",
+                                         with: Operator.GREATER_THAN,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "2")
         binaryOperatorTest(secondTerm, withExpectedResult: "0")
     }
 
     func testGreaterOrEqualThan() {
-        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "2", with: Operator.GREATER_OR_EQUAL, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "1")
+        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                            firstValue: "2",
+                                            with: Operator.GREATER_OR_EQUAL,
+                                            secondTokenType: TOKEN_TYPE_NUMBER,
+                                            secondValue: "1")
         binaryOperatorTest(firstTerm, withExpectedResult: "1")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.GREATER_OR_EQUAL, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "1")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "1",
+                                        with: Operator.GREATER_OR_EQUAL,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: "1")
         binaryOperatorTest(firstTerm, withExpectedResult: "1")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.GREATER_OR_EQUAL, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "2")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "1",
+                                        with: Operator.GREATER_OR_EQUAL,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: "2")
         binaryOperatorTest(firstTerm, withExpectedResult: "0")
 
-        var secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "2", with: Operator.GREATER_OR_EQUAL, secondTokenType: TOKEN_TYPE_STRING, secondValue: "1")
+        var secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                             firstValue: "2",
+                                             with: Operator.GREATER_OR_EQUAL,
+                                             secondTokenType: TOKEN_TYPE_STRING,
+                                             secondValue: "1")
         binaryOperatorTest(secondTerm, withExpectedResult: "1")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "1", with: Operator.GREATER_OR_EQUAL, secondTokenType: TOKEN_TYPE_STRING, secondValue: "1")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "1",
+                                         with: Operator.GREATER_OR_EQUAL,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "1")
         binaryOperatorTest(secondTerm, withExpectedResult: "1")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "1", with: Operator.GREATER_OR_EQUAL, secondTokenType: TOKEN_TYPE_STRING, secondValue: "2")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "1",
+                                         with: Operator.GREATER_OR_EQUAL,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "2")
         binaryOperatorTest(secondTerm, withExpectedResult: "0")
     }
 
     func testSmallerThan() {
-        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "2", with: Operator.SMALLER_THAN, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "1")
+        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                            firstValue: "2",
+                                            with: Operator.SMALLER_THAN,
+                                            secondTokenType: TOKEN_TYPE_NUMBER,
+                                            secondValue: "1")
         binaryOperatorTest(firstTerm, withExpectedResult: "0")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.SMALLER_THAN, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "1")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "1",
+                                        with: Operator.SMALLER_THAN,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: "1")
         binaryOperatorTest(firstTerm, withExpectedResult: "0")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.SMALLER_THAN, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "2")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "1",
+                                        with: Operator.SMALLER_THAN,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: "2")
         binaryOperatorTest(firstTerm, withExpectedResult: "1")
 
-        var secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "2", with: Operator.SMALLER_THAN, secondTokenType: TOKEN_TYPE_STRING, secondValue: "1")
+        var secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                             firstValue: "2",
+                                             with: Operator.SMALLER_THAN,
+                                             secondTokenType: TOKEN_TYPE_STRING,
+                                             secondValue: "1")
         binaryOperatorTest(secondTerm, withExpectedResult: "0")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "1", with: Operator.SMALLER_THAN, secondTokenType: TOKEN_TYPE_STRING, secondValue: "1")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "1",
+                                         with: Operator.SMALLER_THAN,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "1")
         binaryOperatorTest(secondTerm, withExpectedResult: "0")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "1", with: Operator.SMALLER_THAN, secondTokenType: TOKEN_TYPE_STRING, secondValue: "2")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "1",
+                                         with: Operator.SMALLER_THAN,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "2")
         binaryOperatorTest(secondTerm, withExpectedResult: "1")
     }
 
     func testSmallerOrEqualThan() {
-        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "2", with: Operator.SMALLER_OR_EQUAL, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "1")
+        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                            firstValue: "2",
+                                            with: Operator.SMALLER_OR_EQUAL,
+                                            secondTokenType: TOKEN_TYPE_NUMBER,
+                                            secondValue: "1")
         binaryOperatorTest(firstTerm, withExpectedResult: "0")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.SMALLER_OR_EQUAL, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "1")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "1",
+                                        with: Operator.SMALLER_OR_EQUAL,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: "1")
         binaryOperatorTest(firstTerm, withExpectedResult: "1")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.SMALLER_OR_EQUAL, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "2")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "1",
+                                        with: Operator.SMALLER_OR_EQUAL,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: "2")
         binaryOperatorTest(firstTerm, withExpectedResult: "1")
 
-        var secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "2", with: Operator.SMALLER_OR_EQUAL, secondTokenType: TOKEN_TYPE_STRING, secondValue: "1")
+        var secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                             firstValue: "2",
+                                             with: Operator.SMALLER_OR_EQUAL,
+                                             secondTokenType: TOKEN_TYPE_STRING,
+                                             secondValue: "1")
         binaryOperatorTest(secondTerm, withExpectedResult: "0")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "1", with: Operator.SMALLER_OR_EQUAL, secondTokenType: TOKEN_TYPE_STRING, secondValue: "1")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "1",
+                                         with: Operator.SMALLER_OR_EQUAL,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "1")
         binaryOperatorTest(secondTerm, withExpectedResult: "1")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "1", with: Operator.SMALLER_OR_EQUAL, secondTokenType: TOKEN_TYPE_STRING, secondValue: "2")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "1",
+                                         with: Operator.SMALLER_OR_EQUAL,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "2")
         binaryOperatorTest(secondTerm, withExpectedResult: "1")
     }
 
     func testEqual() {
-        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.EQUAL, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "1")
+        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                            firstValue: "1",
+                                            with: Operator.EQUAL,
+                                            secondTokenType: TOKEN_TYPE_NUMBER,
+                                            secondValue: "1")
         binaryOperatorTest(firstTerm, withExpectedResult: "1")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.EQUAL, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "5")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "1",
+                                        with: Operator.EQUAL,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: "5")
         binaryOperatorTest(firstTerm, withExpectedResult: "0")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.EQUAL, secondTokenType: TOKEN_TYPE_STRING, secondValue: "1.0")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "1",
+                                        with: Operator.EQUAL,
+                                        secondTokenType: TOKEN_TYPE_STRING,
+                                        secondValue: "1.0")
         binaryOperatorTest(firstTerm, withExpectedResult: "1")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1.0", with: Operator.EQUAL, secondTokenType: TOKEN_TYPE_STRING, secondValue: "1")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "1.0",
+                                        with: Operator.EQUAL,
+                                        secondTokenType: TOKEN_TYPE_STRING,
+                                        secondValue: "1")
         binaryOperatorTest(firstTerm, withExpectedResult: "1")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "1.0", with: Operator.EQUAL, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "1.9")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                        firstValue: "1.0",
+                                        with: Operator.EQUAL,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: "1.9")
         binaryOperatorTest(firstTerm, withExpectedResult: "0")
 
-        var secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "equalString", with: Operator.EQUAL, secondTokenType: TOKEN_TYPE_STRING, secondValue: "equalString")
+        var secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                             firstValue: "equalString",
+                                             with: Operator.EQUAL,
+                                             secondTokenType: TOKEN_TYPE_STRING,
+                                             secondValue: "equalString")
         binaryOperatorTest(secondTerm, withExpectedResult: "1")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "1", with: Operator.EQUAL, secondTokenType: TOKEN_TYPE_STRING, secondValue: "1.0")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "1",
+                                         with: Operator.EQUAL,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "1.0")
         binaryOperatorTest(secondTerm, withExpectedResult: "0")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "1", with: Operator.EQUAL, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "1.0")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "1",
+                                         with: Operator.EQUAL,
+                                         secondTokenType: TOKEN_TYPE_NUMBER,
+                                         secondValue: "1.0")
         binaryOperatorTest(secondTerm, withExpectedResult: "1")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "!`\"§$%&/()=?", with: Operator.EQUAL, secondTokenType: TOKEN_TYPE_STRING, secondValue: "!`\"§$%&/()=????")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "!`\"§$%&/()=?",
+                                         with: Operator.EQUAL,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "!`\"§$%&/()=????")
         binaryOperatorTest(secondTerm, withExpectedResult: "0")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "555.555", with: Operator.EQUAL, secondTokenType: TOKEN_TYPE_STRING, secondValue: "055.77.77")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "555.555",
+                                         with: Operator.EQUAL,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "055.77.77")
         binaryOperatorTest(secondTerm, withExpectedResult: "0")
     }
 
     func testNotEqual() {
-        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.NOT_EQUAL, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "1")
+        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                            firstValue: "1",
+                                            with: Operator.NOT_EQUAL,
+                                            secondTokenType: TOKEN_TYPE_NUMBER,
+                                            secondValue: "1")
         binaryOperatorTest(firstTerm, withExpectedResult: "0")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.NOT_EQUAL, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "5")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "1",
+                                        with: Operator.NOT_EQUAL,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: "5")
         binaryOperatorTest(firstTerm, withExpectedResult: "1")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.NOT_EQUAL, secondTokenType: TOKEN_TYPE_STRING, secondValue: "1.0")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "1",
+                                        with: Operator.NOT_EQUAL,
+                                        secondTokenType: TOKEN_TYPE_STRING,
+                                        secondValue: "1.0")
         binaryOperatorTest(firstTerm, withExpectedResult: "0")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1.0", with: Operator.NOT_EQUAL, secondTokenType: TOKEN_TYPE_STRING, secondValue: "1")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "1.0",
+                                        with: Operator.NOT_EQUAL,
+                                        secondTokenType: TOKEN_TYPE_STRING,
+                                        secondValue: "1")
         binaryOperatorTest(firstTerm, withExpectedResult: "0")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "1.0", with: Operator.NOT_EQUAL, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "1.9")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                        firstValue: "1.0",
+                                        with: Operator.NOT_EQUAL,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: "1.9")
         binaryOperatorTest(firstTerm, withExpectedResult: "1")
 
-        var secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "equalString", with: Operator.NOT_EQUAL, secondTokenType: TOKEN_TYPE_STRING, secondValue: "equalString")
+        var secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                             firstValue: "equalString",
+                                             with: Operator.NOT_EQUAL,
+                                             secondTokenType: TOKEN_TYPE_STRING,
+                                             secondValue: "equalString")
         binaryOperatorTest(secondTerm, withExpectedResult: "0")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "1", with: Operator.NOT_EQUAL, secondTokenType: TOKEN_TYPE_STRING, secondValue: "1.0")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "1",
+                                         with: Operator.NOT_EQUAL,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "1.0")
         binaryOperatorTest(secondTerm, withExpectedResult: "1")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "!`\"§$%&/()=?", with: Operator.NOT_EQUAL, secondTokenType: TOKEN_TYPE_STRING, secondValue: "!`\"§$%&/()=????")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "!`\"§$%&/()=?",
+                                         with: Operator.NOT_EQUAL,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "!`\"§$%&/()=????")
         binaryOperatorTest(secondTerm, withExpectedResult: "1")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "555.555", with: Operator.NOT_EQUAL, secondTokenType: TOKEN_TYPE_STRING, secondValue: "055.77.77")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "555.555",
+                                         with: Operator.NOT_EQUAL,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "055.77.77")
         binaryOperatorTest(secondTerm, withExpectedResult: "1")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "1,555.555", with: Operator.NOT_EQUAL, secondTokenType: TOKEN_TYPE_STRING, secondValue: "1555.555")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "1,555.555",
+                                         with: Operator.NOT_EQUAL,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "1555.555")
         binaryOperatorTest(secondTerm, withExpectedResult: "1")
     }
 
     func testNot() {
         var internTokenList = NSMutableArray()
-        internTokenList.add(InternToken(type: TOKEN_TYPE_OPERATOR, andValue: Operators.getName(Operator.LOGICAL_NOT)))
-        internTokenList.add(InternToken(type: TOKEN_TYPE_NUMBER, andValue: "1"))
+        internTokenList.add(InternToken(type: TOKEN_TYPE_OPERATOR,
+                                        andValue: Operators.getName(Operator.LOGICAL_NOT)))
+        internTokenList.add(InternToken(type: TOKEN_TYPE_NUMBER,
+                                        andValue: "1"))
 
-        var internParser = InternFormulaParser(tokens: (internTokenList as! [InternToken]), andFormulaManager: formulaManager)
+        var internParser = InternFormulaParser(tokens: (internTokenList as! [InternToken]),
+                                               andFormulaManager: formulaManager)
         var parseTree: FormulaElement? = internParser!.parseFormula(for: nil)
         XCTAssertNotNil(parseTree, "Formula is not parsed correctly!")
 
@@ -274,10 +522,13 @@ final class FormulaParserOperatorsTest: XCTestCase {
         XCTAssertEqual(0.0, formulaManager?.interpretDouble(formula!, for: SpriteObject()))
 
         internTokenList = NSMutableArray()
-        internTokenList.add(InternToken(type: TOKEN_TYPE_OPERATOR, andValue: Operators.getName(Operator.LOGICAL_NOT)))
-        internTokenList.add(InternToken(type: TOKEN_TYPE_NUMBER, andValue: "0"))
+        internTokenList.add(InternToken(type: TOKEN_TYPE_OPERATOR,
+                                        andValue: Operators.getName(Operator.LOGICAL_NOT)))
+        internTokenList.add(InternToken(type: TOKEN_TYPE_NUMBER,
+                                        andValue: "0"))
 
-        internParser = InternFormulaParser(tokens: (internTokenList as! [InternToken]), andFormulaManager: formulaManager)
+        internParser = InternFormulaParser(tokens: (internTokenList as! [InternToken]),
+                                           andFormulaManager: formulaManager)
         parseTree = internParser!.parseFormula(for: nil)
         XCTAssertNotNil(parseTree, "Formula is not parsed correctly!")
 
@@ -285,8 +536,10 @@ final class FormulaParserOperatorsTest: XCTestCase {
         XCTAssertEqual(formulaManager?.interpretDouble(formula!, for: SpriteObject()), 1.0)
 
         internTokenList = NSMutableArray()
-        internTokenList.add(InternToken(type: TOKEN_TYPE_OPERATOR, andValue: Operators.getName(Operator.LOGICAL_NOT)))
-        internTokenList.add(InternToken(type: TOKEN_TYPE_STRING, andValue: "1"))
+        internTokenList.add(InternToken(type: TOKEN_TYPE_OPERATOR,
+                                        andValue: Operators.getName(Operator.LOGICAL_NOT)))
+        internTokenList.add(InternToken(type: TOKEN_TYPE_STRING,
+                                        andValue: "1"))
 
         internParser = InternFormulaParser(tokens: (internTokenList as! [InternToken]), andFormulaManager: formulaManager)
         parseTree = internParser!.parseFormula(for: nil)
@@ -308,54 +561,118 @@ final class FormulaParserOperatorsTest: XCTestCase {
     }
 
     func testAnd() {
-        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "0", with: Operator.LOGICAL_AND, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "0")
+        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                            firstValue: "0",
+                                            with: Operator.LOGICAL_AND,
+                                            secondTokenType: TOKEN_TYPE_NUMBER,
+                                            secondValue: "0")
         binaryOperatorTest(firstTerm, withExpectedResult: "0")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.LOGICAL_AND, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "0")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "1",
+                                        with: Operator.LOGICAL_AND,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: "0")
         binaryOperatorTest(firstTerm, withExpectedResult: "0")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.LOGICAL_AND, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "1")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "1",
+                                        with: Operator.LOGICAL_AND,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: "1")
         binaryOperatorTest(firstTerm, withExpectedResult: "1")
 
-        var secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "0", with: Operator.LOGICAL_AND, secondTokenType: TOKEN_TYPE_STRING, secondValue: "0")
+        var secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                             firstValue: "0",
+                                             with: Operator.LOGICAL_AND,
+                                             secondTokenType: TOKEN_TYPE_STRING,
+                                             secondValue: "0")
         binaryOperatorTest(secondTerm, withExpectedResult: "0")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "0", with: Operator.LOGICAL_AND, secondTokenType: TOKEN_TYPE_STRING, secondValue: "1")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "0",
+                                         with: Operator.LOGICAL_AND,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "1")
         binaryOperatorTest(secondTerm, withExpectedResult: "0")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "1", with: Operator.LOGICAL_AND, secondTokenType: TOKEN_TYPE_STRING, secondValue: "1")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "1",
+                                         with: Operator.LOGICAL_AND,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "1")
         binaryOperatorTest(secondTerm, withExpectedResult: "1")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "0", with: Operator.LOGICAL_AND, secondTokenType: TOKEN_TYPE_STRING, secondValue: "0")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                         firstValue: "0",
+                                         with: Operator.LOGICAL_AND,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "0")
         binaryOperatorTest(secondTerm, withExpectedResult: "0")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "1", with: Operator.LOGICAL_AND, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "0")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "1",
+                                         with: Operator.LOGICAL_AND,
+                                         secondTokenType: TOKEN_TYPE_NUMBER,
+                                         secondValue: "0")
         binaryOperatorTest(secondTerm, withExpectedResult: "0")
     }
 
     func testOr() {
-        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "0", with: Operator.LOGICAL_OR, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "0")
+        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                            firstValue: "0",
+                                            with: Operator.LOGICAL_OR,
+                                            secondTokenType: TOKEN_TYPE_NUMBER,
+                                            secondValue: "0")
         binaryOperatorTest(firstTerm, withExpectedResult: "0")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.LOGICAL_OR, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "0")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "1",
+                                        with: Operator.LOGICAL_OR,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: "0")
         binaryOperatorTest(firstTerm, withExpectedResult: "1")
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "1", with: Operator.LOGICAL_OR, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "1")
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: "1",
+                                        with: Operator.LOGICAL_OR,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: "1")
         binaryOperatorTest(firstTerm, withExpectedResult: "1")
 
-        var secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "0", with: Operator.LOGICAL_OR, secondTokenType: TOKEN_TYPE_STRING, secondValue: "0")
+        var secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                             firstValue: "0",
+                                             with: Operator.LOGICAL_OR,
+                                             secondTokenType: TOKEN_TYPE_STRING,
+                                             secondValue: "0")
         binaryOperatorTest(secondTerm, withExpectedResult: "0")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "0", with: Operator.LOGICAL_OR, secondTokenType: TOKEN_TYPE_STRING, secondValue: "1")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "0",
+                                         with: Operator.LOGICAL_OR,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "1")
         binaryOperatorTest(secondTerm, withExpectedResult: "1")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "1", with: Operator.LOGICAL_OR, secondTokenType: TOKEN_TYPE_STRING, secondValue: "1")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "1",
+                                         with: Operator.LOGICAL_OR,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "1")
         binaryOperatorTest(secondTerm, withExpectedResult: "1")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: "0", with: Operator.LOGICAL_OR, secondTokenType: TOKEN_TYPE_STRING, secondValue: "0")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                         firstValue: "0",
+                                         with: Operator.LOGICAL_OR,
+                                         secondTokenType: TOKEN_TYPE_STRING,
+                                         secondValue: "0")
         binaryOperatorTest(secondTerm, withExpectedResult: "0")
 
-        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: "1", with: Operator.LOGICAL_OR, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: "0")
+        secondTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                         firstValue: "1",
+                                         with: Operator.LOGICAL_OR,
+                                         secondTokenType: TOKEN_TYPE_NUMBER,
+                                         secondValue: "0")
         binaryOperatorTest(secondTerm, withExpectedResult: "1")
     }
 
@@ -364,22 +681,42 @@ final class FormulaParserOperatorsTest: XCTestCase {
         var secondOperand = "3"
         let result = "4.3"
 
-        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: firstOperand, with: Operator.PLUS, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: secondOperand)
+        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                            firstValue: firstOperand,
+                                            with: Operator.PLUS,
+                                            secondTokenType: TOKEN_TYPE_NUMBER,
+                                            secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: result)
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: firstOperand, with: Operator.PLUS, secondTokenType: TOKEN_TYPE_STRING, secondValue: secondOperand)
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                        firstValue: firstOperand,
+                                        with: Operator.PLUS,
+                                        secondTokenType: TOKEN_TYPE_STRING,
+                                        secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: result)
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: firstOperand, with: Operator.PLUS, secondTokenType: TOKEN_TYPE_STRING, secondValue: secondOperand)
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: firstOperand,
+                                        with: Operator.PLUS,
+                                        secondTokenType: TOKEN_TYPE_STRING,
+                                        secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: result)
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: firstOperand, with: Operator.PLUS, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: secondOperand)
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                        firstValue: firstOperand,
+                                        with: Operator.PLUS,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: result)
 
         firstOperand = "NotANumber"
         secondOperand = "3.14"
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: firstOperand, with: Operator.PLUS, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: secondOperand)
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                        firstValue: firstOperand,
+                                        with: Operator.PLUS,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: "3.14")
     }
 
@@ -388,22 +725,42 @@ final class FormulaParserOperatorsTest: XCTestCase {
         var secondOperand = "2"
         let result = "4.5"
 
-        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: firstOperand, with: Operator.DIVIDE, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: secondOperand)
+        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                            firstValue: firstOperand,
+                                            with: Operator.DIVIDE,
+                                            secondTokenType: TOKEN_TYPE_NUMBER,
+                                            secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: result)
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: firstOperand, with: Operator.DIVIDE, secondTokenType: TOKEN_TYPE_STRING, secondValue: secondOperand)
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                        firstValue: firstOperand,
+                                        with: Operator.DIVIDE,
+                                        secondTokenType: TOKEN_TYPE_STRING,
+                                        secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: result)
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: firstOperand, with: Operator.DIVIDE, secondTokenType: TOKEN_TYPE_STRING, secondValue: secondOperand)
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: firstOperand,
+                                        with: Operator.DIVIDE,
+                                        secondTokenType: TOKEN_TYPE_STRING,
+                                        secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: result)
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: firstOperand, with: Operator.DIVIDE, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: secondOperand)
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                        firstValue: firstOperand,
+                                        with: Operator.DIVIDE,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: result)
 
         firstOperand = "NotANumber"
         secondOperand = "3.14"
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: firstOperand, with: Operator.DIVIDE, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: secondOperand)
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                        firstValue: firstOperand,
+                                        with: Operator.DIVIDE,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: nil)
     }
 
@@ -412,22 +769,42 @@ final class FormulaParserOperatorsTest: XCTestCase {
         var secondOperand = "2"
         let result = "18.0"
 
-        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: firstOperand, with: Operator.MULT, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: secondOperand)
+        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                            firstValue: firstOperand,
+                                            with: Operator.MULT,
+                                            secondTokenType: TOKEN_TYPE_NUMBER,
+                                            secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: result)
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: firstOperand, with: Operator.MULT, secondTokenType: TOKEN_TYPE_STRING, secondValue: secondOperand)
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                        firstValue: firstOperand,
+                                        with: Operator.MULT,
+                                        secondTokenType: TOKEN_TYPE_STRING,
+                                        secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: result)
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: firstOperand, with: Operator.MULT, secondTokenType: TOKEN_TYPE_STRING, secondValue: secondOperand)
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: firstOperand,
+                                        with: Operator.MULT,
+                                        secondTokenType: TOKEN_TYPE_STRING,
+                                        secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: result)
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: firstOperand, with: Operator.MULT, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: secondOperand)
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                        firstValue: firstOperand,
+                                        with: Operator.MULT,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: result)
 
         firstOperand = "NotANumber"
         secondOperand = "3.14"
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: firstOperand, with: Operator.MULT, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: secondOperand)
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                        firstValue: firstOperand,
+                                        with: Operator.MULT,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: nil)
     }
 
@@ -436,22 +813,42 @@ final class FormulaParserOperatorsTest: XCTestCase {
         var secondOperand = "2"
         let result = "7.0"
 
-        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: firstOperand, with: Operator.MINUS, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: secondOperand)
+        var firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                            firstValue: firstOperand,
+                                            with: Operator.MINUS,
+                                            secondTokenType: TOKEN_TYPE_NUMBER,
+                                            secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: result)
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: firstOperand, with: Operator.MINUS, secondTokenType: TOKEN_TYPE_STRING, secondValue: secondOperand)
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                        firstValue: firstOperand,
+                                        with: Operator.MINUS,
+                                        secondTokenType: TOKEN_TYPE_STRING,
+                                        secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: result)
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER, firstValue: firstOperand, with: Operator.MINUS, secondTokenType: TOKEN_TYPE_STRING, secondValue: secondOperand)
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_NUMBER,
+                                        firstValue: firstOperand,
+                                        with: Operator.MINUS,
+                                        secondTokenType: TOKEN_TYPE_STRING,
+                                        secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: result)
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: firstOperand, with: Operator.MINUS, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: secondOperand)
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                        firstValue: firstOperand,
+                                        with: Operator.MINUS,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: result)
 
         firstOperand = "NotANumber"
         secondOperand = "3.14"
 
-        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING, firstValue: firstOperand, with: Operator.MINUS, secondTokenType: TOKEN_TYPE_NUMBER, secondValue: secondOperand)
+        firstTerm = buildBinaryOperator(TOKEN_TYPE_STRING,
+                                        firstValue: firstOperand,
+                                        with: Operator.MINUS,
+                                        secondTokenType: TOKEN_TYPE_NUMBER,
+                                        secondValue: secondOperand)
         binaryOperatorTest(firstTerm, withExpectedResult: "-3.14")
     }
 }

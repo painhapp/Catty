@@ -97,7 +97,7 @@ import BluetoothHelper
         return self.function(tag: tag) != nil
     }
 
-    @objc static func requiredResource(tag: String) -> ResourceType {
+    @objc static func requiredResource(tag: String) -> Int {
         guard let function = functionMap[tag] else { return ResourceType.noResources }
         return type(of: function).requiredResource
     }

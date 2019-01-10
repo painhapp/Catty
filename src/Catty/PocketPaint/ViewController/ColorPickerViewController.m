@@ -22,7 +22,6 @@
 
 #import "ColorPickerViewController.h"
 #import "NKOColorPickerView.h"
-#import "UIColor+CatrobatUIColorExtensions.h"
 #import "LanguageTranslationDefines.h"
 #import "CatrobatUISlider.h"
 

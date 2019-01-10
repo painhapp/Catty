@@ -21,27 +21,8 @@
  */
 
 #import "BrickCell.h"
-#import "Brick.h"
-#import "BrickCellInlineView.h"
-#import "UIUtil.h"
 #import "iOSCombobox.h"
-#import "BrickManager.h"
-#import "Script.h"
-#import "BrickCellDataProtocol.h"
-#import "BrickCellLookData.h"
-#import "BrickCellSoundData.h"
-#import "BrickCellObjectData.h"
-#import "BrickCellFormulaData.h"
-#import "BrickCellTextData.h"
-#import "BrickCellMessageData.h"
-#import "BrickCellStaticChoiceData.h"
-#import "BrickCellVariableData.h"
-#import "BrickCellListData.h"
-#import "BrickCellPhiroMotorData.h"
-#import "BrickCellPhiroLightData.h"
-#import "BrickCellPhiroToneData.h"
-#import "BrickCellPhiroIfSensorData.h"
-#import "LoopEndBrickCell.h"
+#import "Pocket_Code-Swift.h"
 
 // uncomment this to get special log outputs, etc...
 //#define LAYOUT_DEBUG 0
@@ -553,12 +534,12 @@
 
 #pragma mark - helpers
 // BrickCells that do not have default shape type have to override this method in their corresponding subclass
-- (kBrickShapeType)brickShapeType
+- (NSInteger)brickShapeType
 {
-    return kBrickShapeSquareSmall;
+    return BrickShapeType.brickShapeSquareSmall;
 }
 
-+ (CGFloat)cellHeight
+- (CGFloat)cellHeight
 {
     return kBrickHeight1h;  // needs to be overwritten from subclasses
 }

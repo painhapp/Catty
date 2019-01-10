@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+import SpriteKit
+
 @objc extension ClearGraphicEffectBrick: CBInstructionProtocol {
 
     @nonobjc func instruction() -> CBInstruction {
@@ -33,7 +35,7 @@
 
         return {
             guard let look = spriteNode.currentLook,
-                let image = UIImage(contentsOfFile: self.path(for: look)) else { return }
+                let image = UIImage(contentsOfFile: self.path(for: look)!) else { return }
 
             spriteNode.currentUIImageLook = image
 

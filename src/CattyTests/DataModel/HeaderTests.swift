@@ -31,7 +31,7 @@ final class HeaderTests: XCTestCase {
     }
 
     func testDefaultHeader() {
-        let header = Header.default()!
+        let header = Header.defaultHeader()!
 
         XCTAssertEqual(Util.appBuildName(), header.applicationBuildName)
         XCTAssertEqual(Util.appBuildVersion(), header.applicationBuildNumber)
@@ -65,7 +65,7 @@ final class HeaderTests: XCTestCase {
 }
 
 class UtilMock: Util {
-    override class func platformVersion() -> OperatingSystemVersion {
+    override func platformVersion() -> OperatingSystemVersion {
         return OperatingSystemVersion(majorVersion: 11, minorVersion: 4, patchVersion: 1)
     }
 }

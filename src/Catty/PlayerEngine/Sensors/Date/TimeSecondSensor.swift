@@ -26,7 +26,7 @@ class TimeSecondSensor: DateSensor {
     static let name = kUIFESensorTimeSecond
     static let defaultRawValue = 0.0
     static let position = 290
-    static let requiredResource = ResourceType.noResources
+    static var requiredResource = ResourceType.noResources
 
     func date() -> Date {
         return Date()

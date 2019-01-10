@@ -77,7 +77,7 @@ extension FormulaManager {
         invalidateCache(formula)
 
         let result = interpretRecursive(formulaElement: formula.formulaTree, for: spriteObject)
-        cacheResult(formula.formulaTree, result: result)
+        cacheResult(formula.formulaTree!, result: result)
 
         return result
     }
@@ -109,36 +109,41 @@ extension FormulaManager {
     }
 
     private func isIdempotent(_ formulaElement: FormulaElement) -> Bool {
-        if formulaElement.idempotenceState != .NOT_CHECKED { // cached result!
-            return (formulaElement.idempotenceState == .IDEMPOTENT)
+        if formulaElement.idempotenceState != IdempotenceState.notChecked { // cached result!
+            return (formulaElement.idempotenceState == IdempotenceState.idempotent)
         }
 
-        let isLeftChildIdempotent = formulaElement.leftChild != nil ? self.isIdempotent(formulaElement.leftChild) : true
-        let isRightChildIdempotent = formulaElement.rightChild != nil ? self.isIdempotent(formulaElement.rightChild) : true
+        let isLeftChildIdempotent = formulaElement.leftChild != nil ? self.isIdempotent(formulaElement.leftChild!) : true
+        let isRightChildIdempotent = formulaElement.rightChild != nil ? self.isIdempotent(formulaElement.rightChild!) : true
 
         if isLeftChildIdempotent == false {
-            formulaElement.idempotenceState = .NOT_IDEMPOTENT
+            formulaElement.idempotenceState = IdempotenceState.notIdempotent
             return false
         }
         if isRightChildIdempotent == false {
-            formulaElement.idempotenceState = .NOT_IDEMPOTENT
+            formulaElement.idempotenceState = IdempotenceState.notIdempotent
             return false
         }
-        if formulaElement.type == .FUNCTION {
+        if formulaElement.type == ElementType.function {
             let result = functionManager.isIdempotent(tag: formulaElement.value)
-            formulaElement.idempotenceState = result ? .IDEMPOTENT : .NOT_IDEMPOTENT
+            formulaElement.idempotenceState = result ? IdempotenceState.idempotent : IdempotenceState.notIdempotent
             return result
         }
-        if (formulaElement.type == .OPERATOR) || (formulaElement.type == .NUMBER) || (formulaElement.type == .BRACKET) {
-            formulaElement.idempotenceState = .IDEMPOTENT
+        if (formulaElement.type == ElementType.formulaOperator) ||
+            (formulaElement.type == ElementType.number) ||
+            (formulaElement.type == ElementType.bracket) {
+            formulaElement.idempotenceState = IdempotenceState.idempotent
             return true
         }
-        if (formulaElement.type == .USER_LIST) || (formulaElement.type == .USER_VARIABLE) || (formulaElement.type == .SENSOR) || (formulaElement.type == .STRING) {
-            formulaElement.idempotenceState = .NOT_IDEMPOTENT
+        if (formulaElement.type == ElementType.userList) ||
+            (formulaElement.type == ElementType.userVariable) ||
+            (formulaElement.type == ElementType.sensor) ||
+            (formulaElement.type == ElementType.string) {
+            formulaElement.idempotenceState = IdempotenceState.notIdempotent
             return false
         }
 
-        formulaElement.idempotenceState = .NOT_IDEMPOTENT
+        formulaElement.idempotenceState = IdempotenceState.notIdempotent
         return false
     }
 
@@ -151,21 +156,21 @@ extension FormulaManager {
         }
 
         switch formulaElement.type {
-        case .OPERATOR:
+        case ElementType.formulaOperator:
             result = interpretOperator(formulaElement, for: spriteObject)
-        case .FUNCTION:
+        case ElementType.function:
             result = interpretFunction(formulaElement, for: spriteObject)
-        case .NUMBER:
+        case ElementType.number:
             result = interpretDouble(formulaElement, for: spriteObject)
-        case .SENSOR:
+        case ElementType.sensor:
             result = interpretSensor(formulaElement, for: spriteObject)
-        case .USER_VARIABLE:
+        case ElementType.userVariable:
             result = interpretVariable(formulaElement, for: spriteObject)
-        case .USER_LIST:
+        case ElementType.userList:
             result = interpretList(formulaElement, for: spriteObject)
-        case .BRACKET:
+        case ElementType.bracket:
             result = self.interpretRecursive(formulaElement: formulaElement.rightChild, for: spriteObject)
-        case .STRING:
+        case ElementType.string:
             result = formulaElement.value as AnyObject
         }
 
@@ -194,9 +199,9 @@ extension FormulaManager {
         let rightDouble = doubleParameter(object: right)
 
         switch op {
-        case .MINUS:
+        case Operator.minus:
             return rightDouble * -1
-        case .LOGICAL_NOT:
+        case Operator.logicalNot:
             return boolResult(value: rightDouble == 0.0)
         default:
             return Double(0)
@@ -212,32 +217,32 @@ extension FormulaManager {
         let rightDouble = doubleParameter(object: right)
 
         switch op {
-        case .LOGICAL_AND:
+        case Operator.logicalAnd:
             return boolResult(value: leftDouble * rightDouble != 0.0)
-        case .LOGICAL_OR:
+        case Operator.logicalOr:
             return boolResult(value: leftDouble != 0.0 || rightDouble != 0.0)
-        case .SMALLER_OR_EQUAL:
+        case Operator.smallerOrEqual:
             return boolResult(value: leftDouble <= rightDouble)
-        case .GREATER_OR_EQUAL:
+        case Operator.greaterOrEqual:
             return boolResult(value: leftDouble >= rightDouble)
-        case .SMALLER_THAN:
+        case Operator.smallerThan:
             return boolResult(value: leftDouble < rightDouble)
-        case .GREATER_THAN:
+        case Operator.greaterThan:
             return boolResult(value: leftDouble > rightDouble)
-        case .PLUS:
+        case Operator.plus:
             return leftDouble + rightDouble
-        case .MINUS:
+        case Operator.minus:
             return leftDouble - rightDouble
-        case .MULT:
+        case Operator.mult:
             return leftDouble * rightDouble
-        case .DIVIDE:
+        case Operator.divide:
             return leftDouble / rightDouble
-        case .EQUAL:
+        case Operator.equal:
             if let leftString = left as? String, let rightString = right as? String {
                 return boolResult(value: leftString == rightString)
             }
             return boolResult(value: leftDouble == rightDouble)
-        case .NOT_EQUAL:
+        case Operator.notEqual:
             if let leftString = left as? String, let rightString = right as? String {
                 return boolResult(value: leftString != rightString)
             }
@@ -294,8 +299,8 @@ extension FormulaManager {
     private func functionParameter(formulaElement: FormulaElement?, spriteObject: SpriteObject) -> AnyObject? {
         guard let formulaElement = formulaElement else { return nil }
 
-        if formulaElement.type == .USER_LIST {
-            return spriteObject.program.variables.getUserListNamed(formulaElement.value, for: spriteObject)
+        if formulaElement.type == ElementType.userList {
+            return spriteObject.program!.variables.getUserListNamed(formulaElement.value, for: spriteObject)
         }
 
         return interpretRecursive(formulaElement: formulaElement, for: spriteObject)

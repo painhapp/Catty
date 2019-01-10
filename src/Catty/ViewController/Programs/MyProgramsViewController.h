@@ -22,7 +22,8 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseTableViewController.h"
-#import "Program.h"
+
+@class Program;
 
 @interface MyProgramsViewController : BaseTableViewController
 @property (nonatomic, strong) Program *selectedProgram;

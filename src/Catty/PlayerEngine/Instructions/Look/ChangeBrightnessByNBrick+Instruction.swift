@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+import SpriteKit
+
 @objc extension ChangeBrightnessByNBrick: CBInstructionProtocol {
 
     @nonobjc func instruction() -> CBInstruction {
@@ -37,7 +39,7 @@
             let brightnessIncrease = formulaInterpreter.interpretDouble(bright, for: object)
             spriteNode.catrobatBrightness += brightnessIncrease
 
-            let lookImage = UIImage(contentsOfFile: self.path(for: look))
+            let lookImage = UIImage(contentsOfFile: self.path(for: look)!)
             spriteNode.executeFilter(lookImage)
         }
     }

@@ -35,7 +35,7 @@ protocol SensorManagerProtocol {
     func formulaEditorItems(for spriteObject: SpriteObject) -> [FormulaEditorItem]
 
     // TODO: make instance method
-    static func requiredResource(tag: String) -> ResourceType
+    static func requiredResource(tag: String) -> Int
 
     // TODO: make instance method
     static func name(tag: String) -> String?

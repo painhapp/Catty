@@ -26,7 +26,7 @@ class PositionYSensor: ObjectDoubleSensor {
     static let name = kUIFEObjectPositionY
     static let defaultRawValue = 0.0
     static let position = 70
-    static let requiredResource = ResourceType.noResources
+    static var requiredResource = ResourceType.noResources
 
     func tag() -> String {
         return type(of: self).tag
@@ -40,11 +40,11 @@ class PositionYSensor: ObjectDoubleSensor {
 
     static func setRawValue(userInput: Double, for spriteObject: SpriteObject) {
         let rawValue = convertToRaw(userInput: userInput, for: spriteObject)
-        spriteObject.spriteNode.position.y = CGFloat(rawValue)
+        spriteObject.spriteNode!.position.y = CGFloat(rawValue)
     }
 
     static func convertToRaw(userInput: Double, for spriteObject: SpriteObject) -> Double {
-        guard let scene = spriteObject.spriteNode.scene else { return defaultRawValue }
+        guard let scene = spriteObject.spriteNode!.scene else { return defaultRawValue }
         return Double(scene.size.height) / 2.0 + userInput
     }
 

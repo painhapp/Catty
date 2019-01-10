@@ -211,7 +211,7 @@ final class FormulaManagerResourceTests: XCTestCase {
     }
 
     func testSetupForProgramAlwaysStartTouchManager() {
-        let program = ProgramMock(requiredResources: ResourceType.noResources.rawValue)
+        let program = ProgramMock(requiredResources: ResourceType.noResources)
         let scene = SceneBuilder.init(program: program).build()
         manager.setup(for: program, and: scene)
 
@@ -226,14 +226,14 @@ final class FormulaManagerResourceTests: XCTestCase {
     }
 
     func testUnavailableResourcesAcceleromater() {
-        XCTAssertEqual(ResourceType.noResources.rawValue, manager.unavailableResources(for: ResourceType.accelerometer.rawValue))
+        XCTAssertEqual(ResourceType.noResources, manager.unavailableResources(for: ResourceType.accelerometer.rawValue))
 
         motionManager.isAccelerometerAvailable = false
         XCTAssertEqual(ResourceType.accelerometer.rawValue, manager.unavailableResources(for: ResourceType.accelerometer.rawValue))
     }
 
     func testUnavailableResourcesAcceleromaterAndDeviceMotion() {
-        XCTAssertEqual(ResourceType.noResources.rawValue, manager.unavailableResources(for: ResourceType.accelerometerAndDeviceMotion.rawValue))
+        XCTAssertEqual(ResourceType.noResources, manager.unavailableResources(for: ResourceType.accelerometerAndDeviceMotion.rawValue))
 
         motionManager.isAccelerometerAvailable = false
         motionManager.isDeviceMotionAvailable = false
@@ -241,42 +241,42 @@ final class FormulaManagerResourceTests: XCTestCase {
     }
 
     func testUnavailableResourcesDeviceMotion() {
-        XCTAssertEqual(ResourceType.noResources.rawValue, manager.unavailableResources(for: ResourceType.deviceMotion.rawValue))
+        XCTAssertEqual(ResourceType.noResources, manager.unavailableResources(for: ResourceType.deviceMotion.rawValue))
 
         motionManager.isDeviceMotionAvailable = false
         XCTAssertEqual(ResourceType.deviceMotion.rawValue, manager.unavailableResources(for: ResourceType.deviceMotion.rawValue))
     }
 
     func testUnavailableResourcesLocation() {
-        XCTAssertEqual(ResourceType.noResources.rawValue, manager.unavailableResources(for: ResourceType.location.rawValue))
+        XCTAssertEqual(ResourceType.noResources, manager.unavailableResources(for: ResourceType.location.rawValue))
 
         type(of: locationManager).isLocationServicesEnabled = false
         XCTAssertEqual(ResourceType.location.rawValue, manager.unavailableResources(for: ResourceType.location.rawValue))
     }
 
     func testUnavailableResourcesCompass() {
-        XCTAssertEqual(ResourceType.noResources.rawValue, manager.unavailableResources(for: ResourceType.compass.rawValue))
+        XCTAssertEqual(ResourceType.noResources, manager.unavailableResources(for: ResourceType.compass.rawValue))
 
         type(of: locationManager).isHeadingAvailable = false
         XCTAssertEqual(ResourceType.compass.rawValue, manager.unavailableResources(for: ResourceType.compass.rawValue))
     }
 
     func testUnavailableResourcesGyro() {
-        XCTAssertEqual(ResourceType.noResources.rawValue, manager.unavailableResources(for: ResourceType.gyro.rawValue))
+        XCTAssertEqual(ResourceType.noResources, manager.unavailableResources(for: ResourceType.gyro.rawValue))
 
         motionManager.isGyroAvailable = false
         XCTAssertEqual(ResourceType.gyro.rawValue, manager.unavailableResources(for: ResourceType.gyro.rawValue))
     }
 
     func testUnavailableResourcesMagnetometer() {
-        XCTAssertEqual(ResourceType.noResources.rawValue, manager.unavailableResources(for: ResourceType.magnetometer.rawValue))
+        XCTAssertEqual(ResourceType.noResources, manager.unavailableResources(for: ResourceType.magnetometer.rawValue))
 
         motionManager.isMagnetometerAvailable = false
         XCTAssertEqual(ResourceType.magnetometer.rawValue, manager.unavailableResources(for: ResourceType.magnetometer.rawValue))
     }
 
     func testUnavailableResourcesFaceDetection() {
-        XCTAssertEqual(ResourceType.noResources.rawValue, manager.unavailableResources(for: ResourceType.faceDetection.rawValue))
+        XCTAssertEqual(ResourceType.noResources, manager.unavailableResources(for: ResourceType.faceDetection.rawValue))
 
         faceDetectionManager.isAvailable = false
         XCTAssertEqual(ResourceType.faceDetection.rawValue, manager.unavailableResources(for: ResourceType.faceDetection.rawValue))

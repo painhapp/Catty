@@ -23,8 +23,7 @@
 #import "AboutPoketCodeOptionTableViewController.h"
 #import "LanguageTranslationDefines.h"
 #import "NetworkDefines.h"
-#import "UIColor+CatrobatUIColorExtensions.h"
-#import "Util.h"
+#import "Pocket_Code-Swift.h"
 
 @implementation AboutPoketCodeOptionTableViewController
 

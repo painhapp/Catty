@@ -33,7 +33,7 @@ import CoreBluetooth
         self.loadingView?.show()
 
         DispatchQueue.global(qos: .userInitiated).async {
-            self.program = Program.init(loadingInfo: Util.lastUsedProgramLoadingInfo())!
+            self.program = Program.init(loadingInfo: Util.lastUsedProgramLoadingInfo())
             let readyToStart = self.notifyUserAboutUnavailableResources(navigationController: navigationController)
 
             DispatchQueue.main.async {
@@ -51,12 +51,12 @@ import CoreBluetooth
 
         // Bluetooth
         var unconnectedBluetoothDevices = [BluetoothDeviceID]()
-        if (requiredResources & ResourceType.bluetoothPhiro.rawValue) > 0 && Util.isPhiroActivated() {
+        if (requiredResources & ResourceType.bluetoothPhiro) > 0 && Util.isPhiroActivated() {
             if BluetoothService.sharedInstance().phiro?.state != CBPeripheralState.connected {
                 unconnectedBluetoothDevices.append(.phiro)
             }
         }
-        if (requiredResources & ResourceType.bluetoothArduino.rawValue) > 0 && Util.isArduinoActivated() {
+        if (requiredResources & ResourceType.bluetoothArduino) > 0 && Util.isArduinoActivated() {
             if BluetoothService.sharedInstance().arduino?.state != CBPeripheralState.connected {
                 unconnectedBluetoothDevices.append(.arduino)
             }
@@ -71,31 +71,31 @@ import CoreBluetooth
         let unavailableSensorResources = formulaManager!.unavailableResources(for: requiredResources)
         var unavailableResourceNames = [String]()
 
-        if (unavailableSensorResources & ResourceType.vibration.rawValue) > 0 {
+        if (unavailableSensorResources & ResourceType.vibration) > 0 {
             unavailableResourceNames.append(kLocalizedVibration)
         }
-        if (unavailableSensorResources & ResourceType.deviceMotion.rawValue) > 0 {
+        if (unavailableSensorResources & ResourceType.deviceMotion) > 0 {
             unavailableResourceNames.append(kLocalizedSensorDeviceMotion)
         }
-        if (unavailableSensorResources & ResourceType.location.rawValue) > 0 {
+        if (unavailableSensorResources & ResourceType.location) > 0 {
             unavailableResourceNames.append(kLocalizedSensorLocation)
         }
-        if (unavailableSensorResources & ResourceType.compass.rawValue) > 0 {
+        if (unavailableSensorResources & ResourceType.compass) > 0 {
             unavailableResourceNames.append(kLocalizedSensorCompass)
         }
-        if (unavailableSensorResources & ResourceType.accelerometer.rawValue) > 0 {
+        if (unavailableSensorResources & ResourceType.accelerometer) > 0 {
             unavailableResourceNames.append(kLocalizedSensorAcceleration)
         }
-        if (unavailableSensorResources & ResourceType.gyro.rawValue) > 0 {
+        if (unavailableSensorResources & ResourceType.gyro) > 0 {
             unavailableResourceNames.append(kLocalizedSensorRotation)
         }
-        if (unavailableSensorResources & ResourceType.magnetometer.rawValue) > 0 {
+        if (unavailableSensorResources & ResourceType.magnetometer) > 0 {
             unavailableResourceNames.append(kLocalizedSensorMagnetic)
         }
-        if (unavailableSensorResources & ResourceType.loudness.rawValue) > 0 {
+        if (unavailableSensorResources & ResourceType.loudness) > 0 {
             unavailableResourceNames.append(kLocalizedSensorLoudness)
         }
-        if ((requiredResources & ResourceType.LED.rawValue) > 0) && !FlashHelper.sharedFlashHandler().isAvailable() {
+        if ((requiredResources & ResourceType.led) > 0) && !FlashHelper.sharedFlashHandler().isAvailable() {
             unavailableResourceNames.append(kLocalizedSensorLED)
         }
 

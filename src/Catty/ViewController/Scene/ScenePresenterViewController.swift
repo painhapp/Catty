@@ -302,7 +302,7 @@ class ScenePresenterViewController: UIViewController, UIActionSheetDelegate {
                                                   y: Util.screenHeight() / 2 + 5,
                                                   width: 30,
                                                   height: 15))
-        positiveWidth.text = String((program?.header.screenWidth.intValue)! / 2)
+        positiveWidth.text = String((program?.header.screenWidth!.intValue)! / 2)
         positiveWidth.textColor = UIColor.red
         positiveWidth.sizeToFit()
         positiveWidth.frame = CGRect(x: Util.screenWidth() - positiveWidth.frame.size.width - 5,
@@ -315,7 +315,7 @@ class ScenePresenterViewController: UIViewController, UIActionSheetDelegate {
                                                   y: Util.screenHeight() / 2 + 5,
                                                   width: 40,
                                                   height: 15))
-        negativeWidth.text = String(-(program?.header.screenWidth.intValue)! / 2)
+        negativeWidth.text = String(-(program?.header.screenWidth!.intValue)! / 2)
         negativeWidth.textColor = UIColor.red
         negativeWidth.sizeToFit()
         gridView?.addSubview(negativeWidth)
@@ -324,7 +324,7 @@ class ScenePresenterViewController: UIViewController, UIActionSheetDelegate {
                                                    y: Util.screenHeight() - 20,
                                                    width: 40,
                                                    height: 15))
-        positiveHeight.text = String(-(program?.header.screenHeight.intValue)! / 2)
+        positiveHeight.text = String(-(program?.header.screenHeight!.intValue)! / 2)
         positiveHeight.textColor = UIColor.red
         positiveHeight.sizeToFit()
         gridView?.addSubview(positiveHeight)
@@ -333,7 +333,7 @@ class ScenePresenterViewController: UIViewController, UIActionSheetDelegate {
                                                    y: 5,
                                                    width: 40,
                                                    height: 15))
-        negativeHeight.text = String((program?.header.screenHeight.intValue)! / 2)
+        negativeHeight.text = String((program?.header.screenHeight!.intValue)! / 2)
         negativeHeight.textColor = UIColor.red
         negativeHeight.sizeToFit()
         gridView?.addSubview(negativeHeight)

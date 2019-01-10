@@ -25,7 +25,7 @@ class SizeSensor: ObjectDoubleSensor {
     static let tag = "OBJECT_SIZE"
     static let name = kUIFEObjectSize
     static let defaultRawValue = 1.0
-    static let requiredResource = ResourceType.noResources
+    static var requiredResource = ResourceType.noResources
     static let position = 80
 
     func tag() -> String {
@@ -41,8 +41,8 @@ class SizeSensor: ObjectDoubleSensor {
 
     static func setRawValue(userInput: Double, for spriteObject: SpriteObject) {
         let rawValue = self.convertToRaw(userInput: userInput, for: spriteObject)
-        spriteObject.spriteNode.xScale = CGFloat(rawValue)
-        spriteObject.spriteNode.yScale = CGFloat(rawValue)
+        spriteObject.spriteNode!.xScale = CGFloat(rawValue)
+        spriteObject.spriteNode!.yScale = CGFloat(rawValue)
     }
 
     static func convertToStandardized(rawValue: Double, for spriteObject: SpriteObject) -> Double {

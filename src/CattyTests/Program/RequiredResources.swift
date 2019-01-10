@@ -45,7 +45,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses HideBrick not correctly calculated")
     }
 
@@ -55,7 +55,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses ShowBrick not correctly calculated")
     }
 
@@ -66,7 +66,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses SetTransparencyBrick not correctly calculated")
     }
 
@@ -82,7 +82,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.deviceMotion.rawValue,
+                       ResourceType.deviceMotion,
                        "Resourses ShowBrick not correctly calculated")
     }
 
@@ -93,7 +93,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses SetSizeToBrick not correctly calculated")
     }
 
@@ -109,7 +109,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.deviceMotion.rawValue,
+                       ResourceType.deviceMotion,
                        "Resourses SetSizeToBrick not correctly calculated")
     }
 
@@ -120,7 +120,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses SetBrightnessBrick not correctly calculated")
     }
 
@@ -136,7 +136,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.compass.rawValue,
+                       ResourceType.compass,
                        "Resourses SetBrightnessBrick not correctly calculated")
     }
 
@@ -146,7 +146,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses ClearGraphicEffectBrick not correctly calculated")
     }
 
@@ -157,7 +157,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses ChangeTransparencyByNBrick not correctly calculated")
     }
 
@@ -173,7 +173,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.deviceMotion.rawValue,
+                       ResourceType.deviceMotion,
                        "Resourses ChangeTransparencyByNBrick not correctly calculated")
     }
 
@@ -184,7 +184,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses ChangeBrightnessByNBrick not correctly calculated")
     }
 
@@ -200,7 +200,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.deviceMotion.rawValue,
+                       ResourceType.deviceMotion,
                        "Resourses ChangeBrightnessByNBrick not correctly calculated")
     }
 
@@ -211,7 +211,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses ChangeBrightnessByNBrick not correctly calculated")
     }
 
@@ -227,7 +227,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.accelerometerAndDeviceMotion.rawValue,
+                       ResourceType.accelerometerAndDeviceMotion,
                        "Resourses ChangeBrightnessByNBrick not correctly calculated")
     }
 
@@ -238,7 +238,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses SetColorBrick not correctly calculated")
     }
 
@@ -254,7 +254,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.accelerometerAndDeviceMotion.rawValue,
+                       ResourceType.accelerometerAndDeviceMotion,
                        "Resourses SetColorBrick not correctly calculated")
     }
 
@@ -267,7 +267,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses WaitBrick not correctly calculated")
     }
 
@@ -283,7 +283,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.loudness.rawValue,
+                       ResourceType.loudness,
                        "Resourses WaitBrick not correctly calculated")
     }
 
@@ -294,7 +294,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses RepeatBrick not correctly calculated")
     }
 
@@ -310,7 +310,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.loudness.rawValue,
+                       ResourceType.loudness,
                        "Resourses RepeatBrick not correctly calculated")
     }
 
@@ -320,7 +320,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses NoteBrick not correctly calculated")
     }
 
@@ -331,7 +331,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses IfLogicBeginBrick not correctly calculated")
     }
 
@@ -347,7 +347,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.loudness.rawValue,
+                       ResourceType.loudness,
                        "Resourses IfLogicBeginBrick not correctly calculated")
     }
 
@@ -357,7 +357,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses BroadcastBrick not correctly calculated")
     }
 
@@ -370,7 +370,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses SetVariableBrick not correctly calculated")
     }
 
@@ -386,7 +386,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.faceDetection.rawValue,
+                       ResourceType.faceDetection,
                        "Resourses SetVariableBrick not correctly calculated")
     }
 
@@ -397,7 +397,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses ChangeVariableBrick not correctly calculated")
     }
 
@@ -413,7 +413,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.loudness.rawValue,
+                       ResourceType.loudness,
                        "Resourses ChangeVariableBrick not correctly calculated")
     }
 
@@ -425,7 +425,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses StopAllSoundsBrick not correctly calculated")
     }
 
@@ -436,7 +436,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.textToSpeech.rawValue,
+                       ResourceType.textToSpeech,
                        "Resourses SpeakBrick not correctly calculated")
     }
 
@@ -447,7 +447,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses SetVolumeToBrick not correctly calculated")
     }
 
@@ -463,7 +463,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothPhiro.rawValue,
+                       ResourceType.bluetoothPhiro,
                        "Resourses SetVolumeToBrick not correctly calculated")
     }
 
@@ -474,7 +474,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses SetVolumeToBrick not correctly calculated")
     }
 
@@ -490,7 +490,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothPhiro.rawValue,
+                       ResourceType.bluetoothPhiro,
                        "Resourses SetVolumeToBrick not correctly calculated")
     }
 
@@ -503,7 +503,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.vibration.rawValue,
+                       ResourceType.vibration,
                        "Resourses VibrationBrick not correctly calculated")
     }
 
@@ -513,7 +513,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses FlashBrick not correctly calculated")
     }
 
@@ -526,7 +526,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses TurnRightBrick not correctly calculated")
     }
 
@@ -542,7 +542,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothPhiro.rawValue,
+                       ResourceType.bluetoothPhiro,
                        "Resourses TurnRightBrick not correctly calculated")
     }
 
@@ -553,7 +553,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses TurnLeftBrick not correctly calculated")
     }
 
@@ -569,7 +569,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothPhiro.rawValue,
+                       ResourceType.bluetoothPhiro,
                        "Resourses TurnLeftBrick not correctly calculated")
     }
 
@@ -580,7 +580,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses SetYBrick not correctly calculated")
     }
 
@@ -596,7 +596,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothPhiro.rawValue,
+                       ResourceType.bluetoothPhiro,
                        "Resourses SetYBrick not correctly calculated")
     }
 
@@ -607,7 +607,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses SetXBrick not correctly calculated")
     }
 
@@ -623,7 +623,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothPhiro.rawValue,
+                       ResourceType.bluetoothPhiro,
                        "Resourses SetXBrick not correctly calculated")
     }
 
@@ -633,7 +633,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses PointToBrick not correctly calculated")
     }
 
@@ -644,7 +644,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses PointInDirectionBrick not correctly calculated")
     }
 
@@ -660,7 +660,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothPhiro.rawValue,
+                       ResourceType.bluetoothPhiro,
                        "Resourses PointInDirectionBrick not correctly calculated")
     }
 
@@ -672,7 +672,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses PlaceAtBrick not correctly calculated")
     }
 
@@ -690,7 +690,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothPhiro.rawValue,
+                       ResourceType.bluetoothPhiro,
                        "Resourses PlaceAtBrick not correctly calculated")
     }
 
@@ -701,7 +701,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses MoveNStepsBrick not correctly calculated")
     }
 
@@ -717,7 +717,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothPhiro.rawValue,
+                       ResourceType.bluetoothPhiro,
                        "Resourses MoveNStepsBrick not correctly calculated")
     }
 
@@ -727,7 +727,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses IfOnEdgeBounceBrick not correctly calculated")
     }
 
@@ -738,7 +738,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses GoNStepsBackBrick not correctly calculated")
     }
 
@@ -754,7 +754,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothPhiro.rawValue,
+                       ResourceType.bluetoothPhiro,
                        "Resourses GoNStepsBackBrick not correctly calculated")
     }
 
@@ -767,7 +767,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses GlideToBrick not correctly calculated")
     }
 
@@ -785,7 +785,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothPhiro.rawValue,
+                       ResourceType.bluetoothPhiro,
                        "Resourses GlideToBrick not correctly calculated")
     }
 
@@ -795,7 +795,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses ComeToFrontBrick not correctly calculated")
     }
 
@@ -811,7 +811,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothPhiro.rawValue,
+                       ResourceType.bluetoothPhiro,
                        "Resourses ChangeYByNBrick not correctly calculated")
     }
 
@@ -822,7 +822,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses ChangeYByNBrick not correctly calculated")
     }
 
@@ -833,7 +833,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses ChangeXByNBrick not correctly calculated")
     }
 
@@ -849,7 +849,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothPhiro.rawValue,
+                       ResourceType.bluetoothPhiro,
                        "Resourses ChangeXByNBrick not correctly calculated")
     }
 
@@ -860,7 +860,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses ChangeSizeByNBrick not correctly calculated")
     }
 
@@ -876,7 +876,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothPhiro.rawValue,
+                       ResourceType.bluetoothPhiro,
                        "Resourses ChangeSizeByNBrick not correctly calculated")
     }
 
@@ -890,7 +890,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothArduino.rawValue,
+                       ResourceType.bluetoothArduino,
                        "Resourses ArduinoSendDigitalValueBrick not correctly calculated")
     }
 
@@ -902,7 +902,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothArduino.rawValue,
+                       ResourceType.bluetoothArduino,
                        "Resourses ArduinoSendPWMValueBrick not correctly calculated")
     }
 
@@ -915,7 +915,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothPhiro.rawValue,
+                       ResourceType.bluetoothPhiro,
                        "Resourses PhiroMotorMoveBackwardBrick not correctly calculated")
     }
 
@@ -926,7 +926,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothPhiro.rawValue,
+                       ResourceType.bluetoothPhiro,
                        "Resourses PhiroMotorMoveForwardBrick not correctly calculated")
     }
 
@@ -936,7 +936,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothPhiro.rawValue,
+                       ResourceType.bluetoothPhiro,
                        "Resourses PhiroMotorStopBrick not correctly calculated")
     }
 
@@ -947,7 +947,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothPhiro.rawValue,
+                       ResourceType.bluetoothPhiro,
                        "Resourses PhiroPlayToneBrick not correctly calculated")
     }
 
@@ -960,7 +960,7 @@ final class RequiredResources: XCTestCase {
 
         let resources = prog?.getRequiredResources()
         XCTAssertEqual(resources,
-                       ResourceType.bluetoothPhiro.rawValue,
+                       ResourceType.bluetoothPhiro,
                        "Resourses PhiroRGBLightBrick not correctly calculated")
     }
 
@@ -989,26 +989,26 @@ final class RequiredResources: XCTestCase {
         let prog: Program? = getProgramWithOneSprite(with: brick)
 
         let resources = prog?.getRequiredResources()
-        XCTAssertEqual(ResourceType.deviceMotion.rawValue,
-                       resources! & ResourceType.deviceMotion.rawValue,
+        XCTAssertEqual(ResourceType.deviceMotion,
+                       resources! & ResourceType.deviceMotion,
                        "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.compass.rawValue,
-                       resources! & ResourceType.compass.rawValue,
+        XCTAssertEqual(ResourceType.compass,
+                       resources! & ResourceType.compass,
                        "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.bluetoothArduino.rawValue,
-                       resources! & ResourceType.bluetoothArduino.rawValue,
-                       "Resourses nested not correctly calculated")
-        XCTAssertEqual(0,
-                       resources! & ResourceType.bluetoothPhiro.rawValue,
+        XCTAssertEqual(ResourceType.bluetoothArduino,
+                       resources! & ResourceType.bluetoothArduino,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.faceDetection.rawValue,
+                       resources! & ResourceType.bluetoothPhiro,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.magnetometer.rawValue,
+                       resources! & ResourceType.faceDetection,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.loudness.rawValue,
+                       resources! & ResourceType.magnetometer,
+                       "Resourses nested not correctly calculated")
+        XCTAssertEqual(0,
+                       resources! & ResourceType.loudness,
                        "Resourses nested not correctly calculated")
     }
 
@@ -1035,26 +1035,26 @@ final class RequiredResources: XCTestCase {
         let prog: Program? = getProgramWithOneSprite(with: brick)
 
         let resources = prog?.getRequiredResources()
-        XCTAssertEqual(ResourceType.loudness.rawValue,
-                       resources! & ResourceType.loudness.rawValue,
+        XCTAssertEqual(ResourceType.loudness,
+                       resources! & ResourceType.loudness,
                        "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.deviceMotion.rawValue,
-                       resources! & ResourceType.deviceMotion.rawValue,
+        XCTAssertEqual(ResourceType.deviceMotion,
+                       resources! & ResourceType.deviceMotion,
                        "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.faceDetection.rawValue,
-                       resources! & ResourceType.faceDetection.rawValue,
-                       "Resourses nested not correctly calculated")
-        XCTAssertEqual(0,
-                       resources! & ResourceType.bluetoothPhiro.rawValue,
+        XCTAssertEqual(ResourceType.faceDetection,
+                       resources! & ResourceType.faceDetection,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.bluetoothArduino.rawValue,
+                       resources! & ResourceType.bluetoothPhiro,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.magnetometer.rawValue,
+                       resources! & ResourceType.bluetoothArduino,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.compass.rawValue,
+                       resources! & ResourceType.magnetometer,
+                       "Resourses nested not correctly calculated")
+        XCTAssertEqual(0,
+                       resources! & ResourceType.compass,
                        "Resourses nested not correctly calculated")
     }
 
@@ -1069,14 +1069,14 @@ final class RequiredResources: XCTestCase {
         let prog: Program? = getProgramWithOneSprite(with: brick)
 
         let resources = prog?.getRequiredResources()
-        XCTAssertEqual(ResourceType.vibration.rawValue,
-                       resources! & ResourceType.vibration.rawValue,
+        XCTAssertEqual(ResourceType.vibration,
+                       resources! & ResourceType.vibration,
                        "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.loudness.rawValue,
-                       resources! & ResourceType.loudness.rawValue,
+        XCTAssertEqual(ResourceType.loudness,
+                       resources! & ResourceType.loudness,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.bluetoothPhiro.rawValue,
+                       resources! & ResourceType.bluetoothPhiro,
                        "Resourses nested not correctly calculated")
     }
 
@@ -1097,23 +1097,23 @@ final class RequiredResources: XCTestCase {
         let prog: Program? = getProgramWithOneSprite(with: brick)
 
         let resources = prog?.getRequiredResources()
-        XCTAssertEqual(ResourceType.bluetoothArduino.rawValue,
-                       resources! & ResourceType.bluetoothArduino.rawValue,
+        XCTAssertEqual(ResourceType.bluetoothArduino,
+                       resources! & ResourceType.bluetoothArduino,
                        "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.deviceMotion.rawValue,
-                       resources! & ResourceType.deviceMotion.rawValue,
+        XCTAssertEqual(ResourceType.deviceMotion,
+                       resources! & ResourceType.deviceMotion,
                        "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.loudness.rawValue,
-                       resources! & ResourceType.loudness.rawValue,
-                       "Resourses nested not correctly calculated")
-        XCTAssertEqual(0,
-                       resources! & ResourceType.bluetoothPhiro.rawValue,
+        XCTAssertEqual(ResourceType.loudness,
+                       resources! & ResourceType.loudness,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.magnetometer.rawValue,
+                       resources! & ResourceType.bluetoothPhiro,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.compass.rawValue,
+                       resources! & ResourceType.magnetometer,
+                       "Resourses nested not correctly calculated")
+        XCTAssertEqual(0,
+                       resources! & ResourceType.compass,
                        "Resourses nested not correctly calculated")
     }
 
@@ -1134,23 +1134,23 @@ final class RequiredResources: XCTestCase {
         let prog: Program? = getProgramWithOneSprite(with: brick)
 
         let resources = prog?.getRequiredResources()
-        XCTAssertEqual(ResourceType.bluetoothArduino.rawValue,
-                       resources! & ResourceType.bluetoothArduino.rawValue,
+        XCTAssertEqual(ResourceType.bluetoothArduino,
+                       resources! & ResourceType.bluetoothArduino,
                        "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.deviceMotion.rawValue,
-                       resources! & ResourceType.deviceMotion.rawValue,
+        XCTAssertEqual(ResourceType.deviceMotion,
+                       resources! & ResourceType.deviceMotion,
                        "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.loudness.rawValue,
-                       resources! & ResourceType.loudness.rawValue,
-                       "Resourses nested not correctly calculated")
-        XCTAssertEqual(0,
-                       resources! & ResourceType.bluetoothPhiro.rawValue,
+        XCTAssertEqual(ResourceType.loudness,
+                       resources! & ResourceType.loudness,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.magnetometer.rawValue,
+                       resources! & ResourceType.bluetoothPhiro,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.compass.rawValue,
+                       resources! & ResourceType.magnetometer,
+                       "Resourses nested not correctly calculated")
+        XCTAssertEqual(0,
+                       resources! & ResourceType.compass,
                        "Resourses nested not correctly calculated")
     }
 
@@ -1230,26 +1230,26 @@ final class RequiredResources: XCTestCase {
                                                       andBrickArray2: brickArray2)
 
         let resources = prog?.getRequiredResources()
-        XCTAssertEqual(ResourceType.deviceMotion.rawValue,
-                       resources! & ResourceType.deviceMotion.rawValue,
+        XCTAssertEqual(ResourceType.deviceMotion,
+                       resources! & ResourceType.deviceMotion,
                        "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.loudness.rawValue,
-                       resources! & ResourceType.loudness.rawValue,
+        XCTAssertEqual(ResourceType.loudness,
+                       resources! & ResourceType.loudness,
                        "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.bluetoothArduino.rawValue,
-                       resources! & ResourceType.bluetoothArduino.rawValue,
-                       "Resourses nested not correctly calculated")
-        XCTAssertEqual(0,
-                       resources! & ResourceType.bluetoothPhiro.rawValue,
-                       "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.faceDetection.rawValue,
-                       resources! & ResourceType.faceDetection.rawValue,
+        XCTAssertEqual(ResourceType.bluetoothArduino,
+                       resources! & ResourceType.bluetoothArduino,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.magnetometer.rawValue,
+                       resources! & ResourceType.bluetoothPhiro,
+                       "Resourses nested not correctly calculated")
+        XCTAssertEqual(ResourceType.faceDetection,
+                       resources! & ResourceType.faceDetection,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.compass.rawValue,
+                       resources! & ResourceType.magnetometer,
+                       "Resourses nested not correctly calculated")
+        XCTAssertEqual(0,
+                       resources! & ResourceType.compass,
                        "Resourses nested not correctly calculated")
     }
 
@@ -1299,26 +1299,26 @@ final class RequiredResources: XCTestCase {
                                                       andBrickArray2: brickArray2)
 
         let resources = prog?.getRequiredResources()
-        XCTAssertEqual(ResourceType.deviceMotion.rawValue,
-                       resources! & ResourceType.deviceMotion.rawValue,
+        XCTAssertEqual(ResourceType.deviceMotion,
+                       resources! & ResourceType.deviceMotion,
                        "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.loudness.rawValue,
-                       resources! & ResourceType.loudness.rawValue,
-                       "Resourses nested not correctly calculated")
-        XCTAssertEqual(0,
-                       resources! & ResourceType.bluetoothArduino.rawValue,
+        XCTAssertEqual(ResourceType.loudness,
+                       resources! & ResourceType.loudness,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.bluetoothPhiro.rawValue,
+                       resources! & ResourceType.bluetoothArduino,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.faceDetection.rawValue,
+                       resources! & ResourceType.bluetoothPhiro,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.magnetometer.rawValue,
+                       resources! & ResourceType.faceDetection,
                        "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.compass.rawValue,
-                       resources! & ResourceType.compass.rawValue,
+        XCTAssertEqual(0,
+                       resources! & ResourceType.magnetometer,
+                       "Resourses nested not correctly calculated")
+        XCTAssertEqual(ResourceType.compass,
+                       resources! & ResourceType.compass,
                        "Resourses nested not correctly calculated")
     }
 
@@ -1401,26 +1401,26 @@ final class RequiredResources: XCTestCase {
                                                       andBrickArray2: brickArray2)
 
         let resources = prog?.getRequiredResources()
-        XCTAssertEqual(ResourceType.deviceMotion.rawValue,
-                       resources! & ResourceType.deviceMotion.rawValue,
+        XCTAssertEqual(ResourceType.deviceMotion,
+                       resources! & ResourceType.deviceMotion,
                        "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.loudness.rawValue,
-                       resources! & ResourceType.loudness.rawValue,
+        XCTAssertEqual(ResourceType.loudness,
+                       resources! & ResourceType.loudness,
                        "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.bluetoothArduino.rawValue,
-                       resources! & ResourceType.bluetoothArduino.rawValue,
+        XCTAssertEqual(ResourceType.bluetoothArduino,
+                       resources! & ResourceType.bluetoothArduino,
                        "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.bluetoothPhiro.rawValue,
-                       resources! & ResourceType.bluetoothPhiro.rawValue,
+        XCTAssertEqual(ResourceType.bluetoothPhiro,
+                       resources! & ResourceType.bluetoothPhiro,
                        "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.faceDetection.rawValue,
-                       resources! & ResourceType.faceDetection.rawValue,
-                       "Resourses nested not correctly calculated")
-        XCTAssertEqual(0,
-                       resources! & ResourceType.magnetometer.rawValue,
+        XCTAssertEqual(ResourceType.faceDetection,
+                       resources! & ResourceType.faceDetection,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.compass.rawValue,
+                       resources! & ResourceType.magnetometer,
+                       "Resourses nested not correctly calculated")
+        XCTAssertEqual(0,
+                       resources! & ResourceType.compass,
                        "Resourses nested not correctly calculated")
     }
 
@@ -1470,26 +1470,26 @@ final class RequiredResources: XCTestCase {
                                                       andBrickArray2: brickArray2)
 
         let resources = prog?.getRequiredResources()
-        XCTAssertEqual(ResourceType.deviceMotion.rawValue,
-                       resources! & ResourceType.deviceMotion.rawValue,
+        XCTAssertEqual(ResourceType.deviceMotion,
+                       resources! & ResourceType.deviceMotion,
                        "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.loudness.rawValue,
-                       resources! & ResourceType.loudness.rawValue,
-                       "Resourses nested not correctly calculated")
-        XCTAssertEqual(0,
-                       resources! & ResourceType.bluetoothArduino.rawValue,
+        XCTAssertEqual(ResourceType.loudness,
+                       resources! & ResourceType.loudness,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.bluetoothPhiro.rawValue,
+                       resources! & ResourceType.bluetoothArduino,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.faceDetection.rawValue,
+                       resources! & ResourceType.bluetoothPhiro,
                        "Resourses nested not correctly calculated")
         XCTAssertEqual(0,
-                       resources! & ResourceType.magnetometer.rawValue,
+                       resources! & ResourceType.faceDetection,
                        "Resourses nested not correctly calculated")
-        XCTAssertEqual(ResourceType.compass.rawValue,
-                       resources! & ResourceType.compass.rawValue,
+        XCTAssertEqual(0,
+                       resources! & ResourceType.magnetometer,
+                       "Resourses nested not correctly calculated")
+        XCTAssertEqual(ResourceType.compass,
+                       resources! & ResourceType.compass,
                        "Resourses nested not correctly calculated")
     }
 
@@ -1507,27 +1507,27 @@ final class RequiredResources: XCTestCase {
         let prog: Program? = getProgramWithOneSprite(with: brick)
 
         XCTAssertEqual(prog?.getRequiredResources(),
-                       ResourceType.location.rawValue,
+                       ResourceType.location,
                        "Resourses for Longitude not correctly calculated")
 
         formulaElement!.value = LatitudeSensor.tag
         XCTAssertEqual(prog?.getRequiredResources(),
-                       ResourceType.location.rawValue,
+                       ResourceType.location,
                        "Resourses for Latitude not correctly calculated")
 
         formulaElement!.value = AltitudeSensor.tag
         XCTAssertEqual(prog?.getRequiredResources(),
-                       ResourceType.location.rawValue,
+                       ResourceType.location,
                        "Resourses for Altitude not correctly calculated")
 
         formulaElement!.value = LocationAccuracySensor.tag
         XCTAssertEqual(prog?.getRequiredResources(),
-                       ResourceType.location.rawValue,
+                       ResourceType.location,
                        "Resourses for Location Accuracy not correctly calculated")
 
         brick.size = Formula()
         XCTAssertEqual(prog?.getRequiredResources(),
-                       ResourceType.noResources.rawValue,
+                       ResourceType.noResources,
                        "Resourses for Location not correctly calculated")
     }
 }

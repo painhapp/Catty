@@ -53,7 +53,8 @@ final class ProgramTests: XCTestCase {
 
     func testNewProgramIfProjectFolderExists() {
         setupForNewProgram()
-        XCTAssertTrue((fileManager?.directoryExists(program?.projectPath()))!, "No project folder created for the new project")
+        XCTAssertTrue((fileManager?.directoryExists(program?.projectPath()))!,
+                      "No project folder created for the new project")
     }
 
     func testNewProgramIfImagesFolderExists() {
@@ -62,7 +63,8 @@ final class ProgramTests: XCTestCase {
         if let aPath = program?.projectPath() {
             imagesDirName = "\(aPath)\(kProgramImagesDirName)"
         }
-        XCTAssertTrue((fileManager?.directoryExists(imagesDirName))!, "No images folder created for the new project")
+        XCTAssertTrue((fileManager?.directoryExists(imagesDirName))!,
+                      "No images folder created for the new project")
     }
 
     func testNewProgramIfSoundsFolderExists() {
@@ -71,7 +73,8 @@ final class ProgramTests: XCTestCase {
         if let aPath = program?.projectPath() {
             soundsDirName = "\(aPath)\(kProgramSoundsDirName)"
         }
-        XCTAssertTrue((fileManager?.directoryExists(soundsDirName))!, "No sounds folder created for the new project")
+        XCTAssertTrue((fileManager?.directoryExists(soundsDirName))!,
+                      "No sounds folder created for the new project")
     }
 
     func testCopyObjectWithIfThenLogicBeginBrick() {
@@ -258,7 +261,7 @@ final class ProgramTests: XCTestCase {
 
     // MARK: - getters and setters
 
-    class func removeProject(_ projectPath: String?) {
+    func removeProject(_ projectPath: String?) {
         let fileManager = CBFileManager.shared()
         if fileManager?.directoryExists(projectPath) != nil {
             fileManager?.deleteDirectory(projectPath)

@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+import SpriteKit
+
 @objc extension SetTransparencyBrick: CBInstructionProtocol {
 
     @nonobjc func instruction() -> CBInstruction {

@@ -26,7 +26,7 @@
     static let name = kUIFESensorLatitude
     static let defaultRawValue = 0.0
     static let position = 80
-    static let requiredResource = ResourceType.location
+    static var requiredResource = ResourceType.location
 
     let getLocationManager: () -> LocationManager?
 

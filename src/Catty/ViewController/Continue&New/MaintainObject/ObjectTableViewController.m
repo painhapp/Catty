@@ -25,9 +25,7 @@
 #import "LooksTableViewController.h"
 #import "SoundsTableViewController.h"
 #import "SegueDefines.h"
-#import "TableUtil.h"
 #import "CatrobatImageCell.h"
-#import "Util.h"
 
 @interface ObjectTableViewController ()
 

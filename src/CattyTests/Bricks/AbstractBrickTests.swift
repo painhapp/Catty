@@ -46,7 +46,7 @@ class AbstractBrickTests: XCTestCase {
         scene = SceneBuilder(program: ProgramMock()).build()
     }
 
-    override class func tearDown() {
+    override func tearDown() {
         super.tearDown()
     }
 }

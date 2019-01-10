@@ -114,9 +114,9 @@ final class TextFieldAlertController: BaseAlertController, TextFieldAlertDefinin
     private func reinputWithMessage(_ message: String, alertController: UIAlertController) {
         AlertControllerBuilder.alert(title: kLocalizedPocketCode, message: message)
             .addCancelAction(title: kLocalizedOK, handler: {
-                Util.topmostViewController().present(alertController, animated: true, completion: nil)
+                Util.topmostViewController()!.present(alertController, animated: true, completion: nil)
             }).build()
-            .showWithController(Util.topmostViewController())
+            .showWithController(Util.topmostViewController()!)
     }
 
     @objc func addCancelActionWithTitle(_ title: String, handler: (() -> Void)?) -> TextFieldAlertControllerBuilding {

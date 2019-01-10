@@ -25,7 +25,6 @@
 
 @implementation DarkBlueGradientCell
 
-
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if(self = [super initWithCoder:aDecoder]) {
         [self configure];

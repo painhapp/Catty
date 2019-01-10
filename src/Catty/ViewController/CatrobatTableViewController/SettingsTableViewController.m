@@ -25,7 +25,6 @@
 #import "AboutPoketCodeOptionTableViewController.h"
 #import "LanguageTranslationDefines.h"
 #import "NetworkDefines.h"
-#import "UIColor+CatrobatUIColorExtensions.h"
 #import "KeychainUserDefaultsDefines.h"
 #import "Pocket_Code-Swift.h"
 #import "CatrobatTableViewController.h"
@@ -97,7 +96,7 @@
         [self addSection:[BOTableViewSection sectionWithHeaderTitle:@"" handler:^(BOTableViewSection *section) {
             [section addCell:[BOButtonTableViewCell cellWithTitle:kLocalizedLogout key:nil handler:^(BOButtonTableViewCell *cell) {
                 cell.backgroundColor = [UIColor backgroundColor];
-                cell.mainColor = [UIColor varibaleBrickRedColor];
+                cell.mainColor = [UIColor variableBrickRedColor];
                 cell.actionBlock = ^{
                     [weakSelf logoutUser];
                     [self.navigationController popViewControllerAnimated:YES];

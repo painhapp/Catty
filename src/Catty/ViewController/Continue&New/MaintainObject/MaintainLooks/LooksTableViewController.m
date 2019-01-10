@@ -25,7 +25,6 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <Photos/Photos.h>
 #import "UIDefines.h"
-#import "TableUtil.h"
 #import "CellTagDefines.h"
 #import "CatrobatImageCell.h"
 #import "DarkBlueGradientImageDetailCell.h"
@@ -34,12 +33,10 @@
 #import "LookImageViewController.h"
 #import "NSString+CatrobatNSStringExtensions.h"
 #import "NSData+Hashes.h"
-#import "AppDelegate.h"
 #import "RuntimeImageCache.h"
 #import "PlaceHolderView.h"
 #import "UIImage+Rotate.h"
 #import "ViewControllerDefines.h"
-#import "UIUtil.h"
 #import "UIImageView+CatrobatUIImageViewExtensions.h"
 #import "Pocket_Code-Swift.h"
 
@@ -614,7 +611,7 @@
     id<AlertControllerBuilding> actionSheet = [[AlertControllerBuilder actionSheetWithTitle:kLocalizedAddLook]
                                                addCancelActionWithTitle:kLocalizedCancel handler:^{
                                                    if (self.showAddLookActionSheetAtStartForObject || self.showAddLookActionSheetAtStartForScriptEditor) {
-                                                       SAFE_BLOCK_CALL(self.afterSafeBlock, nil);
+                                                       //TODO: Convert SAFE_BLOCK_CALL(self.afterSafeBlock, nil);
                                                    }
                                                }];
     
@@ -758,7 +755,7 @@
     if (image) {
         [self addPaintedImage:image andPath:path];
     } else if (self.showAddLookActionSheetAtStartForObject || self.showAddLookActionSheetAtStartForScriptEditor) {
-        SAFE_BLOCK_CALL(self.afterSafeBlock, nil);
+        //TODO: Convert SAFE_BLOCK_CALL(self.afterSafeBlock, nil);
     }
 }
 

@@ -20,9 +20,9 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-#import "RuntimeImageCache.h"
+#import "CBFileManager.h"
 #import "NSString+CatrobatNSStringExtensions.h"
-#import "AppDelegate.h"
+#import "RuntimeImageCache.h"
 
 @interface RuntimeImageCache()
 

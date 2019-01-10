@@ -44,10 +44,10 @@ final class CBFrontend: CBFrontendProtocol {
         var currentOperationSequence = CBOperationSequence(rootSequenceList: scriptSequenceList)
         let sequenceStack = CBStack<CBSequenceList>()
 
-        guard let brickList = script.brickList as? [Brick] else {
+        if script.brickList == nil {
             preconditionFailure()
         }
-        for brick in brickList {
+        for brick in script.brickList {
 
             switch brick {
             case _ as IfLogicBeginBrick,

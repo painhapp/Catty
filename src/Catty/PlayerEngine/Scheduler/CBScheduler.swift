@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+import SpriteKit
+
 final class CBScheduler: CBSchedulerProtocol {
 
     // MARK: - Properties

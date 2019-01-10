@@ -25,113 +25,6 @@
 //
 
 //------------------------------------------------------------------------------------------------------------
-// Data model classes
-//------------------------------------------------------------------------------------------------------------
-
-// Sensors
-#import "FlashHelper.h"
-
-// Scripts
-#import "StartScript.h"
-#import "WhenScript.h"
-#import "WhenTouchDownScript.h"
-#import "BroadcastScript.h"
-
-// Bricks
-#import "Brick.h"
-#import "IfLogicBeginBrick.h"
-#import "IfThenLogicBeginBrick.h"
-#import "IfLogicElseBrick.h"
-#import "IfLogicEndBrick.h"
-#import "IfThenLogicEndBrick.h"
-#import "LoopBeginBrick.h"
-#import "LoopEndBrick.h"
-#import "NoteBrick.h"
-#import "BroadcastBrick.h"
-#import "BroadcastWaitBrick.h"
-#import "HideBrick.h"
-#import "WaitBrick.h"
-#import "PlaySoundBrick.h"
-#import "StopAllSoundsBrick.h"
-#import "SpeakBrick.h"
-#import "SpeakAndWaitBrick.h"
-#import "ChangeVolumeByNBrick.h"
-#import "SetVolumeToBrick.h"
-#import "SetVariableBrick.h"
-#import "ChangeVariableBrick.h"
-#import "VibrationBrick.h"
-#import "GlideToBrick.h"
-#import "MoveNStepsBrick.h"
-#import "IfOnEdgeBounceBrick.h"
-#import "ShowBrick.h"
-#import "SetLookBrick.h"
-#import "SetBackgroundBrick.h"
-#import "SetSizeToBrick.h"
-#import "PointInDirectionBrick.h"
-#import "PlaceAtBrick.h"
-#import "GoNStepsBackBrick.h"
-#import "ComeToFrontBrick.h"
-#import "ChangeSizeByNBrick.h"
-#import "ChangeXByNBrick.h"
-#import "ChangeYByNBrick.h"
-#import "PointToBrick.h"
-#import "SetXBrick.h"
-#import "SetYBrick.h"
-#import "TurnLeftBrick.h"
-#import "TurnRightBrick.h"
-#import "PhiroBrick.h"
-#import "BluetoothBrick.h"
-#import "PhiroRGBLightBrick.h"
-#import "PhiroMotorStopBrick.h"
-#import "PhiroPlayToneBrick.h"
-#import "PhiroMotorMoveForwardBrick.h"
-#import "PhiroMotorMoveBackwardBrick.h"
-#import "PhiroIfLogicBeginBrick.h"
-#import "ArduinoSendDigitalValueBrick.h"
-#import "ArduinoSendPWMValueBrick.h"
-#import "SetTransparencyBrick.h"
-#import "SetBrightnessBrick.h"
-#import "SetColorBrick.h"
-#import "ChangeColorByNBrick.h"
-#import "NextLookBrick.h"
-#import "PreviousLookBrick.h"
-#import "ClearGraphicEffectBrick.h"
-#import "ChangeTransparencyByNBrick.h"
-#import "ChangeBrightnessByNBrick.h"
-#import "ShowTextBrick.h"
-#import "HideTextBrick.h"
-#import "FlashBrick.h"
-#import "AddItemToUserListBrick.h"
-#import "DeleteItemOfUserListBrick.h"
-#import "InsertItemIntoUserListBrick.h"
-#import "ReplaceItemInUserListBrick.h"
-#import "WaitUntilBrick.h"
-#import "RepeatBrick.h"
-#import "RepeatUntilBrick.h"
-#import "CameraBrick.h"
-#import "ChooseCameraBrick.h"
-#import "SayBubbleBrick.h"
-#import "SayForBubbleBrick.h"
-#import "ThinkBubbleBrick.h"
-#import "ThinkForBubbleBrick.h"
-
-// Formulas
-#import "Formula.h"
-#import "FormulaElement.h"
-#import "Operators.h"
-
-// UserVariable
-#import "UserVariable.h"
-
-// Assets
-#import "Look.h"
-#import "Sound.h"
-
-// User
-#import <CommonCrypto/CommonCrypto.h>
-#import "JNKeychain.h"
-
-//------------------------------------------------------------------------------------------------------------
 // Extension classes
 //------------------------------------------------------------------------------------------------------------
 
@@ -141,7 +34,6 @@
 // Util classes
 //------------------------------------------------------------------------------------------------------------
 
-#import "Util.h"
 #import "CBFileManager.h"
 #import "AudioManager.h"
 #import "FlashHelper.h"
@@ -155,8 +47,10 @@
 // ViewController classes
 //------------------------------------------------------------------------------------------------------------
 
+//AppDelegate
+#import "CatrobatTableViewController.h"
+
 #import "BaseTableViewController.h"
-#import "LooksTableViewController.h"
 #import "FormulaEditorViewController.h"
 #import "MyProgramsViewController.h"
 #import "ProgramTableViewController.h"
@@ -171,37 +65,44 @@
 #import "KeychainUserDefaultsDefines.h"
 #import "CatrobatLanguageDefines.h"
 
-#import "BrickFormulaProtocol.h"
-
 //-----------------------------------------------------------------------------------------------------------
 // Headers to sort
 //-----------------------------------------------------------------------------------------------------------
 #import "CatrobatInformation.h"
 #import "CatrobatProgram.h"
-#import "AppDelegate.h"
-#import "TableUtil.h"
 #import "CellTagDefines.h"
 #import "SegueDefines.h"
-#import "ProgramDetailStoreViewController.h"
 #import "DarkBlueGradientFeaturedCell.h"
-#import "CBXMLParser.h"
 #import "Parser.h"
-#import "GDataXMLNode.h"
-#import "CBXMLSerializer.h"
-#import "GDataXMLElement+CustomExtensions.h"
-#import "CBXMLSerializerContext.h"
-#import "CBXMLParserContext.h"
-#import "CBXMLParserHelper.h"
-#import "SetVariableBrick+CBXMLHandler.h"
-#import "ChangeVariableBrick+CBXMLHandler.h"
-#import "MoveNStepsBrick+CBXMLHandler.h"
-#import "PointToBrick+CBXMLHandler.h"
-#import "Program+CBXMLHandler.h"
-#import "Header+CBXMLHandler.h"
-#import "SpriteObject+CBXMLHandler.h"
-#import "VariablesContainer.h"
 #import "OrderedMapTable.h"
 #import "UIDefines.h"
-#import "SpriteObject.h"
-#import "CBXMLOpenedNestingBricksStack.h"
 
+// User
+#import <CommonCrypto/CommonCrypto.h>
+#import "JNKeychain.h"
+
+//Conversion NEU
+
+#import "Util.h"
+#import "BrickCell.h"
+#import "VariablesContainer.h"
+#import "NSString+FastImageSize.h"
+#import "NSString+CatrobatNSStringExtensions.h"
+#import "OrderedMapTable.h"
+#import <TTTAttributedLabel/TTTAttributedLabel.h>
+#import "iOSCombobox.h"
+#import "CBXMLParser.h"
+#import "CBXMLParserHelper.h"
+#import "CBXMLSerializer.h"
+#import "CBXMLSerializerHelper.h"
+#import "CBXMLValidator.h"
+#import "CBStack.h"
+#import "GDataXMLNode.h"
+#import "ButtonTags.h"
+#import "BrickManager.h"
+#import "AudioManager.h"
+#import "LooksTableViewController.h"
+#import "FormulaEditorTextView.h"
+#import "BDKNotifyHUD.h"
+#import "EVCircularProgressView.h"
+#import "SpriteObject.h"

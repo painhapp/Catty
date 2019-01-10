@@ -29,8 +29,8 @@ import Foundation
             else { fatalError("This should never happen!") }
 
         return CBInstruction.execClosure { context, _ in
-            let pinValue = context.formulaInterpreter.interpretInteger(self.pin, for: object)
-            let settingValue = context.formulaInterpreter.interpretInteger(self.value, for: object)
+            let pinValue = context.formulaInterpreter.interpretInteger(self.pin!, for: object)
+            let settingValue = context.formulaInterpreter.interpretInteger(self.value!, for: object)
 
             if let arduino: ArduinoDevice = BluetoothService.swiftSharedInstance.arduino {
                 arduino.setPWMArduinoPin(pinValue, value: settingValue)

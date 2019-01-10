@@ -22,14 +22,10 @@
 
 
 #import <SpriteKit/SpriteKit.h>
-#import "Program.h"
 #import "ProgramDefines.h"
-#import "CBMutableCopying.h"
 
-@class Script;
-@class Look;
-@class Sound;
-@class CBSpriteNode;
+@class Script, Look, Sound, CBSpriteNode, Program;
+@protocol CBMutableCopying;
 
 @interface SpriteObject : NSObject <CBMutableCopying>
 

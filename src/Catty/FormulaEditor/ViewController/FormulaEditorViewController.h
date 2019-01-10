@@ -22,9 +22,10 @@
 
 #import <UIKit/UIKit.h>
 #import "InternFormula.h"
-#import "Formula.h"
-#import "FormulaEditorHistory.h"
 #import "SpriteObject.h"
+#import "FormulaEditorHistory.h"
+
+@class Formula;
 
 @protocol FormulaEditorViewControllerDelegate <NSObject>
 - (void)saveFormula:(Formula*)formula;

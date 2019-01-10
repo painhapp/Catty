@@ -21,17 +21,11 @@
  */
 
 #import "ProgramTableViewController.h"
-#import "TableUtil.h"
 #import "ObjectTableViewController.h"
 #import "SegueDefines.h"
-#import "Look.h"
-#import "Brick.h"
 #import "CatrobatImageCell.h"
 #import "DarkBlueGradientImageDetailCell.h"
-#import "Util.h"
-#import "UIUtil.h"
 #import "UIImageView+CatrobatUIImageViewExtensions.h"
-#import "ProgramUpdateDelegate.h"
 #import "CellTagDefines.h"
 #import "ProgramTableHeaderView.h"
 #import "RuntimeImageCache.h"

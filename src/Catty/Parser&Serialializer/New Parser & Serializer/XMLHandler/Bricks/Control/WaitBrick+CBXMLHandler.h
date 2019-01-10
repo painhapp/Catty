@@ -20,10 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-#import "WaitBrick.h"
 #import "CBXMLNodeProtocol.h"
-
-@class CBXMLContext;
+#import "Pocket_Code-Swift.h"
 
 @interface WaitBrick (CBXMLHandler) <CBXMLNodeProtocol>
 

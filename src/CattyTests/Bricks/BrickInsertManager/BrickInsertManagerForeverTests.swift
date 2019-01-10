@@ -61,7 +61,8 @@ final class BrickInsertManagerForeverTests: BrickInsertManagerAbstractTest {
                             itemAt: indexPathFrom,
                             canInsertTo: indexPathTo,
                             andObject: spriteObject)
-        XCTAssertTrue(canMoveInsideForeverBrickInsertMode, "Should be allowed to move ForeverBrick inside other ForeverBrick")
+        XCTAssertTrue(canMoveInsideForeverBrickInsertMode,
+                      "Should be allowed to move ForeverBrick inside other ForeverBrick")
     }
 
     func testInsertIfBrickInsideForeverBrick() {
@@ -112,6 +113,7 @@ final class BrickInsertManagerForeverTests: BrickInsertManagerAbstractTest {
                             itemAt: indexPathFrom,
                             canInsertTo: indexPathTo,
                             andObject: spriteObject)
-        XCTAssertTrue(canMoveAboveForeverBrickInsertMode, "Should be allowed to move IfBrick inside forever-loop above ForeverBrick")
+        XCTAssertTrue(canMoveAboveForeverBrickInsertMode,
+                      "Should be allowed to move IfBrick inside forever-loop above ForeverBrick")
     }
 }

@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+import SpriteKit
+
 @objc extension ScenePresenterViewController {
 
     public static var previewImageWidth: CGFloat { return UIScreen.main.bounds.width }
@@ -51,8 +53,8 @@
 
     private func saveScreenshot(_ screenshot: UIImage, for program: Program, manualScreenshot: Bool) {
         let fileName = manualScreenshot ? kScreenshotManualFilename : kScreenshotAutoFilename
-        let filePath = program.projectPath() + fileName
-        let thumbnailPath = program.projectPath() + kScreenshotThumbnailPrefix + fileName
+        let filePath = program.projectPath()! + fileName
+        let thumbnailPath = program.projectPath()! + kScreenshotThumbnailPrefix + fileName
         guard let data = screenshot.pngData() else { return }
 
         DispatchQueue.main.async {

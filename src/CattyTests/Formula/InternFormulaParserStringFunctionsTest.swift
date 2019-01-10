@@ -25,7 +25,7 @@ import XCTest
 @testable import Pocket_Code
 
 final class InternFormulaParserStringFunctionsTest: XCTestCase {
-    override class func setUp() {
+    override func setUp() {
         super.setUp()
     }
 

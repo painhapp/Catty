@@ -25,6 +25,7 @@
 #import "OrderedMapTable.h"
 #include "SpriteObject.h"
 #import <pthread.h>
+#import "Pocket_Code-Swift.h"
 
 @implementation VariablesContainer
 

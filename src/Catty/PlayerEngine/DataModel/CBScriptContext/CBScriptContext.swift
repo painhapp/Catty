@@ -162,7 +162,7 @@ final class CBBroadcastScriptContext: CBScriptContext, CBBroadcastScriptContextP
 
     init?(broadcastScript: BroadcastScript, spriteNode: CBSpriteNode, formulaInterpreter: FormulaInterpreterProtocol, state: CBScriptContextState, instructionList: [CBInstruction]
         ) {
-        broadcastMessage = broadcastScript.receivedMessage
+        broadcastMessage = broadcastScript.receivedMessage!
         waitingContext = nil
         super.init(script: broadcastScript,
                    spriteNode: spriteNode,

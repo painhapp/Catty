@@ -25,7 +25,7 @@ class RotationSensor: NSObject, ObjectDoubleSensor {
     static let tag = "OBJECT_ROTATION"
     static let name = kUIFEObjectDirection
     static let defaultRawValue = 0.0
-    static let requiredResource = ResourceType.noResources
+    static var requiredResource = ResourceType.noResources
     static let rotationDegreeOffset = 90.0
     static let circleMaxDegrees = 360.0
     static let position = 90
@@ -43,7 +43,7 @@ class RotationSensor: NSObject, ObjectDoubleSensor {
 
     static func setRawValue(userInput: Double, for spriteObject: SpriteObject) {
         let rawValue = self.convertToRaw(userInput: userInput, for: spriteObject)
-        spriteObject.spriteNode.zRotation = CGFloat(rawValue)
+        spriteObject.spriteNode!.zRotation = CGFloat(rawValue)
     }
 
     // raw value is in radians, standardized value is in degrees

@@ -21,14 +21,7 @@
  */
 
 #import "BrickMoveManager.h"
-#import "Script.h"
-#import "LoopBeginBrick.h"
-#import "IfLogicBeginBrick.h"
-#import "IfThenLogicBeginBrick.h"
-#import "IfThenLogicEndBrick.h"
-#import "IfLogicElseBrick.h"
-#import "IfLogicEndBrick.h"
-#import "ForeverBrick.h"
+#import "Pocket_Code-Swift.h"
 
 @interface BrickMoveManager()
 
@@ -40,7 +33,7 @@
 
 @implementation BrickMoveManager
 
-+ (BrickMoveManager*)sharedInstance {
++ (id)sharedInstance {
     static BrickMoveManager *sharedBrickMoveManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -49,6 +42,8 @@
     });
     return sharedBrickMoveManager;
 }
+
+
 
 - (BOOL)collectionView:(UICollectionView*)collectionView itemAtIndexPath:(NSIndexPath*)fromIndexPath
     canMoveToIndexPath:(NSIndexPath*)toIndexPath andObject:(SpriteObject*)object

@@ -26,7 +26,7 @@
     static let name = kUIFEObjectColor
     @objc static let defaultRawValue = 0.0
     static let position = 30
-    static let requiredResource = ResourceType.noResources
+    static var requiredResource = ResourceType.noResources
 
     func tag() -> String {
         return type(of: self).tag
@@ -41,7 +41,7 @@
 
     static func setRawValue(userInput: Double, for spriteObject: SpriteObject) {
         let rawValue = self.convertToRaw(userInput: userInput, for: spriteObject)
-        spriteObject.spriteNode.ciHueAdjust = CGFloat(rawValue)
+        spriteObject.spriteNode!.ciHueAdjust = CGFloat(rawValue)
     }
 
     static func convertToStandardized(rawValue: Double, for spriteObject: SpriteObject) -> Double {

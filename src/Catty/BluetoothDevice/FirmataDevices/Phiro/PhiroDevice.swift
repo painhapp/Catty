@@ -22,7 +22,6 @@
 
 import BluetoothHelper
 import CoreBluetooth
-import Foundation
 
 @objc
 class PhiroDevice: FirmataDevice, PhiroProtocol {
@@ -61,7 +60,7 @@ class PhiroDevice: FirmataDevice, PhiroProtocol {
     override var rxUUID: CBUUID { return CBUUID.init(string: "00001101-0000-1000-8000-00805F9B34FB") }
     override var txUUID: CBUUID { return CBUUID.init(string: "00001101-0000-1000-8000-00805F9B34FB") }
 
-    internal let phiroHelper = PhiroHelper()
+    internal let phiroHelper = BluetoothPhiroHelper()
     internal var toneTimer = Timer()
     private var isReportingSensorData = false
 

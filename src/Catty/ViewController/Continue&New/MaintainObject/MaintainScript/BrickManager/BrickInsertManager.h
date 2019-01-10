@@ -21,12 +21,14 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "Brick.h"
-#import "SpriteObject.h"
+
+@class SpriteObject, Brick;
 
 @interface BrickInsertManager : NSObject
 
 @property (nonatomic) BOOL isInsertingScript;
+
++ (id)sharedInstance;
 
 - (BOOL)isBrickInsertionMode;
 
@@ -36,10 +38,7 @@
 
 - (void)setBrickMoveMode:(BOOL)isMoving;
 
-+(BrickInsertManager*)sharedInstance;
-
-- (BOOL)collectionView:(UICollectionView*)collectionView itemAtIndexPath:(NSIndexPath*)fromIndexPath
-    canInsertToIndexPath:(NSIndexPath*)toIndexPath andObject:(SpriteObject*)object;
+- (BOOL)collectionView:(UICollectionView*)collectionView itemAtIndexPath:(NSIndexPath*)fromIndexPath canInsertToIndexPath:(NSIndexPath*)toIndexPath andObject:(SpriteObject*)object;
 
 -(void)insertBrick:(Brick*)brick IndexPath:(NSIndexPath*)path andObject:(SpriteObject*)object;
 

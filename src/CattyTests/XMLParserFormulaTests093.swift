@@ -43,7 +43,7 @@ class XMLParserFormulaTests093: XMLAbstractTest {
         let brickXMLElement = brickElement!.first
         let brick = self.parserContext!.parse(from: brickXMLElement, withClass: SetVariableBrick.self) as! Brick
 
-        XCTAssertEqual(brick.brickType, kBrickType.setVariableBrick, "Invalid brick type")
+        XCTAssertEqual(brick.brickType, BrickType.setVariableBrick, "Invalid brick type")
         XCTAssertTrue(brick.isKind(of: SetVariableBrick.self), "Invalid brick class")
 
         let setVariableBrick = brick as! SetVariableBrick

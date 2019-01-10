@@ -26,7 +26,7 @@ class DateYearSensor: DateSensor {
     static let name = kUIFESensorDateYear
     static let defaultRawValue = 0.0
     static let position = 230
-    static let requiredResource = ResourceType.noResources
+    static var requiredResource = ResourceType.noResources
 
     func date() -> Date {
         return Date()

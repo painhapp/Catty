@@ -61,7 +61,8 @@ final class BrickInsertManagerRepeatTests: BrickInsertManagerAbstractTest {
                             itemAt: indexPathFrom,
                             canInsertTo: indexPathTo,
                             andObject: spriteObject)
-        XCTAssertTrue(canMoveInsideRepeatBrickInsertMode, "Should be allowed to insert RepeatBrick inside other RepeatBrick")
+        XCTAssertTrue(canMoveInsideRepeatBrickInsertMode,
+                      "Should be allowed to insert RepeatBrick inside other RepeatBrick")
     }
 
     func testInsertIfBrickInsideRepeatBrick() {
@@ -112,6 +113,7 @@ final class BrickInsertManagerRepeatTests: BrickInsertManagerAbstractTest {
                             itemAt: indexPathFrom,
                             canInsertTo: indexPathTo,
                             andObject: spriteObject)
-        XCTAssertTrue(canMoveAboveRepeatBrickInsertMode, "Should be allowed to move IfBrick inside repeat-loop above RepeatBrick")
+        XCTAssertTrue(canMoveAboveRepeatBrickInsertMode,
+                      "Should be allowed to move IfBrick inside repeat-loop above RepeatBrick")
     }
 }

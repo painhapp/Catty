@@ -21,7 +21,8 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "SpriteObject.h"
+
+@class CBSpriteNode;
 
 @interface BubbleBrickHelper : NSObject <UIGestureRecognizerDelegate>
 

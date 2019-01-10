@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIColor+CatrobatUIColorExtensions.h"
 
 #define kAnimationDuration 0.4
 #define kPickerTitleBarColor [UIColor navBarColor]

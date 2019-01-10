@@ -27,20 +27,20 @@ import Foundation
     @nonobjc func instruction() -> CBInstruction {
 
         return CBInstruction.execClosure { context, _ in
-            let redValue = self.getFormulaValue(self.redFormula, formulaInterpreter: context.formulaInterpreter)
-            let greenValue = self.getFormulaValue(self.greenFormula, formulaInterpreter: context.formulaInterpreter)
-            let blueValue = self.getFormulaValue(self.blueFormula, formulaInterpreter: context.formulaInterpreter)
+            let redValue = self.getFormulaValue(self.redFormula!, formulaInterpreter: context.formulaInterpreter)
+            let greenValue = self.getFormulaValue(self.greenFormula!, formulaInterpreter: context.formulaInterpreter)
+            let blueValue = self.getFormulaValue(self.blueFormula!, formulaInterpreter: context.formulaInterpreter)
 
             guard let phiro = BluetoothService.swiftSharedInstance.phiro else {
                 return
             }
 
             switch self.phiroLight() {
-            case .LLeft:
+            case Light.lLeft:
                 phiro.setLeftRGBLightColor(redValue, green: greenValue, blue: blueValue)
-            case .LRight:
+            case Light.lRight:
                 phiro.setRightRGBLightColor(redValue, green: greenValue, blue: blueValue)
-            case .LBoth:
+            case Light.lBoth:
                 phiro.setLeftRGBLightColor(redValue, green: greenValue, blue: blueValue)
                 phiro.setRightRGBLightColor(redValue, green: greenValue, blue: blueValue)
             }

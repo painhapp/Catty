@@ -31,7 +31,7 @@ final class ProgramMock: Program {
     }
 
     convenience init(width: CGFloat, andHeight height: CGFloat) {
-        self.init(width: width, andHeight: height, andRequiredResources: ResourceType.noResources.rawValue)
+        self.init(width: width, andHeight: height, andRequiredResources: ResourceType.noResources)
     }
 
     convenience init(requiredResources: Int) {

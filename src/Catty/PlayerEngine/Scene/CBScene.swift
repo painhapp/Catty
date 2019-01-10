@@ -146,7 +146,7 @@ final class CBScene: SKScene {
 
             for script in scriptList {
                 guard let startScript = script as? StartScript,
-                    let _ = startScript.brickList.firstObject as? HideBrick
+                    let _ = startScript.brickList.first as? HideBrick
                     else { continue }
                 spriteNode.isHidden = true
                 break
@@ -193,12 +193,12 @@ final class CBScene: SKScene {
         }
         for variable: UserVariable in variableList {
             variable.textLabel = SKLabelNode()
-            variable.textLabel.text = ""
-            variable.textLabel.zPosition = CGFloat(zPosition + 1)
-            variable.textLabel.fontColor = UIColor.black
-            variable.textLabel.fontSize = variable.sizeForSKLabel(sceneSize: self.size)
-            variable.textLabel.isHidden = true
-            addChild(variable.textLabel)
+            variable.textLabel!.text = ""
+            variable.textLabel!.zPosition = CGFloat(zPosition + 1)
+            variable.textLabel!.fontColor = UIColor.black
+            variable.textLabel!.fontSize = variable.sizeForSKLabel(sceneSize: self.size)
+            variable.textLabel!.isHidden = true
+            addChild(variable.textLabel!)
         }
 
         formulaManager.setup(for: frontend.program!, and: self)

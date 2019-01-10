@@ -22,8 +22,8 @@
 
 #import <Foundation/Foundation.h>
 #import "ProgramLoadingInfo.h"
-#import "Program.h"
 
+@class Program;
 
 @protocol FileManagerDelegate <NSObject>
 

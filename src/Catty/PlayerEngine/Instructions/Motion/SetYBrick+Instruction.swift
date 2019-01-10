@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+import SpriteKit
+
 @objc extension SetYBrick: CBInstructionProtocol {
 
     @nonobjc func instruction() -> CBInstruction {
@@ -32,7 +34,7 @@
             else { fatalError("This should never happen!") }
 
         return {
-            let positionY = formulaInterpreter.interpretDouble(self.yPosition, for: object)
+            let positionY = formulaInterpreter.interpretDouble(self.yPosition!, for: object)
             spriteNode.catrobatPositionY = positionY
         }
     }

@@ -26,7 +26,7 @@ class LongitudeSensor: NSObject, DeviceSensor {
     static let name = kUIFESensorLongitude
     static let defaultRawValue = 0.0
     static let position = 90
-    static let requiredResource = ResourceType.location
+    static var requiredResource = ResourceType.location
 
     let getLocationManager: () -> LocationManager?
 

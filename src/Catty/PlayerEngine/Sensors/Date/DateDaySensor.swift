@@ -26,7 +26,7 @@ class DateDaySensor: DateSensor {
     static let name = kUIFESensorDateDay
     static let defaultRawValue = 0.0
     static let position = 250
-    static let requiredResource = ResourceType.noResources
+    static var requiredResource = ResourceType.noResources
 
     func date() -> Date {
         return Date()

@@ -22,10 +22,8 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseTableViewController.h"
-#import "SpriteObject.h"
 
-@class ProgramLoadingInfo;
-@class Program;
+@class ProgramLoadingInfo, Program, SpriteObject;
 @protocol ProgramUpdateDelegate;
 
 @interface ProgramTableViewController : BaseTableViewController

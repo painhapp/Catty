@@ -25,7 +25,7 @@
     @objc static let tag = "LAST_FINGER_INDEX"
     static let name = kUIFESensorLastFingerIndex
     static let defaultRawValue = 0.0
-    static let requiredResource = ResourceType.touchHandler
+    static var requiredResource = ResourceType.touchHandler
     static let position = 150
 
     let getTouchManager: () -> TouchManagerProtocol?

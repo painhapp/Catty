@@ -446,7 +446,7 @@ final class InternFormulaTest: XCTestCase {
     }
 
     func testSelectCursorPositionInternToken() {
-        var internTokens = NSMutableArray()
+        let internTokens = NSMutableArray()
         internTokens.add(InternToken(type: TOKEN_TYPE_BRACKET_OPEN))
         internTokens.add(InternToken(type: TOKEN_TYPE_NUMBER, andValue: "42.42"))
 

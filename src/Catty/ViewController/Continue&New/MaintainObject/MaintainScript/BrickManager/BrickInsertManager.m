@@ -21,15 +21,7 @@
  */
 
 #import "BrickInsertManager.h"
-#import "Script.h"
-#import "LoopBeginBrick.h"
-#import "IfLogicBeginBrick.h"
-#import "IfThenLogicBeginBrick.h"
-#import "IfThenLogicEndBrick.h"
-#import "IfLogicElseBrick.h"
-#import "IfLogicEndBrick.h"
-#import "ForeverBrick.h"
-#import "BrickCell.h"
+#import "Pocket_Code-Swift.h"
 
 @interface BrickInsertManager()
 
@@ -41,7 +33,7 @@
 
 @implementation BrickInsertManager
 
-+ (BrickInsertManager*)sharedInstance {
++ (id)sharedInstance {
     static BrickInsertManager *sharedBrickInsertManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

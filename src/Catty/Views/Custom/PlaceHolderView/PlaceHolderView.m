@@ -22,7 +22,7 @@
 
 #import "PlaceHolderView.h"
 #import "UIDefines.h"
-#import "UIColor+CatrobatUIColorExtensions.h"
+#import "Pocket_Code-Swift.h"
 
 @interface PlaceHolderView ()
 @property (nonatomic, strong) UILabel *placeholderDescriptionLabel;

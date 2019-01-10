@@ -43,9 +43,14 @@ final class BrickInsertManagerTests: BrickInsertManagerAbstractTest {
         let indexPathTo = IndexPath(row: 2, section: 0)
 
         waitBrick.isAnimatedInsertBrick = true
-        let canInsert = BrickInsertManager.sharedInstance().collectionView(viewController!.collectionView, itemAt: indexPathFrom, canInsertTo: indexPathTo, andObject: spriteObject)
+        let canInsert = BrickInsertManager.sharedInstance()
+            .collectionView(viewController!.collectionView,
+                            itemAt: indexPathFrom,
+                            canInsertTo: indexPathTo,
+                            andObject: spriteObject)
 
-        XCTAssertTrue(canInsert, "Should be allowed to insert WaitBrick behind SetVariableBrick")
+        XCTAssertTrue(canInsert,
+                      "Should be allowed to insert WaitBrick behind SetVariableBrick")
     }
 
     func testInsertWaitBehindForeverBrick() {
@@ -78,7 +83,8 @@ final class BrickInsertManagerTests: BrickInsertManagerAbstractTest {
                             itemAt: indexPathFrom,
                             canInsertTo: indexPathTo,
                             andObject: spriteObject)
-        XCTAssertTrue(canInsertWaitBrickInsideForeverBrick, "Should be allowed to insert WaitBrick inside ForeverBrick")
+        XCTAssertTrue(canInsertWaitBrickInsideForeverBrick,
+                      "Should be allowed to insert WaitBrick inside ForeverBrick")
 
         indexPathTo = IndexPath(row: 3, section: 0)
         let canMoveWaitBrickBehindForeverBrick = BrickInsertManager
@@ -87,7 +93,8 @@ final class BrickInsertManagerTests: BrickInsertManagerAbstractTest {
                             itemAt: indexPathFrom,
                             canInsertTo: indexPathTo,
                             andObject: spriteObject)
-        XCTAssertFalse(canMoveWaitBrickBehindForeverBrick, "Should not be allowed to insert WaitBrick behind ForeverBrick")
+        XCTAssertFalse(canMoveWaitBrickBehindForeverBrick,
+                       "Should not be allowed to insert WaitBrick behind ForeverBrick")
     }
 
     func testInsertWaitBehindRepeatBrick() {
@@ -120,7 +127,8 @@ final class BrickInsertManagerTests: BrickInsertManagerAbstractTest {
                             itemAt: indexPathFrom,
                             canInsertTo: indexPathTo,
                             andObject: spriteObject)
-        XCTAssertTrue(canInsertWaitBrickBehindRepeatBrick, "Should be allowed to insert WaitBrick behind RepeatBrick")
+        XCTAssertTrue(canInsertWaitBrickBehindRepeatBrick,
+                      "Should be allowed to insert WaitBrick behind RepeatBrick")
     }
 
     func testCopyIfThenLogicBeginBrick() {
@@ -144,7 +152,9 @@ final class BrickInsertManagerTests: BrickInsertManagerAbstractTest {
 
         let indexPath = IndexPath(row: 1, section: 0)
 
-        let copiedBricksIndexPaths = BrickManager.shared().scriptCollectionCopyBrick(with: indexPath, andBrick: ifThenLogicBeginBrick)
+        let copiedBricksIndexPaths = BrickManager.shared()
+            .scriptCollectionCopyBrick(with: indexPath,
+                                       andBrick: ifThenLogicBeginBrick)
 
         XCTAssertEqual(2, copiedBricksIndexPaths!.count)
         XCTAssertEqual(indexPath.section, (copiedBricksIndexPaths![0] as! IndexPath).section)

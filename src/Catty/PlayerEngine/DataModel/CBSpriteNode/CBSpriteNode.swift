@@ -20,17 +20,19 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+import SpriteKit
+
 @objc
 class CBSpriteNode: SKSpriteNode {
 
     // MARK: - Properties
-    @objc var spriteObject: SpriteObject
-    @objc var currentLook: Look?
-    @objc var currentUIImageLook: UIImage?
+    var spriteObject: SpriteObject
+    var currentLook: Look?
+    var currentUIImageLook: UIImage?
 
-    @objc var filterDict = ["brightness": false, "color": false]
-    @objc var ciBrightness = CGFloat(BrightnessSensor.defaultRawValue) // CoreImage specific brightness
-    @objc var ciHueAdjust = CGFloat(ColorSensor.defaultRawValue) // CoreImage specific hue adjust
+    var filterDict = ["brightness": false, "color": false]
+    var ciBrightness = CGFloat(BrightnessSensor.defaultRawValue) // CoreImage specific brightness
+    var ciHueAdjust = CGFloat(ColorSensor.defaultRawValue) // CoreImage specific hue adjust
 
     // MARK: Custom getters and setters
     @objc func setPositionForCropping(_ position: CGPoint) {
@@ -42,7 +44,7 @@ class CBSpriteNode: SKSpriteNode {
         let color = UIColor.clear
         self.spriteObject = spriteObject
 
-        if let firstLook = spriteObject.lookList.firstObject as? Look,
+        if let firstLook = spriteObject.lookList.first as? Look,
             let filePathForLook = spriteObject.path(for: firstLook),
             let image = UIImage(contentsOfFile: filePathForLook) {
             let texture = SKTexture(image: image)
@@ -76,7 +78,7 @@ class CBSpriteNode: SKSpriteNode {
         return filter
     }
 
-    @objc func executeFilter(_ inputImage: UIImage?) {
+    func executeFilter(_ inputImage: UIImage?) {
         guard let lookImage = inputImage?.cgImage else { preconditionFailure() }
 
         var ciImage = CIImage(cgImage: lookImage)
@@ -125,27 +127,27 @@ class CBSpriteNode: SKSpriteNode {
         }
     }
 
-    @objc func nextLook() -> Look? {
+    func nextLook() -> Look? {
         guard let currentLook = currentLook
             else { return nil }
 
         let currentIndex = spriteObject.lookList.index(of: currentLook)
-        let nextIndex = (currentIndex + 1) % spriteObject.lookList.count
-        return spriteObject.lookList[nextIndex] as? Look
+        let nextIndex = (currentIndex! + 1) % spriteObject.lookList.count
+        return spriteObject.lookList[nextIndex]
     }
 
-    @objc func previousLook() -> Look? {
+    func previousLook() -> Look? {
         if currentLook == nil {
             return nil
         }
 
         var index = spriteObject.lookList.index(of: currentLook!)
         index -= 1
-        index = index < 0 ? spriteObject.lookList.count - 1 : index
-        return spriteObject.lookList[index] as? Look
+        index = index! < 0 ? spriteObject.lookList.count - 1 : index
+        return spriteObject.lookList[index!]
     }
 
-    @objc func changeLook(_ look: Look?) {
+    func changeLook(_ look: Look?) {
         guard let look = look,
             let filePathForLook = spriteObject.path(for: look),
             let image = UIImage(contentsOfFile: filePathForLook)
@@ -196,7 +198,7 @@ class CBSpriteNode: SKSpriteNode {
 
     @objc func setLook() {
         // swiftlint:disable:next empty_count
-        if spriteObject.lookList.count > 0, let look = spriteObject.lookList[0] as? Look {
+        if spriteObject.lookList.count > 0, let look = spriteObject.lookList[0] {
             changeLook(look)
         }
     }
@@ -219,7 +221,7 @@ class CBSpriteNode: SKSpriteNode {
         }
     }
 
-    @objc func touchedWithTouch(_ touch: UITouch, atPosition position: CGPoint) -> Bool {
+    func touchedWithTouch(_ touch: UITouch, atPosition position: CGPoint) -> Bool {
         guard let playerScene = (scene as? CBScene) else { return false }
         let scheduler = playerScene.scheduler
 

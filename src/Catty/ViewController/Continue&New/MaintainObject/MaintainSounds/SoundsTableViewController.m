@@ -22,23 +22,19 @@
 
 #import "SoundsTableViewController.h"
 #import "UIDefines.h"
-#import "TableUtil.h"
 #import "CellTagDefines.h"
 #import "CatrobatImageCell.h"
 #import "DarkBlueGradientImageDetailCell.h"
 #import "Sound.h"
 #import "SpriteObject.h"
 #import "AudioManager.h"
-#import "Util.h"
 #import "CBFileManager.h"
-#import "AppDelegate.h"
 #import "NSData+Hashes.h"
 #import "RuntimeImageCache.h"
 #import "SharkfoodMuteSwitchDetector.h"
 #import "SRViewController.h"
 #import "PlaceHolderView.h"
 #import "ViewControllerDefines.h"
-#import "UIUtil.h"
 #import "Pocket_Code-Swift.h"
 
 @interface SoundsTableViewController () <AudioManagerDelegate,AVAudioPlayerDelegate>
@@ -512,7 +508,7 @@
     // acquire lock
     @synchronized(self) {
         if (self.silentDetector.isMute) {
-            [Util alertWithText:(IS_IPHONE ? kLocalizedDeviceIsInMutedStateIPhoneDescription
+            [Util alertWithText:([Util isIphone] ? kLocalizedDeviceIsInMutedStateIPhoneDescription
                                  : kLocalizedDeviceIsInMutedStateIPadDescription)];
             return;
         }
@@ -659,7 +655,7 @@
     
     [[[[[[AlertControllerBuilder actionSheetWithTitle:kLocalizedAddSound]
      addCancelActionWithTitle:kLocalizedCancel handler:^{
-         SAFE_BLOCK_CALL(self.afterSafeBlock, nil);
+         //TODO: Convert SAFE_BLOCK_CALL(self.afterSafeBlock, nil);
      }]
      addDefaultActionWithTitle:kLocalizedPocketCodeRecorder handler:^{
          NSDebug(@"Recorder");

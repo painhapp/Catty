@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+import SpriteKit
+
 extension ThinkBubbleBrick: CBInstructionProtocol {
 
     func instruction() -> CBInstruction {
@@ -32,7 +34,7 @@ extension ThinkBubbleBrick: CBInstructionProtocol {
             else { fatalError("This should never happen!") }
 
         return {
-            var speakText = formulaInterpreter.interpretString(self.formula, for: object)
+            var speakText = formulaInterpreter.interpretString(self.formula!, for: object)
             if Double(speakText) != nil {
                 let num = (speakText as NSString).doubleValue
                 speakText = (num as NSNumber).stringValue

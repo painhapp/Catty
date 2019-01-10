@@ -25,7 +25,7 @@
     @objc static let tag = "side_left"
     static let name = kUIFESensorPhiroSideLeft
     static let defaultRawValue = 0.0
-    static let requiredResource = ResourceType.bluetoothPhiro
+    static var requiredResource = ResourceType.bluetoothPhiro
     static let pinNumber = 4
     static let position = 320
 

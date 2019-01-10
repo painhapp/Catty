@@ -26,7 +26,7 @@ class FacePositionYSensor: DeviceSensor {
     static let name = kUIFESensorFaceY
     static let defaultRawValue = 0.0
     static let position = 220
-    static let requiredResource = ResourceType.faceDetection
+    static var requiredResource = ResourceType.faceDetection
 
     let getFaceDetectionManager: () -> FaceDetectionManagerProtocol?
     let sceneHeight: Double?

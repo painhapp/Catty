@@ -38,6 +38,7 @@ if (__functor) __functor(__VA_ARGS__);  \
 #define TIMEOUT 30.0f
 
 @protocol MYIntroductionDelegate;
+@class Program, Sound, Look;
 @class SceneViewController;
 @class ProgramLoadingInfo;
 @class InputValidationResult;
@@ -184,7 +185,7 @@ if (__functor) __functor(__VA_ARGS__);  \
 
 + (void)setBrickInsertionDictionaryToUserDefaults:(NSDictionary*) statistics;
 
-+ (void)incrementStatisticCountForBrickType:(kBrickType)brickType;
++ (void)incrementStatisticCountForBrickType:(NSInteger)brickType;
 
 + (void)printBrickStatistics;
 
@@ -201,6 +202,8 @@ if (__functor) __functor(__VA_ARGS__);  \
 + (NSString*)replaceBlockedCharactersForString:(NSString*)string;
 
 + (NSString*)enableBlockedCharactersForString:(NSString*)string;
+
++ (void)openUrlWithString:(NSString*)rawUrl;
 
 + (BOOL)isArduinoActivated;
 

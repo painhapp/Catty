@@ -21,10 +21,8 @@
  */
 
 #import "LoginViewController.h"
-#import "UIColor+CatrobatUIColorExtensions.h"
 #import "LanguageTranslationDefines.h"
 #import "NetworkDefines.h"
-#import "Util.h"
 #import "JNKeychain.h"
 #import "RegisterViewController.h"
 #import "Pocket_Code-Swift.h"

@@ -39,8 +39,8 @@
         self.logger = sceneLogger
 
         self.size = CGSize(
-            width: CGFloat(program.header.screenWidth.floatValue),
-            height: CGFloat(program.header.screenHeight.floatValue)
+            width: CGFloat(program.header.screenWidth!.floatValue),
+            height: CGFloat(program.header.screenHeight!.floatValue)
         )
     }
 

@@ -22,10 +22,6 @@
 
 #import <Foundation/Foundation.h>
 #import "InternToken.h"
-#import "FormulaElement.h"
-#import "UserVariable.h"
-#import "VariablesContainer.h"
-#import "Program.h"
 
 typedef enum {
     FORMULA_PARSER_OK = -1,
@@ -35,6 +31,7 @@ typedef enum {
     FORMULA_PARSER_NO_INPUT = -5
 } FormulaParserStatus;
 
+@class FormulaElement, SpriteObject;
 @protocol FormulaManagerProtocol;
 
 @interface InternFormulaParser : NSObject

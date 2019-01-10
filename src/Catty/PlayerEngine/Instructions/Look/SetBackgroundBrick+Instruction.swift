@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+import SpriteKit
+
 @objc extension SetBackgroundBrick: CBInstructionProtocol {
 
     @nonobjc func instruction() -> CBInstruction {
@@ -27,7 +29,7 @@
     }
 
     @objc func actionBlock() -> () -> Void {
-        guard let object = self.script.object.program.objectList.firstObject as? SpriteObject,
+        guard let object = self.script!.object!.program!.objectList.first as? SpriteObject,
             let spriteNode = object.spriteNode
             else { fatalError("This should never happen!") }
 
@@ -38,7 +40,7 @@
             if image == nil {
                 print("LoadImageFromDisk")
                 cache?.loadImageFromDisk(withPath: self.pathForLook())
-                guard let imageFromDisk = UIImage(contentsOfFile: self.pathForLook()) else { return }
+                guard let imageFromDisk = UIImage(contentsOfFile: self.pathForLook()!) else { return }
                 image = imageFromDisk
             }
 

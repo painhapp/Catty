@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+import SpriteKit
+
 @objc extension SetSizeToBrick: CBInstructionProtocol {
 
     @nonobjc func instruction() -> CBInstruction {
@@ -32,7 +34,7 @@
             else { fatalError("This should never happen!") }
 
         return {
-            let sizeInPercent = formulaInterpreter.interpretDouble(self.size, for: object)
+            let sizeInPercent = formulaInterpreter.interpretDouble(self.size!, for: object)
             spriteNode.catrobatSize = sizeInPercent
         }
     }

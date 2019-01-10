@@ -25,12 +25,6 @@
 #import "UIImage+CatrobatUIImageExtensions.h"
 #import "CatrobatLanguageDefines.h"
 #import "NSString+CatrobatNSStringExtensions.h"
-#import "Sound.h"
-#import "Look.h"
-#import "Script.h"
-#import "BroadcastWaitBrick.h"
-#import "BroadcastBrick.h"
-#import "BroadcastScript.h"
 #import "KeychainUserDefaultsDefines.h"
 #import "BDKNotifyHUD.h"
 #import <objc/runtime.h>
@@ -691,7 +685,7 @@
 }
 
 
-+ (void)incrementStatisticCountForBrickType:(kBrickType)brickType
++ (void)incrementStatisticCountForBrickType:(NSInteger)brickType
 {
     NSDictionary *insertionStatistic = [self getBrickInsertionDictionaryFromUserDefaults];
     NSString *wrappedBrickType = [NSNumber numberWithUnsignedInteger:(NSUInteger)brickType].stringValue;
@@ -803,6 +797,15 @@
                        speed:kBDKNotifyHUDPresentationSpeed
                       inView:vc.view
                   completion:^{ [hud removeFromSuperview]; }];
+}
+
++ (void)openUrlWithString:(NSString*)rawUrl
+{
+    if (@available(iOS 10, *)) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:rawUrl] options:[NSDictionary dictionary] completionHandler:nil];
+    } else {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:rawUrl]];
+    }
 }
 
 + (BOOL)isPhiroActivated

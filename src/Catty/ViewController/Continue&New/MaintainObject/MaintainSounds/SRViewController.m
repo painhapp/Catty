@@ -23,11 +23,8 @@
 #import "SRViewController.h"
 #import "Sound.h"
 #import "UIDefines.h"
-#import "AppDelegate.h"
-#import "UIColor+CatrobatUIColorExtensions.h"
 #import "TimerLabel.h"
 #import "NSString+CatrobatNSStringExtensions.h"
-#import "Util.h"
 #import "Pocket_Code-Swift.h"
 
 @interface SRViewController ()

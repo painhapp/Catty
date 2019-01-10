@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+import SpriteKit
+
 @objc extension TurnLeftBrick: CBInstructionProtocol {
 
     @nonobjc func instruction() -> CBInstruction {
@@ -32,7 +34,7 @@
             else { debugPrint("This should never happen!"); return {} }
 
         return {
-            let degrees = formulaInterpreter.interpretDouble(self.degrees, for: object)
+            let degrees = formulaInterpreter.interpretDouble(self.degrees!, for: object)
             let rotation = spriteNode.catrobatRotation - degrees
             spriteNode.catrobatRotation = rotation
         }

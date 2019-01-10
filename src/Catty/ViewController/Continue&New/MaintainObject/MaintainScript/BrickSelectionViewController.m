@@ -23,8 +23,8 @@
 #import "BrickSelectionViewController.h"
 #import "BrickCategoryViewController.h"
 #import "ScriptCollectionViewController.h"
-#import "UIColor+CatrobatUIColorExtensions.h"
 #import "KeychainUserDefaultsDefines.h"
+#import "Pocket_Code-Swift.h"
 
 @interface BrickSelectionViewController() <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 @property (nonatomic, strong) UIPageControl *pageControl;

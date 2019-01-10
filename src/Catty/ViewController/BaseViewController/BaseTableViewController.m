@@ -21,13 +21,9 @@
  */
 
 #import "BaseTableViewController.h"
-#import "UIColor+CatrobatUIColorExtensions.h"
-#import "TableUtil.h"
 #import "UIDefines.h"
-#import "Util.h"
 #import "BDKNotifyHUD.h"
 #import "PlaceHolderView.h"
-#import "AppDelegate.h"
 #import "Pocket_Code-Swift.h"
 
 // identifiers

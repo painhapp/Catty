@@ -22,9 +22,6 @@
 
 #import "HelpWebViewController.h"
 #import "UIDefines.h"
-#import "UIColor+CatrobatUIColorExtensions.h"
-#import "AppDelegate.h"
-#import "Util.h"
 #import "NetworkDefines.h"
 #import "BDKNotifyHUD.h"
 #import "Pocket_Code-Swift.h"

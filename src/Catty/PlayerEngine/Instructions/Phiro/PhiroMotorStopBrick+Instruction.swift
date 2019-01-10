@@ -32,11 +32,11 @@ import Foundation
                 return
             }
             switch self.phiroMotor() {
-            case .Left:
+            case Motor.left:
                 phiro.stopLeftMotor()
-            case .Right:
+            case Motor.right:
                 phiro.stopRightMotor()
-            case .Both:
+            case Motor.both:
                 phiro.stopRightMotor()
                 phiro.stopLeftMotor()
             }

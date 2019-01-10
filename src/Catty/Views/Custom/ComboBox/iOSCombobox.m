@@ -21,10 +21,8 @@
  */
 
 #import "iOSCombobox.h"
-#import "UIColor+CatrobatUIColorExtensions.h"
 #import "RuntimeImageCache.h"
-#import "Look.h"
-#import "Util.h"
+#import "Pocket_Code-Swift.h"
 
 #define BORDER_WIDTH 1.0f
 #define BORDER_OFFSET (BORDER_WIDTH / 2)
@@ -36,6 +34,10 @@
 #define TEXT_LEFT 5.0f
 
 #define PICKER_VIEW_HEIGHT 216.0f // This is fixed by Apple, and Stack Overflow reports some bugs can be introduced if it's changed.
+
+@interface iOSCombobox : UIControl <UIPickerViewDataSource, UIPickerViewDelegate, iOSComboboxPickerViewDelegate, BSKeyboardControlsDelegate>
+
+@end
 
 @implementation iOSCombobox
 @synthesize values = _values;

@@ -21,7 +21,6 @@
  */
 
 #import "LookImageViewController.h"
-#import "TableUtil.h"
 #import "RuntimeImageCache.h"
 #import "Pocket_Code-Swift.h"
 

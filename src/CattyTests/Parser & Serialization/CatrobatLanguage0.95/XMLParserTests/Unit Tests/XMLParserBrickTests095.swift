@@ -38,12 +38,9 @@ final class XMLParserBrickTests095: XMLAbstractTest {
         let setVariableBrick = SetVariableBrick()
         let xmlElement = setVariableBrick.xmlElement(with: self.serializerContext)
 
-        /*TODO EXCEPTION XCTAssertThrowsError(
-            try ConvertExceptionToError.catchException {
-                SetVariableBrick.parse(from: xmlElement, with: self.parserContext)
-            }) { error in
+        XCTAssertThrowsError(try SetVariableBrick.parse(from: xmlElement, with: self.parserContext), "Parser Error not thrown") { (error) in
             XCTAssertTrue(error.localizedDescription.contains(NSStringFromClass(CBXMLParserHelper.self)))
-        }*/
+        }
     }
 
     func testSetVariableBrickWithoutUserVariableAndWithoutInUserBrickElement() {

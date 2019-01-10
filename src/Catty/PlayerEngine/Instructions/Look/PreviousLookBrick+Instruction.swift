@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+import SpriteKit
+
 @objc extension PreviousLookBrick: CBInstructionProtocol {
 
     @nonobjc func instruction() -> CBInstruction {
@@ -38,7 +40,7 @@
             if image == nil {
                 print("LoadImageFromDisk")
                 cache?.loadImageFromDisk(withPath: self.path(for: look))
-                guard let imageFromDisk = UIImage(contentsOfFile: self.path(for: look)) else { return }
+                guard let imageFromDisk = UIImage(contentsOfFile: self.path(for: look)!) else { return }
                 image = imageFromDisk
             }
 

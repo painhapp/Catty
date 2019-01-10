@@ -25,9 +25,9 @@
     static let tag = "side_right"
     static let name = kUIFESensorPhiroSideRight
     static let defaultRawValue = 0.0
-    static let requiredResource = ResourceType.bluetoothPhiro
     static let pinNumber = 5
     static let position = 330
+    static var requiredResource: Int = ResourceType.bluetoothPhiro
 
     let getBluetoothService: () -> BluetoothService?
 

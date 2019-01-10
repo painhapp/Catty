@@ -23,7 +23,7 @@
 extension RepeatBrick: CBConditionProtocol {
 
     func checkCondition(formulaInterpreter: FormulaInterpreterProtocol) -> Bool {
-        let timesToRepeat = formulaInterpreter.interpretInteger(self.timesToRepeat, for: self.script.object)
+        let timesToRepeat = formulaInterpreter.interpretInteger(self.timesToRepeat!, for: self.script!.object!)
         let condition = self.loopCount < timesToRepeat
         self.loopCount += 1
         return condition
@@ -34,6 +34,6 @@ extension RepeatBrick: CBConditionProtocol {
     }
 
     func conditionFormulas() -> [Formula] {
-        return self.getFormulas()
+        return self.getFormulas()!
     }
 }

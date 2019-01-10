@@ -21,11 +21,8 @@
  */
 
 #import "MyProgramsViewController.h"
-#import "Util.h"
 #import "ProgramLoadingInfo.h"
 #import "ProgramTableViewController.h"
-#import "AppDelegate.h"
-#import "TableUtil.h"
 #import "CellTagDefines.h"
 #import "UIImageView+CatrobatUIImageViewExtensions.h"
 #import "CatrobatImageCell.h"
@@ -36,7 +33,6 @@
 #import "RuntimeImageCache.h"
 #import "NSString+CatrobatNSStringExtensions.h"
 #import "NSMutableArray+CustomExtensions.h"
-#import "UIUtil.h"
 #import "Pocket_Code-Swift.h"
 
 @interface MyProgramsViewController () <ProgramUpdateDelegate, UITextFieldDelegate, SetProgramDescriptionDelegate>

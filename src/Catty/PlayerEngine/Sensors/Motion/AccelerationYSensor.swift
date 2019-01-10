@@ -26,7 +26,7 @@
     static let name = kUIFESensorAccelerationY
     static let defaultRawValue = 0.0
     static let position = 30
-    static let requiredResource = ResourceType.deviceMotion
+    static var requiredResource = ResourceType.deviceMotion
 
     let getMotionManager: () -> MotionManager?
 

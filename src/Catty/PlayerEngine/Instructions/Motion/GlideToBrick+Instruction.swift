@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+import SpriteKit
+
 @objc extension GlideToBrick: CBInstructionProtocol {
 
     @nonobjc func instruction() -> CBInstruction {
@@ -36,9 +38,9 @@
             let spriteNode = object.spriteNode
             else { fatalError("This should never happen!") }
 
-        let xDestination = formulaInterpreter.interpretFloat(self.xDestination, for: object)
-        let yDestination = formulaInterpreter.interpretFloat(self.yDestination, for: object)
-        let duration = formulaInterpreter.interpretDouble(self.durationInSeconds, for: object)
+        let xDestination = formulaInterpreter.interpretFloat(self.xDestination!, for: object)
+        let yDestination = formulaInterpreter.interpretFloat(self.yDestination!, for: object)
+        let duration = formulaInterpreter.interpretDouble(self.durationInSeconds!, for: object)
 
         guard let scene = spriteNode.scene else {
             fatalError("This should never happen!")

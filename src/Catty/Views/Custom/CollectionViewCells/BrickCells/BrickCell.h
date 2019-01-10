@@ -22,12 +22,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ProgramDefines.h"
-#import "UIDefines.h"
 #import "BrickCellProtocol.h"
-#import "BrickShapeFactory.h"
-#import "UIColor+CatrobatUIColorExtensions.h"
-#import "SelectButton.h"
-#import "Util.h"
+#import "UIDefines.h"
 
 #define smallBrick 44.0f
 #define mediumBrick 71.0f
@@ -35,9 +31,8 @@
 #define roundedLargeBrick 102.0f
 #define roundedSmallBrick 75.0f
 
-@class Brick, BrickCellInlineView, BrickCell;
-@protocol ScriptProtocol, BrickCellDataDelegate, BrickCellDataProtocol;
-
+@class Brick, BrickCellInlineView, BrickCell, SelectButton, BrickShapeType;
+@protocol BrickCellProtocol, ScriptProtocol, BrickCellDataDelegate, BrickCellDataProtocol;
 
 @protocol BrickCellDelegate<NSObject>
 @optional
@@ -54,10 +49,10 @@
 @property (nonatomic, strong) SelectButton *selectButton;
 @property (nonatomic) NSString* brickTitle;
 
-- (kBrickShapeType)brickShapeType;
+- (NSInteger)brickShapeType;
 - (CGFloat)inlineViewHeight;
 - (CGFloat)inlineViewOffsetY;
-+ (CGFloat)cellHeight;
+- (CGFloat)cellHeight;
 
 - (void)hookUpSubViews:(NSArray *)inlineViewSubViews; // abstract
 - (BOOL)isScriptBrick;

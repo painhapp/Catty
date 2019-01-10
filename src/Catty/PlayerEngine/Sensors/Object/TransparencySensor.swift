@@ -26,7 +26,7 @@
     static let name = kUIFEObjectTransparency
     @objc static let defaultRawValue = 1.0
     static let position = 10
-    static let requiredResource = ResourceType.noResources
+    static var requiredResource = ResourceType.noResources
 
     func tag() -> String {
         return type(of: self).tag
@@ -42,7 +42,7 @@
 
     static func setRawValue(userInput: Double, for spriteObject: SpriteObject) {
         let rawValue = self.convertToRaw(userInput: userInput, for: spriteObject)
-        spriteObject.spriteNode.alpha = CGFloat(rawValue)
+        spriteObject.spriteNode!.alpha = CGFloat(rawValue)
     }
 
     /*  on iOS, the transparency function is descending:

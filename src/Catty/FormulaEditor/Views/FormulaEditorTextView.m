@@ -21,6 +21,7 @@
  */
 
 #import "FormulaEditorTextView.h"
+#import "Pocket_Code-Swift.h"
 
 @interface FormulaEditorTextView ()
 @property (nonatomic, weak) FormulaEditorViewController *formulaEditorViewController;

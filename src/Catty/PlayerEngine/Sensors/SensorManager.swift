@@ -83,8 +83,8 @@ import CoreMotion
         return rawValue
     }
 
-    @objc static func requiredResource(tag: String) -> ResourceType {
-        guard let sensor = sensorMap[tag] else { return .noResources }
+    @objc static func requiredResource(tag: String) -> Int {
+        guard let sensor = sensorMap[tag] else { return ResourceType.noResources }
         return type(of: sensor).requiredResource
     }
 

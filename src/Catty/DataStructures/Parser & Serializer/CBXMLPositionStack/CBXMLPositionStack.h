@@ -22,8 +22,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class Brick;
-
 @interface CBXMLPositionStack : NSObject <NSFastEnumeration>
 
 @property (nonatomic, strong, readonly) NSMutableArray *stack;

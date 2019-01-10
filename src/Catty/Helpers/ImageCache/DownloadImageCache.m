@@ -20,9 +20,9 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+#import "CBFileManager.h"
 #import "DownloadImageCache.h"
 #import "NSString+CatrobatNSStringExtensions.h"
-#import "AppDelegate.h"
 
 #define kOneWeekImageCacheAge 60 * 60 * 24 * 7;
 #define kImageCacheDirectory @"at.tugraz.ist.catrobat.ImageCache"

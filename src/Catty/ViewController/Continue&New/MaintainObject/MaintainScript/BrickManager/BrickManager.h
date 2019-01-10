@@ -24,6 +24,8 @@
 #import "UIDefines.h"
 #import "BrickCell.h"
 
+@class Script;
+
 @interface BrickManager : NSObject
 
 + (instancetype)sharedBrickManager;
@@ -33,15 +35,16 @@
 - (NSDictionary*)brickTypeClassNameMap;
 - (NSArray*)selectableBricks;
 - (NSArray *)selectableScriptBricks;
-- (NSArray*)selectableBricksForCategoryType:(kBrickCategoryType)categoryType;
-- (NSArray*)selectableBricksForCategoryType:(kBrickCategoryType)categoryType inBackground:(BOOL)inBackground;
-- (kBrickType)brickTypeForClassName:(NSString*)className;
-- (kBrickCategoryType)brickCategoryTypeForBrickType:(kBrickType)brickType;
-- (NSString*)classNameForBrickType:(kBrickType)brickType;
-- (kBrickType)brickTypeForCategoryType:(kBrickCategoryType)categoryType andBrickIndex:(NSUInteger)index;
-- (NSUInteger)brickIndexForBrickType:(kBrickType)brickType;
+- (NSArray*)selectableBricksForCategoryType:(NSInteger)categoryType;
+- (NSArray*)selectableBricksForCategoryType:(NSInteger)categoryType inBackground:(BOOL)inBackground;
+- (NSInteger)brickTypeForClassName:(NSString*)className;
+- (NSInteger)brickCategoryTypeForBrickType:(NSInteger)brickType;
+- (NSString*)classNameForBrickType:(NSInteger)brickType;
+- (NSInteger)brickTypeForCategoryType:(NSInteger)categoryType andBrickIndex:(NSUInteger)index;
+- (NSUInteger)brickIndexForBrickType:(NSInteger)brickType;
 - (CGSize)sizeForBrick:(NSString *)brickName;
-- (BOOL)isScript:(kBrickType)type;
+
+- (BOOL)isScript:(NSInteger)type;
 - (NSInteger)checkEndLoopBrickTypeForDrawing:(BrickCell*)cell;
 - (NSArray*)animateWithIndexPath:(NSIndexPath*)path Script:(Script*)script andBrick:(Brick*)brick;
 - (NSArray*)scriptCollectionCopyBrickWithIndexPath:(NSIndexPath*)indexPath andBrick:(Brick*)brick;

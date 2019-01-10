@@ -20,6 +20,8 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
+import SpriteKit
+
 @objc extension SayForBubbleBrick: CBInstructionProtocol {
 
     @nonobjc func instruction() -> CBInstruction {
@@ -27,7 +29,7 @@
             let _ = object.spriteNode
             else { fatalError("This should never happen!") }
 
-        return .longDurationAction(duration: CBDuration.varTime(formula: self.intFormula), closure: {
+        return .longDurationAction(duration: CBDuration.varTime(formula: self.intFormula!), closure: {
             duration, context -> SKAction in
             SKAction.sequence([SKAction.run(self.actionBlock(object, context.formulaInterpreter)), SKAction.wait(forDuration: duration), SKAction.run(self.removeActionBlock(object))])
         })
@@ -35,7 +37,7 @@
 
     @objc func actionBlock(_ object: SpriteObject, _ formulaInterpreter: FormulaInterpreterProtocol) -> () -> Void {
         return {
-            var speakText = formulaInterpreter.interpretString(self.stringFormula, for: object)
+            var speakText = formulaInterpreter.interpretString(self.stringFormula!, for: object)
 
             if Double(speakText) != nil {
                 let num = (speakText as NSString).doubleValue
@@ -47,11 +49,11 @@
 
     @nonobjc func removeActionBlock(_ object: SpriteObject) -> () -> Void {
         return {
-            let oldBubble = object.spriteNode.childNode(withName: kBubbleBrickNodeName)
+            let oldBubble = object.spriteNode!.childNode(withName: kBubbleBrickNodeName)
 
             if oldBubble != nil {
                 oldBubble!.run(SKAction.removeFromParent())
-                object.spriteNode.removeChildren(in: [oldBubble!])
+                object.spriteNode!.removeChildren(in: [oldBubble!])
             }
         }
     }
