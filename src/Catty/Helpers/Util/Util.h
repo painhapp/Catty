@@ -37,7 +37,6 @@ if (__functor) __functor(__VA_ARGS__);  \
 
 #define TIMEOUT 30.0f
 
-@protocol MYIntroductionDelegate;
 @class SceneViewController;
 @class ProjectLoadingInfo;
 @class InputValidationResult;
