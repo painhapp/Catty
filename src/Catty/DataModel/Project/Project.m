@@ -147,7 +147,7 @@
 
 - (NSString*)projectPath
 {
-    return [Project projectPathForProjectWithName:[Util replaceBlockedCharactersForString:self.header.programName] projectID:self.header.programID];
+    return [ProjectService getProjectPathWithProjectName:[Util replaceBlockedCharactersForString:self.header.programName] projectID:self.header.programID];
 }
 
 - (void)removeFromDisk
@@ -352,23 +352,23 @@
 
 #pragma mark - Manager
 
-+ (NSString*)projectDirectoryNameForProjectName:(NSString*)projectName projectID:(NSString*)projectID
-{
-    return [NSString stringWithFormat:@"%@%@%@", projectName, kProjectIDSeparator,
-            (projectID ? projectID : kNoProjectIDYetPlaceholder)];
-}
+//+ (NSString*)projectDirectoryNameForProjectName:(NSString*)projectName projectID:(NSString*)projectID
+//{
+//    return [NSString stringWithFormat:@"%@%@%@", projectName, kProjectIDSeparator,
+//            (projectID ? projectID : kNoProjectIDYetPlaceholder)];
+//}
 
-+ (nullable ProjectLoadingInfo*)projectLoadingInfoForProjectDirectoryName:(NSString*)directoryName
-{
-    CBAssert(directoryName);
-    NSArray *directoryNameParts = [directoryName componentsSeparatedByString:kProjectIDSeparator];
-    if (directoryNameParts.count < 2) {
-        return nil;
-    }
-    NSString *projectID = (NSString*)directoryNameParts.lastObject;
-    NSString *projectName = [directoryName substringToIndex:directoryName.length - projectID.length - 1];
-    return [ProjectLoadingInfo projectLoadingInfoForProjectWithName:projectName projectID:projectID];
-}
+//+ (nullable ProjectLoadingInfo*)projectLoadingInfoForProjectDirectoryName:(NSString*)directoryName
+//{
+//    CBAssert(directoryName);
+//    NSArray *directoryNameParts = [directoryName componentsSeparatedByString:kProjectIDSeparator];
+//    if (directoryNameParts.count < 2) {
+//        return nil;
+//    }
+//    NSString *projectID = (NSString*)directoryNameParts.lastObject;
+//    NSString *projectName = [directoryName substringToIndex:directoryName.length - projectID.length - 1];
+//    return [ProjectLoadingInfo projectLoadingInfoForProjectWithName:projectName projectID:projectID];
+//}
 
 + (nullable NSString *)projectNameForProjectID:(NSString*)projectID
 {
@@ -492,7 +492,7 @@
 + (void)updateLastModificationTimeForProjectWithName:(NSString*)projectName projectID:(NSString*)projectID
 {
     NSString *xmlPath = [NSString stringWithFormat:@"%@%@",
-                         [self projectPathForProjectWithName:projectName projectID:projectID],
+                         [ProjectService getProjectPathWithProjectName:projectName projectID:projectID],
                          kProjectCodeFileName];
     CBFileManager *fileManager = [CBFileManager sharedManager];
     [fileManager changeModificationDate:[NSDate date] forFileAtPath:xmlPath];
@@ -502,9 +502,9 @@
                          sourceProjectID:(NSString*)sourceProjectID
                   destinationProjectName:(NSString*)destinationProjectName
 {
-    NSString *sourceProjectPath = [[self class] projectPathForProjectWithName:sourceProjectName projectID:sourceProjectID];
+    NSString *sourceProjectPath = [ProjectService getProjectPathWithProjectName:sourceProjectName projectID:sourceProjectID];
     destinationProjectName = [Util uniqueName:destinationProjectName existingNames:[self allProjectNames]];
-    NSString *destinationProjectPath = [[self class] projectPathForProjectWithName:destinationProjectName projectID:nil];
+    NSString *destinationProjectPath = [ProjectService getProjectPathWithProjectName: destinationProjectName projectID: nil];
 
     CBFileManager *fileManager = [CBFileManager sharedManager];
     [fileManager copyExistingDirectoryAtPath:sourceProjectPath toPath:destinationProjectPath];
@@ -517,7 +517,7 @@
 + (void)removeProjectFromDiskWithProjectName:(NSString*)projectName projectID:(NSString*)projectID
 {
     CBFileManager *fileManager = [CBFileManager sharedManager];
-    NSString *projectPath = [self projectPathForProjectWithName:projectName projectID:projectID];
+    NSString *projectPath = [ProjectService getProjectPathWithProjectName: projectName projectID: projectID];
     if ([fileManager directoryExists:projectPath]) {
         [fileManager deleteDirectory:projectPath];
     }
@@ -587,7 +587,8 @@
             continue;
         }
 
-        ProjectLoadingInfo *info = [[self class] projectLoadingInfoForProjectDirectoryName:subdirName];
+        ProjectLoadingInfo *info = [ProjectService getProjectLoadingInfoWithDirectoryName: subdirName];
+        //ProjectLoadingInfo *info = [[self class] projectLoadingInfoForProjectDirectoryName:subdirName];
         if (! info) {
             NSDebug(@"Unable to load project located in directory %@", subdirName);
             continue;
@@ -616,9 +617,9 @@
     [Util setLastProjectWithName:project.header.programName projectID:project.header.programID];
 }
 
-+ (NSString*)projectPathForProjectWithName:(NSString*)projectName projectID:(NSString*)projectID
-{
-    return [NSString stringWithFormat:@"%@%@/", [Project basePath], [[self class] projectDirectoryNameForProjectName:[Util replaceBlockedCharactersForString:projectName] projectID:projectID]];
-}
+//+ (NSString*)projectPathForProjectWithName:(NSString*)projectName projectID:(NSString*)projectID
+//{
+//    return [NSString stringWithFormat:@"%@%@/", [Project basePath], [[self class] projectDirectoryNameForProjectName:[Util replaceBlockedCharactersForString:projectName] projectID:projectID]];
+//}
 
 @end

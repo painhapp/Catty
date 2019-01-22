@@ -209,12 +209,11 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *lastUsedProjectDirectoryName = [userDefaults objectForKey:kLastUsedProject];
     if (! lastUsedProjectDirectoryName) {
-        lastUsedProjectDirectoryName = [Project projectDirectoryNameForProjectName:kLocalizedMyFirstProject
-                                                                         projectID:nil];
+        lastUsedProjectDirectoryName = [ProjectService getProjectDirectoryNameWithProjectName:kLocalizedMyFirstProject projectID:nil];
         [userDefaults setObject:lastUsedProjectDirectoryName forKey:kLastUsedProject];
         [userDefaults synchronize];
     }
-    return [Project projectLoadingInfoForProjectDirectoryName:lastUsedProjectDirectoryName];
+    return [ProjectService getProjectLoadingInfoWithDirectoryName: lastUsedProjectDirectoryName];
 }
 
 + (void)setLastProjectWithName:(NSString*)projectName projectID:(NSString*)projectID
@@ -222,7 +221,7 @@
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
     if (projectName) {
         projectName = [projectName stringByReplacingOccurrencesOfString:@"/" withString:@"%2F"];
-        [userDefaults setObject:[Project projectDirectoryNameForProjectName:projectName projectID:projectID]
+        [userDefaults setObject:[ProjectService getProjectDirectoryNameWithProjectName:projectName projectID:projectID]
                          forKey:kLastUsedProject];
     } else {
         [userDefaults setObject:nil forKey:kLastUsedProject];

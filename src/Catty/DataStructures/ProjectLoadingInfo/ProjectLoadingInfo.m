@@ -23,6 +23,7 @@
 #import "ProjectLoadingInfo.h"
 #import "ProgramDefines.h"
 #import "Util.h"
+#import "Pocket_Code-Swift.h"
 
 @implementation ProjectLoadingInfo
 
@@ -31,7 +32,7 @@
     NSString *documentsDirectory = [Util applicationDocumentsDirectory];
     NSString *projectsPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, kProjectsFolder];
     ProjectLoadingInfo *info = [[ProjectLoadingInfo alloc] init];
-    NSString *projectDirectoryName = [Project projectDirectoryNameForProjectName:projectName projectID:projectID];
+    NSString *projectDirectoryName = [ProjectService getProjectDirectoryNameWithProjectName:projectName projectID:projectID];
     info.basePath = [NSString stringWithFormat:@"%@/%@/", projectsPath, projectDirectoryName];
     info.visibleName = [Util enableBlockedCharactersForString:projectName];
     info.projectID = projectID;
