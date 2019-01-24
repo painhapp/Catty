@@ -47,7 +47,6 @@
 - (void)removeReferences;
 - (void)saveToDiskWithNotification:(BOOL)notify;
 - (BOOL)isLastUsedProject;
-- (void)setAsLastUsedProject;
 - (void)translateDefaultProject;
 - (void)renameToProjectName:(NSString* _Nonnull)projectName;
 - (void)renameObject:(SpriteObject* _Nonnull)object toName:(NSString* _Nonnull)newObjectName;
@@ -75,10 +74,8 @@
 + (void)removeProjectFromDiskWithProjectName:(NSString* _Nonnull)projectName
                                    projectID:(NSString* _Nonnull)projectID;
 + (BOOL)isLastUsedProject:(NSString* _Nonnull)projectName projectID:(NSString* _Nonnull)projectID;
-+ (void)setLastUsedProject:(Project* _Nonnull)project;
 + (NSString* _Nonnull)basePath;
 + (NSArray* _Nonnull)allProjectNames;
-+ (NSArray* _Nonnull)allProjectLoadingInfos;
 //+ (NSString* _Nonnull)projectDirectoryNameForProjectName:(NSString* _Nonnull)projectName
 //                                               projectID:(NSString* _Nullable)projectID;
 //+ (nullable ProjectLoadingInfo *)projectLoadingInfoForProjectDirectoryName:(NSString* _Nonnull)projectDirectoryName;

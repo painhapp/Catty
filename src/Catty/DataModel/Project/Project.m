@@ -185,12 +185,6 @@
     return [Project isLastUsedProject:self.header.programName projectID:self.header.programID];
 }
 
-- (void)setAsLastUsedProject
-{
-    [Project setLastUsedProject:self];
-}
-
-
 - (void)renameToProjectName:(NSString*)projectName
 {
     if ([self.header.programName isEqualToString:projectName]) {
@@ -375,7 +369,7 @@
     if ((! projectID) || (! [projectID length])) {
         return nil;
     }
-    NSArray *allProjectLoadingInfos = [[self class] allProjectLoadingInfos];
+    NSArray *allProjectLoadingInfos = [ProjectService getAllProjectLoadingInfos];
     for (ProjectLoadingInfo *projectLoadingInfo in allProjectLoadingInfos) {
         if ([projectLoadingInfo.projectID isEqualToString:projectID]) {
             return projectLoadingInfo.visibleName;
@@ -387,7 +381,7 @@
 // returns true if either same projectID and/or same projectName already exists
 + (BOOL)projectExistsWithProjectName:(NSString*)projectName projectID:(NSString*)projectID
 {
-    NSArray *allProjectLoadingInfos = [[self class] allProjectLoadingInfos];
+    NSArray *allProjectLoadingInfos = [ProjectService getAllProjectLoadingInfos];
 
     // check if project with same ID already exists
     if (projectID && [projectID length]) {
@@ -408,7 +402,7 @@
 // returns true if either same projectID and/or same projectName already exists
 + (BOOL)projectExistsWithProjectID:(NSString*)projectID
 {
-    NSArray *allProjectLoadingInfos = [[self class] allProjectLoadingInfos];
+    NSArray *allProjectLoadingInfos = [ProjectService getAllProjectLoadingInfos];
     for (ProjectLoadingInfo *projectLoadingInfo in allProjectLoadingInfos) {
         if ([projectID isEqualToString:projectLoadingInfo.projectID]) {
             return YES;
@@ -526,7 +520,7 @@
     // the last used project
     if ([Project isLastUsedProject:projectName projectID:projectID]) {
         [Util setLastProjectWithName:nil projectID:nil];
-        NSArray *allProjectLoadingInfos = [[self class] allProjectLoadingInfos];
+        NSArray *allProjectLoadingInfos = [ProjectService getAllProjectLoadingInfos];
         for (ProjectLoadingInfo *projectLoadingInfo in allProjectLoadingInfos) {
             [Util setLastProjectWithName:projectLoadingInfo.visibleName projectID:projectLoadingInfo.projectID];
             break;
@@ -564,39 +558,12 @@
 
 + (NSArray*)allProjectNames
 {
-    NSArray *allProjectLoadingInfos = [[self class] allProjectLoadingInfos];
+    NSArray *allProjectLoadingInfos = [ProjectService getAllProjectLoadingInfos];
     NSMutableArray *projectNames = [[NSMutableArray alloc] initWithCapacity:[allProjectLoadingInfos count]];
     for (ProjectLoadingInfo *loadingInfo in allProjectLoadingInfos) {
         [projectNames addObject:loadingInfo.visibleName];
     }
     return [projectNames copy];
-}
-
-+ (NSArray*)allProjectLoadingInfos
-{
-    NSString *basePath = [Project basePath];
-    NSError *error;
-    NSArray *subdirNames = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:basePath error:&error];
-    NSLogError(error);
-    subdirNames = [subdirNames sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-
-    NSMutableArray *projectLoadingInfos = [[NSMutableArray alloc] initWithCapacity:subdirNames.count];
-    for (NSString *subdirName in subdirNames) {
-        // exclude .DS_Store folder on MACOSX simulator
-        if ([subdirName isEqualToString:@".DS_Store"]) {
-            continue;
-        }
-
-        ProjectLoadingInfo *info = [ProjectService getProjectLoadingInfoWithDirectoryName: subdirName];
-        //ProjectLoadingInfo *info = [[self class] projectLoadingInfoForProjectDirectoryName:subdirName];
-        if (! info) {
-            NSDebug(@"Unable to load project located in directory %@", subdirName);
-            continue;
-        }
-        NSDebug(@"Adding loaded project: %@", info.basePath);
-        [projectLoadingInfos addObject:info];
-    }
-    return projectLoadingInfos;
 }
 
 + (BOOL)areThereAnyProjects
@@ -610,11 +577,6 @@
     ProjectLoadingInfo *info = [ProjectLoadingInfo projectLoadingInfoForProjectWithName:projectName
                                                                               projectID:projectID];
     return [lastUsedInfo isEqualToLoadingInfo:info];
-}
-
-+ (void)setLastUsedProject:(Project*)project
-{
-    [Util setLastProjectWithName:project.header.programName projectID:project.header.programID];
 }
 
 //+ (NSString*)projectPathForProjectWithName:(NSString*)projectName projectID:(NSString*)projectID

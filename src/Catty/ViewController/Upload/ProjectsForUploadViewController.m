@@ -69,7 +69,7 @@
     [super viewDidLoad];
     
     self.navigationController.title = self.title = kLocalizedUploadProject;
-    self.projectLoadingInfos = [[Project allProjectLoadingInfos] mutableCopy];
+    self.projectLoadingInfos = [[ProjectService getAllProjectLoadingInfos] mutableCopy];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self setupToolBar];

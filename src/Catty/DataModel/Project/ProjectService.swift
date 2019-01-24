@@ -46,41 +46,42 @@ import Foundation
         return String.init(format: "%@%@/", Project.basePath(), getProjectDirectoryName(projectName: Util.replaceBlockedCharacters(for: projectName), projectID: projectID))
     }
 
+    @objc static func setAsLastUsedProject(project: Project)
+    {
+        Util.setLastProjectWithName(project.header.programName, projectID: project.header.programID)
+    }
 
+    @objc static func getAllProjectLoadingInfos() -> [ProjectLoadingInfo]
+    {
+        let basePath = Project.basePath()
+        let subdirNames: [String]
 
+        do {
+           subdirNames = try FileManager.default.contentsOfDirectory(atPath: basePath)
+        } catch {
+            return [ProjectLoadingInfo]()
+        }
 
+        subdirNames.sorted { $0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending }
 
-//    static func allProjectLoadingInfos() -> [ProjectLoadingInfo]
-//    {
-//        let basePath = Project.basePath()
-//    //NSError *error;
-//        let subdirNames: [String]
-//
-//        do {
-//           subdirNames = try FileManager.default.contentsOfDirectory(atPath: basePath)
-//        } catch {
-//            return [ProjectLoadingInfo]()
-//        }
-//
-//        //subdirNames = [subdirNames sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-//
-//    NSMutableArray *projectLoadingInfos = [[NSMutableArray alloc] initWithCapacity:subdirNames.count];
-//    for (NSString *subdirName in subdirNames) {
-//    // exclude .DS_Store folder on MACOSX simulator
-//    if ([subdirName isEqualToString:@".DS_Store"]) {
-//    continue;
-//    }
-//
-//    ProjectLoadingInfo *info = [[self class] projectLoadingInfoForProjectDirectoryName:subdirName];
-//    if (! info) {
-//    NSDebug(@"Unable to load project located in directory %@", subdirName);
-//    continue;
-//    }
-//    NSDebug(@"Adding loaded project: %@", info.basePath);
-//    [projectLoadingInfos addObject:info];
-//    }
-//    return projectLoadingInfos;
-//    }
+        var projectLoadingInfos = [ProjectLoadingInfo]()
+
+        for subdirName in subdirNames {
+            // exclude .DS_Store folder on MACOSX simulator
+            if subdirName.elementsEqual(".DS_Store") {
+                continue
+            }
+
+            if let info = getProjectLoadingInfo(directoryName: subdirName) {
+                debugPrint("Adding loaded project: \(info.basePath ?? "no_base_path_found")")
+                projectLoadingInfos.append(info)
+            } else {
+                debugPrint("Unable to load project located in directory \(subdirName)")
+                continue
+            }
+        }
+        return projectLoadingInfos;
+    }
 //
 //
 //

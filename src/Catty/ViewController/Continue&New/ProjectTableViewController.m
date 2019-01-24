@@ -50,7 +50,7 @@
 #pragma mark - getter and setters
 - (void)setProject:(Project *)project
 {
-    [project setAsLastUsedProject];
+    [ProjectService setAsLastUsedProjectWithProject:project];
     _project = project;
 }
 

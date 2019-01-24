@@ -603,7 +603,7 @@
 {
     // check if project already exists, then update
     BOOL exists = NO;
-    NSMutableArray* projectLoadingInfos = [[Project allProjectLoadingInfos] mutableCopy];
+    NSMutableArray* projectLoadingInfos = [[ProjectService getAllProjectLoadingInfos] mutableCopy];
     for (ProjectLoadingInfo *projectLoadingInfo in projectLoadingInfos) {
         if ([projectLoadingInfo.visibleName isEqualToString:projectName])
             exists = YES;
@@ -627,7 +627,7 @@
 {
     ProjectLoadingInfo *oldProjectLoadingInfo = [ProjectLoadingInfo projectLoadingInfoForProjectWithName:projectName projectID:projectID];
     NSInteger rowIndex = 0;
-    NSMutableArray* projectLoadingInfos = [[Project allProjectLoadingInfos] mutableCopy];
+    NSMutableArray* projectLoadingInfos = [[ProjectService getAllProjectLoadingInfos] mutableCopy];
     for (ProjectLoadingInfo *info in projectLoadingInfos) {
         if ([info isEqualToLoadingInfo:oldProjectLoadingInfo]) {
             [Project removeProjectFromDiskWithProjectName:projectName projectID:projectID];
@@ -689,7 +689,7 @@
     ProjectLoadingInfo *oldProjectLoadingInfo = [ProjectLoadingInfo projectLoadingInfoForProjectWithName:oldProjectName
                                                                                                projectID:projectID];
     NSInteger rowIndex = 0;
-    NSMutableArray* projectLoadingInfos = [[Project allProjectLoadingInfos] mutableCopy];
+    NSMutableArray* projectLoadingInfos = [[ProjectService getAllProjectLoadingInfos] mutableCopy];
     for (ProjectLoadingInfo *info in projectLoadingInfos) {
         if ([info isEqualToLoadingInfo:oldProjectLoadingInfo]) {
             ProjectLoadingInfo *newInfo = [ProjectLoadingInfo projectLoadingInfoForProjectWithName:newProjectName
@@ -741,7 +741,7 @@
 {
     self.projectLoadingInfoDict = [NSMutableDictionary new];
     self.projectsCounter = 0;
-    NSArray* projectLoadingInfos = [[Project allProjectLoadingInfos] mutableCopy];
+    NSArray* projectLoadingInfos = [[ProjectService getAllProjectLoadingInfos] mutableCopy];
     for (ProjectLoadingInfo* info in projectLoadingInfos) {
         NSMutableArray* array = [self.projectLoadingInfoDict objectForKey:[[info.visibleName substringToIndex:1] uppercaseString]];
         if (!array.count) {
