@@ -326,7 +326,7 @@
 
 - (void)addDefaultProjectToProjectsRootDirectoryIfNoProjectsExist
 {
-    if ([Project areThereAnyProjects]) {
+    if ([ProjectService areThereAnyProjects]) {
         return;
     }
     [self addNewBundleProjectWithName:kDefaultProjectBundleName];

@@ -66,16 +66,11 @@
 + (nullable instancetype)projectWithLoadingInfo:(ProjectLoadingInfo* _Nonnull)loadingInfo;
 + (BOOL)projectExistsWithProjectName:(NSString* _Nonnull)projectName
                            projectID:(NSString* _Nonnull)projectID;
-+ (BOOL)projectExistsWithProjectID:(NSString* _Nonnull)projectID;
-+ (BOOL)areThereAnyProjects;
 + (void)copyProjectWithSourceProjectName:(NSString* _Nonnull)sourceProjectName
                          sourceProjectID:(NSString* _Nonnull)sourceProjectID
                   destinationProjectName:(NSString* _Nonnull)destinationProjectName;
 + (void)removeProjectFromDiskWithProjectName:(NSString* _Nonnull)projectName
                                    projectID:(NSString* _Nonnull)projectID;
-+ (BOOL)isLastUsedProject:(NSString* _Nonnull)projectName projectID:(NSString* _Nonnull)projectID;
-+ (NSString* _Nonnull)basePath;
-+ (NSArray* _Nonnull)allProjectNames;
 //+ (NSString* _Nonnull)projectDirectoryNameForProjectName:(NSString* _Nonnull)projectName
 //                                               projectID:(NSString* _Nullable)projectID;
 //+ (nullable ProjectLoadingInfo *)projectLoadingInfoForProjectDirectoryName:(NSString* _Nonnull)projectDirectoryName;

@@ -147,13 +147,13 @@
                                 minInputLength:kMinNumOfProjectNameCharacters
                                 maxInputLength:kMaxNumOfProjectNameCharacters
                       invalidInputAlertMessage:kLocalizedProjectNameAlreadyExistsDescription
-                                 existingNames:[Project allProjectNames]];
+                                 existingNames:[ProjectService getAllProjectNames]];
 }
 
 - (void)addProjectAndSegueToItActionForProjectWithName:(NSString*)projectName
 {
     static NSString *segueToNewProjectIdentifier = kSegueToNewProject;
-    projectName = [Util uniqueName:projectName existingNames:[Project allProjectNames]];
+    projectName = [Util uniqueName:projectName existingNames:[ProjectService getAllProjectNames]];
     self.defaultProject = [Project defaultProjectWithName:projectName projectID:nil];
     if ([self shouldPerformSegueWithIdentifier:segueToNewProjectIdentifier sender:self]) {
         [self addProject:self.defaultProject.header.programName];
@@ -164,7 +164,7 @@
 - (void)copyProjectActionForProjectWithName:(NSString*)projectName
                    sourceProjectLoadingInfo:(ProjectLoadingInfo*)sourceProjectLoadingInfo
 {
-    projectName = [Util uniqueName:projectName existingNames:[Project allProjectNames]];
+    projectName = [Util uniqueName:projectName existingNames:[ProjectService getAllProjectNames]];
     ProjectLoadingInfo *destinationProjectLoadingInfo = [self addProject:projectName];
     if (! destinationProjectLoadingInfo)
         return;
@@ -198,7 +198,7 @@
     
     [self showLoadingView];
     Project *project = [Project projectWithLoadingInfo:projectLoadingInfo];
-    newProjectName = [Util uniqueName:newProjectName existingNames:[Project allProjectNames]];
+    newProjectName = [Util uniqueName:newProjectName existingNames:[ProjectService getAllProjectNames]];
     [project renameToProjectName:newProjectName];
     [self renameOldProjectWithName:projectLoadingInfo.visibleName
                          projectID:projectLoadingInfo.projectID
@@ -392,10 +392,10 @@
                                          minInputLength:kMinNumOfProjectNameCharacters
                                          maxInputLength:kMaxNumOfProjectNameCharacters
                                invalidInputAlertMessage:kLocalizedProjectNameAlreadyExistsDescription
-                                          existingNames:[Project allProjectNames]];
+                                          existingNames:[ProjectService getAllProjectNames]];
          }]
          addDefaultActionWithTitle:kLocalizedRename handler:^{
-             NSMutableArray *unavailableNames = [[Project allProjectNames] mutableCopy];
+             NSMutableArray *unavailableNames = [[ProjectService getAllProjectNames] mutableCopy];
              [unavailableNames removeString:info.visibleName];
              [Util askUserForUniqueNameAndPerformAction:@selector(renameProjectActionToName:sourceProjectLoadingInfo:)
                                                  target:self

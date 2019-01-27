@@ -43,18 +43,16 @@ import Foundation
     }
 
     @objc static func getProjectPath(projectName: String, projectID: String?) -> String {
-        return String.init(format: "%@%@/", Project.basePath(), getProjectDirectoryName(projectName: Util.replaceBlockedCharacters(for: projectName), projectID: projectID))
+        return String.init(format: "%@%@/", ProjectService.basePath(), getProjectDirectoryName(projectName: Util.replaceBlockedCharacters(for: projectName), projectID: projectID))
     }
 
-    @objc static func setAsLastUsedProject(project: Project)
-    {
+    @objc static func setAsLastUsedProject(project: Project) {
         Util.setLastProjectWithName(project.header.programName, projectID: project.header.programID)
     }
 
-    @objc static func getAllProjectLoadingInfos() -> [ProjectLoadingInfo]
-    {
-        let basePath = Project.basePath()
-        let subdirNames: [String]
+    @objc static func getAllProjectLoadingInfos() -> [ProjectLoadingInfo] {
+        let basePath = ProjectService.basePath()
+        var subdirNames: [String]
 
         do {
            subdirNames = try FileManager.default.contentsOfDirectory(atPath: basePath)
@@ -62,7 +60,7 @@ import Foundation
             return [ProjectLoadingInfo]()
         }
 
-        subdirNames.sorted { $0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending }
+        subdirNames = subdirNames.sorted { $0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending }
 
         var projectLoadingInfos = [ProjectLoadingInfo]()
 
@@ -80,8 +78,45 @@ import Foundation
                 continue
             }
         }
-        return projectLoadingInfos;
+        return projectLoadingInfos
     }
+
+    @objc static func getAllProjectNames() -> [String] {
+        let allProjectLoadingInfos = ProjectService.getAllProjectLoadingInfos()
+        var projectNames = [String]()
+        for loadingInfo in allProjectLoadingInfos {
+            projectNames.append(loadingInfo.visibleName)
+        }
+        return projectNames
+    }
+
+    @objc static func areThereAnyProjects() -> Bool {
+        return !getAllProjectNames().isEmpty
+    }
+
+    @objc static func isLastUsedProject(projectName: String, projectID: String) -> Bool {
+        let lastUsedInfo = Util.lastUsedProjectLoadingInfo()
+        let info = ProjectLoadingInfo.init(forProjectWithName: projectName, projectID: projectID)
+        return lastUsedInfo?.isEqual(to: info) ?? false
+    }
+
+    @objc static func basePath() -> String {
+        return String.init(format: "%@/%@/", Util.applicationDocumentsDirectory(), kProjectsFolder)
+    }
+
+    // returns true if either same projectID and/or same projectName already exists
+    @objc static func projectExists(projectID: String) -> Bool {
+        let allProjectLoadingInfos = ProjectService.getAllProjectLoadingInfos()
+        for projectLoadingInfo in allProjectLoadingInfos {
+            if projectID.elementsEqual(projectLoadingInfo.projectID) {
+                return true
+            }
+        }
+        return false
+    }
+
+
+
 //
 //
 //
@@ -104,7 +139,7 @@ import Foundation
 //
 //        // if this is currently set as last used project, then look for next project to set it as
 //        // the last used project
-//        if (Project.isLastUsedProject(projectName, projectID: projectId)) {
+//        if (ProjectService.isLastUsedProject(projectName, projectID: projectId)) {
 //            Util.setLastProjectWithName(nil, projectID: nil)
 //            let allProjectLoadingInfos = Project.allProjectLoadingInfos()
 //            for projectLoadingInfo in allProjectLoadingInfos {
@@ -119,7 +154,7 @@ import Foundation
 //
 //        // if this is currently set as last used project, then look for next project to set it as
 //        // the last used project
-//        if ([Project isLastUsedProject:projectName projectID:projectID]) {
+//        if ([ProjectService isLastUsedProject:projectName projectID:projectID]) {
 //            [Util setLastProjectWithName:nil projectID:nil];
 //            NSArray *allProjectLoadingInfos = [[self class] allProjectLoadingInfos];
 //            for (ProjectLoadingInfo *projectLoadingInfo in allProjectLoadingInfos) {
