@@ -33,7 +33,7 @@ import CoreBluetooth
         self.showLoadingView()
 
         DispatchQueue.global(qos: .userInitiated).async {
-            self.project = Project.init(loadingInfo: Util.lastUsedProjectLoadingInfo())!
+            self.project = ProjectService.getProject(loadingInfo: Util.lastUsedProjectLoadingInfo())!
             let readyToStart = self.notifyUserAboutUnavailableResources(navigationController: navigationController)
 
             DispatchQueue.main.async {

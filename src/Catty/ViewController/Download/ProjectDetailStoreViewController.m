@@ -178,7 +178,7 @@
         NSString *localProjectName = [Project projectNameForProjectID:self.project.projectID];
         
         // check if project loaded successfully -> not nil
-        self.loadedProject = [Project projectWithLoadingInfo:[ProjectLoadingInfo projectLoadingInfoForProjectWithName:localProjectName projectID:self.project.projectID]];
+        self.loadedProject = [ProjectService getProjectWithLoadingInfo:[ProjectLoadingInfo projectLoadingInfoForProjectWithName:localProjectName projectID:self.project.projectID]];
         
         if (self.loadedProject) {
             return YES;

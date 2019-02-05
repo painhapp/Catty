@@ -427,48 +427,9 @@
     return project;
 }
 
-+ (nullable instancetype)projectWithLoadingInfo:(ProjectLoadingInfo*)loadingInfo
-{
-    NSDebug(@"Try to load project '%@'", loadingInfo.visibleName);
-    NSDebug(@"Path: %@", loadingInfo.basePath);
-    NSString *xmlPath = [NSString stringWithFormat:@"%@%@", loadingInfo.basePath, kProjectCodeFileName];
-    NSDebug(@"XML-Path: %@", xmlPath);
-
-    //    //######### FIXME remove that later!! {
-    //        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    //        xmlPath = [bundle pathForResource:@"ValidProjectAllBricks093" ofType:@"xml"];
-    //    // }
-
-    Project *project = nil;
-    CGFloat languageVersion = [Util detectCBLanguageVersionFromXMLWithPath:xmlPath];
-
-    if (languageVersion == kCatrobatInvalidVersion) {
-        NSDebug(@"Invalid catrobat language version!");
-        return nil;
-    }
-
-    // detect right parser for correct catrobat language version
-    CBXMLParser *catrobatParser = [[CBXMLParser alloc] initWithPath:xmlPath];
-    if (! [catrobatParser isSupportedLanguageVersion:languageVersion]) {
-        Parser *parser = [[Parser alloc] init];
-        project = [parser generateObjectForProjectWithPath:xmlPath];
-    } else {
-        project = [catrobatParser parseAndCreateProject];
-    }
-    project.header.programID = loadingInfo.projectID;
-
-    if (! project)
-        return nil;
-
-    NSDebug(@"%@", [project description]);
-    NSDebug(@"ProjectResolution: width/height:  %f / %f", project.header.screenWidth.floatValue, project.header.screenHeight.floatValue);
-    [self updateLastModificationTimeForProjectWithName:loadingInfo.visibleName projectID:loadingInfo.projectID];
-    return project;
-}
-
 + (instancetype)lastUsedProject
 {
-    return [Project projectWithLoadingInfo:[Util lastUsedProjectLoadingInfo]];
+    return [ProjectService getProjectWithLoadingInfo:[Util lastUsedProjectLoadingInfo]];
 }
 
 + (void)updateLastModificationTimeForProjectWithName:(NSString*)projectName projectID:(NSString*)projectID
@@ -491,7 +452,7 @@
     CBFileManager *fileManager = [CBFileManager sharedManager];
     [fileManager copyExistingDirectoryAtPath:sourceProjectPath toPath:destinationProjectPath];
     ProjectLoadingInfo *destinationProjectLoadingInfo = [ProjectLoadingInfo projectLoadingInfoForProjectWithName:destinationProjectName projectID:nil];
-    Project *project = [Project projectWithLoadingInfo:destinationProjectLoadingInfo];
+    Project *project = [ProjectService getProjectWithLoadingInfo:destinationProjectLoadingInfo];
     project.header.programName = destinationProjectLoadingInfo.visibleName;
     [project saveToDiskWithNotification:YES];
 }
@@ -537,10 +498,5 @@
     }
     [self renameToProjectName:kLocalizedMyFirstProject]; // saves to disk!
 }
-
-//+ (NSString*)projectPathForProjectWithName:(NSString*)projectName projectID:(NSString*)projectID
-//{
-//    return [NSString stringWithFormat:@"%@%@/", [Project basePath], [[self class] projectDirectoryNameForProjectName:[Util replaceBlockedCharactersForString:projectName] projectID:projectID]];
-//}
 
 @end

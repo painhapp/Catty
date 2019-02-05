@@ -331,7 +331,7 @@
     }
     [self addNewBundleProjectWithName:kDefaultProjectBundleName];
     ProjectLoadingInfo *loadingInfo = [ProjectLoadingInfo projectLoadingInfoForProjectWithName:kDefaultProjectBundleName projectID:nil];
-    Project *project = [Project projectWithLoadingInfo:loadingInfo];
+    Project *project = [ProjectService getProjectWithLoadingInfo:loadingInfo];
     [project translateDefaultProject];
 }
 

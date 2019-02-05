@@ -63,7 +63,6 @@
 + (instancetype _Nonnull)lastUsedProject;
 + (void)updateLastModificationTimeForProjectWithName:(NSString* _Nonnull)projectName
                                            projectID:(NSString* _Nonnull)projectID;
-+ (nullable instancetype)projectWithLoadingInfo:(ProjectLoadingInfo* _Nonnull)loadingInfo;
 + (BOOL)projectExistsWithProjectName:(NSString* _Nonnull)projectName
                            projectID:(NSString* _Nonnull)projectID;
 + (void)copyProjectWithSourceProjectName:(NSString* _Nonnull)sourceProjectName

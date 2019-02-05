@@ -197,7 +197,7 @@
         return;
     
     [self showLoadingView];
-    Project *project = [Project projectWithLoadingInfo:projectLoadingInfo];
+    Project *project = [ProjectService getProjectWithLoadingInfo:projectLoadingInfo];
     newProjectName = [Util uniqueName:newProjectName existingNames:[ProjectService getAllProjectNames]];
     [project renameToProjectName:newProjectName];
     [self renameOldProjectWithName:projectLoadingInfo.visibleName
@@ -411,7 +411,7 @@
                                           existingNames:unavailableNames];
          }]
          addDefaultActionWithTitle:kLocalizedDescription handler:^{
-             Project *project = [Project projectWithLoadingInfo:info];
+             Project *project = [ProjectService getProjectWithLoadingInfo:info];
              ProjectDescriptionViewController *dViewController = [[ProjectDescriptionViewController alloc] init];
              dViewController.delegate = self;
              self.selectedProject = project;
@@ -556,7 +556,7 @@
             NSArray *sectionInfos = [self.projectLoadingInfoDict objectForKey:[[sectionTitle substringToIndex:1] uppercaseString]];
 
             ProjectLoadingInfo *info = [sectionInfos objectAtIndex:path.row];
-            self.selectedProject = [Project projectWithLoadingInfo:info];
+            self.selectedProject = [ProjectService getProjectWithLoadingInfo:info];
             if (![self.selectedProject.header.programName isEqualToString:info.visibleName]) {
                 self.selectedProject.header.programName = info.visibleName;
                 [self.selectedProject saveToDiskWithNotification:YES];

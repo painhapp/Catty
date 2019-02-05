@@ -385,7 +385,7 @@
         [self stopProject];
     
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.project = [Project projectWithLoadingInfo:[Util lastUsedProjectLoadingInfo]];
+            self.project = [ProjectService getProjectWithLoadingInfo:[Util lastUsedProjectLoadingInfo]];
             [self setupSceneAndStart];
         });
     });

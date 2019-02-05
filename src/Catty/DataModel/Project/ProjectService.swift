@@ -115,6 +115,38 @@ import Foundation
         return false
     }
 
+    @objc static func getProject(loadingInfo: ProjectLoadingInfo) -> Project? {
+        debugPrint("Try to load project '\(loadingInfo.visibleName ?? "No project name found")'")
+        debugPrint("Path: \(loadingInfo.basePath ?? "No base path found")")
+        let xmlPath = String.init(format: "%@%@", loadingInfo.basePath, kProjectCodeFileName)
+        debugPrint("XML-Path: \(xmlPath)")
+
+        var project : Project?;
+        let languageVersion = Util.detectCBLanguageVersionFromXML(withPath: xmlPath)
+        if Float(languageVersion) == kCatrobatInvalidVersion {
+            debugPrint("Invalid catrobat language version!")
+            return nil
+        }
+        // detect right parser for correct catrobat language version
+        let catrobatParser = CBXMLParser.init(path: xmlPath)
+        if !catrobatParser!.isSupportedLanguageVersion(languageVersion) {
+            let parser = Parser()
+            project = parser.generateObjectForProject(withPath: xmlPath)
+        } else {
+            project = catrobatParser?.parseAndCreateProject()
+        }
+
+        project?.header.programID = loadingInfo.projectID
+
+        if let project = project {
+            debugPrint(project.description)
+            debugPrint("ProjectResolution: width/height:  \(project.header.screenWidth.floatValue) / \(project.header.screenHeight.floatValue)")
+            Project.updateLastModificationTimeForProject(withName: loadingInfo.visibleName, projectID: loadingInfo.projectID)
+        }
+
+        return project
+    }
+
 
 
 //

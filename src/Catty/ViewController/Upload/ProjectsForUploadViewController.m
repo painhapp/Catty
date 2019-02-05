@@ -277,7 +277,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPhone" bundle: nil];
     UploadInfoViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"UploadController"];
     if (self.uploadingProjectInfos.count) {
-        Project * prog = [Project projectWithLoadingInfo:self.uploadingProjectInfos[0]];
+        Project * prog = [ProjectService getProjectWithLoadingInfo:self.uploadingProjectInfos[0]];
         vc.project = prog;
         [self.navigationController pushViewController:vc animated:YES];
     } else {
