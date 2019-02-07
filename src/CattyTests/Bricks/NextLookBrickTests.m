@@ -72,7 +72,7 @@
 
     action();
     XCTAssertEqual(spriteNode.currentLook,look1, @"NextLookBrick not correct");
-    [Project removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
+    [ProjectService removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
 }
 
 @end

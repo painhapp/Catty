@@ -39,13 +39,13 @@ final class CBFileManagerTests: XCTestCase {
         let projectName = "testProject"
 
         Project.removeProjectFromDisk(withProjectName: projectName, projectID: projectId)
-        XCTAssertFalse(Project.projectExists(withProjectName: projectName, projectID: projectId))
+        XCTAssertFalse(ProjectService.projectExists(projectName: projectName, projectID: projectId))
 
         let projectData = NSData(contentsOf: Bundle.main.url(forResource: "My first project", withExtension: "catrobat")!)! as Data
         let result = fileManager.unzipAndStore(projectData, withProjectID: projectId, withName: projectName)
 
         XCTAssertTrue(result)
-        XCTAssertTrue(Project.projectExists(withProjectName: projectName, projectID: projectId))
+        XCTAssertTrue(ProjectService.projectExists(projectName: projectName, projectID: projectId))
     }
 
     func testUnzipAndStoreWithInvalidData() {
@@ -53,12 +53,12 @@ final class CBFileManagerTests: XCTestCase {
         let projectName = "testProject"
 
         Project.removeProjectFromDisk(withProjectName: projectName, projectID: projectId)
-        XCTAssertFalse(Project.projectExists(withProjectName: projectName, projectID: projectId))
+        XCTAssertFalse(ProjectService.projectExists(projectName: projectName, projectID: projectId))
 
         let programData = NSData(contentsOf: Bundle.main.url(forResource: "Document-Icon", withExtension: "png")!)! as Data
         let result = fileManager.unzipAndStore(programData, withProjectID: projectId, withName: projectName)
 
         XCTAssertFalse(result)
-        XCTAssertFalse(Project.projectExists(withProjectName: projectName, projectID: projectId))
+        XCTAssertFalse(ProjectService.projectExists(projectName: projectName, projectID: projectId))
     }
 }

@@ -141,71 +141,73 @@ import Foundation
         if let project = project {
             debugPrint(project.description)
             debugPrint("ProjectResolution: width/height:  \(project.header.screenWidth.floatValue) / \(project.header.screenHeight.floatValue)")
-            Project.updateLastModificationTimeForProject(withName: loadingInfo.visibleName, projectID: loadingInfo.projectID)
+            ProjectService.updateLastModificationTimeOfProject(projectName: loadingInfo.visibleName, projectID: loadingInfo.projectID)
         }
 
         return project
     }
 
+    @objc static func removeProjectFromDisk(projectName: String, projectID: String) {
+        let fileManager = CBFileManager.shared()
+        let projectPath = ProjectService.getProjectPath(projectName: projectName, projectID: projectID)
+        if fileManager!.directoryExists(projectPath) {
+            fileManager?.deleteDirectory(projectPath)
+        }
 
+        // if this is currently set as last used project, then look for next project to set it as
+        // the last used project
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//    static func removeProjectFromDiskWithProjectName(projectName: String, projectId: String) {
-//        let fileManager = CBFileManager.shared()
-//        let projectPath = self.projectPathForProjectWithName(projectName: projectName, projectID: projectId)
-//
-//        if ((fileManager?.directoryExists(projectPath))!) {
-//            fileManager?.deleteDirectory(projectPath)
-//        }
-//
-//        // if this is currently set as last used project, then look for next project to set it as
-//        // the last used project
-//        if (ProjectService.isLastUsedProject(projectName, projectID: projectId)) {
-//            Util.setLastProjectWithName(nil, projectID: nil)
-//            let allProjectLoadingInfos = Project.allProjectLoadingInfos()
-//            for projectLoadingInfo in allProjectLoadingInfos {
-//                Util.setLastProjectWithName(projectLoadingInfo, projectID: <#T##String!#>)
-//                break;
-//            }
-//        }
-//
-//
-//
-//
-//
-//        // if this is currently set as last used project, then look for next project to set it as
-//        // the last used project
-//        if ([ProjectService isLastUsedProject:projectName projectID:projectID]) {
-//            [Util setLastProjectWithName:nil projectID:nil];
-//            NSArray *allProjectLoadingInfos = [[self class] allProjectLoadingInfos];
-//            for (ProjectLoadingInfo *projectLoadingInfo in allProjectLoadingInfos) {
-//                [Util setLastProjectWithName:projectLoadingInfo.visibleName projectID:projectLoadingInfo.projectID];
-//                break;
-//            }
-//        }
-//
-//        // if there are no projects left, then automatically recreate default project
-//        [fileManager addDefaultProjectToProjectsRootDirectoryIfNoProjectsExist];
-//    }
-//
-//
-//
+        if ProjectService.isLastUsedProject(projectName: projectName, projectID: projectID) {
+            Util.setLastProjectWithName(nil, projectID: nil)
+            let allProjectLoadingInfos = ProjectService.getAllProjectLoadingInfos()
+            for projectLoadingInfo in allProjectLoadingInfos {
+                Util.setLastProjectWithName(projectLoadingInfo.visibleName, projectID:projectLoadingInfo.projectID)
+                break;
+            }
+        }
+
+        // if there are no projects left, then automatically recreate default project
+        fileManager!.addDefaultProjectToProjectsRootDirectoryIfNoProjectsExist()
+    }
+
+    @objc static func getProjectName(projectID: String) -> String? {
+        if projectID.isEmpty {
+            return nil
+        }
+
+        let allProjectLoadingInfos = ProjectService.getAllProjectLoadingInfos()
+        for projectLoadingInfo in allProjectLoadingInfos {
+            if projectLoadingInfo.projectID.elementsEqual(projectID) {
+                return projectLoadingInfo.visibleName
+            }
+        }
+
+        return nil
+    }
+
+    @objc static func updateLastModificationTimeOfProject(projectName: String, projectID: String) {
+        let xmlPath = String.init(format: "%@%@", ProjectService.getProjectPath(projectName: projectName, projectID: projectID), kProjectCodeFileName)
+        let fileManager = CBFileManager.shared()
+        fileManager?.changeModificationDate(Date.init(), forFileAtPath: xmlPath)
+    }
+
+    @objc static func projectExists(projectName: String, projectID: String) -> Bool {
+        let allProjectLoadingInfos = ProjectService.getAllProjectLoadingInfos()
+
+        // check if project with same ID already exists
+        if !projectID.isEmpty {
+            if ProjectService.projectExists(projectID: projectID) {
+                return true
+            }
+        }
+
+        // no projectID match => check if project with same name already exists
+        for projectLoadingInfo in allProjectLoadingInfos {
+            if projectName.elementsEqual(projectLoadingInfo.visibleName) {
+                return true
+            }
+        }
+
+        return false
+    }
 }
-
-
-
-
-
-
-

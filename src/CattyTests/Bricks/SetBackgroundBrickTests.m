@@ -78,7 +78,7 @@
     action();
     
     XCTAssertEqual(backgroundObject.spriteNode.currentLook, look1, @"SetBackgroundBrick not correct");
-    [Project removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
+    [ProjectService removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
 }
 
 @end

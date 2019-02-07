@@ -152,7 +152,7 @@
 
 - (void)removeFromDisk
 {
-    [Project removeProjectFromDiskWithProjectName:[Util enableBlockedCharactersForString:self.header.programName] projectID:self.header.programID];
+    [ProjectService removeProjectFromDiskWithProjectName:[Util enableBlockedCharactersForString:self.header.programName] projectID:self.header.programID];
 }
 
 - (void)saveToDiskWithNotification:(BOOL)notify
@@ -364,41 +364,6 @@
 //    return [ProjectLoadingInfo projectLoadingInfoForProjectWithName:projectName projectID:projectID];
 //}
 
-+ (nullable NSString *)projectNameForProjectID:(NSString*)projectID
-{
-    if ((! projectID) || (! [projectID length])) {
-        return nil;
-    }
-    NSArray *allProjectLoadingInfos = [ProjectService getAllProjectLoadingInfos];
-    for (ProjectLoadingInfo *projectLoadingInfo in allProjectLoadingInfos) {
-        if ([projectLoadingInfo.projectID isEqualToString:projectID]) {
-            return projectLoadingInfo.visibleName;
-        }
-    }
-    return nil;
-}
-
-// returns true if either same projectID and/or same projectName already exists
-+ (BOOL)projectExistsWithProjectName:(NSString*)projectName projectID:(NSString*)projectID
-{
-    NSArray *allProjectLoadingInfos = [ProjectService getAllProjectLoadingInfos];
-
-    // check if project with same ID already exists
-    if (projectID && [projectID length]) {
-        if ([ProjectService projectExistsWithProjectID:projectID]) {
-            return YES;
-        }
-    }
-
-    // no projectID match => check if project with same name already exists
-    for (ProjectLoadingInfo *projectLoadingInfo in allProjectLoadingInfos) {
-        if ([projectName isEqualToString:projectLoadingInfo.visibleName]) {
-            return YES;
-        }
-    }
-    return NO;
-}
-
 + (instancetype)defaultProjectWithName:(NSString*)projectName projectID:(NSString*)projectID
 {
     projectName = [Util uniqueName:projectName existingNames:[ProjectService getAllProjectNames]];
@@ -432,15 +397,6 @@
     return [ProjectService getProjectWithLoadingInfo:[Util lastUsedProjectLoadingInfo]];
 }
 
-+ (void)updateLastModificationTimeForProjectWithName:(NSString*)projectName projectID:(NSString*)projectID
-{
-    NSString *xmlPath = [NSString stringWithFormat:@"%@%@",
-                         [ProjectService getProjectPathWithProjectName:projectName projectID:projectID],
-                         kProjectCodeFileName];
-    CBFileManager *fileManager = [CBFileManager sharedManager];
-    [fileManager changeModificationDate:[NSDate date] forFileAtPath:xmlPath];
-}
-
 + (void)copyProjectWithSourceProjectName:(NSString*)sourceProjectName
                          sourceProjectID:(NSString*)sourceProjectID
                   destinationProjectName:(NSString*)destinationProjectName
@@ -455,29 +411,6 @@
     Project *project = [ProjectService getProjectWithLoadingInfo:destinationProjectLoadingInfo];
     project.header.programName = destinationProjectLoadingInfo.visibleName;
     [project saveToDiskWithNotification:YES];
-}
-
-+ (void)removeProjectFromDiskWithProjectName:(NSString*)projectName projectID:(NSString*)projectID
-{
-    CBFileManager *fileManager = [CBFileManager sharedManager];
-    NSString *projectPath = [ProjectService getProjectPathWithProjectName: projectName projectID: projectID];
-    if ([fileManager directoryExists:projectPath]) {
-        [fileManager deleteDirectory:projectPath];
-    }
-
-    // if this is currently set as last used project, then look for next project to set it as
-    // the last used project
-    if ([ProjectService isLastUsedProjectWithProjectName: projectName projectID:projectID]) {
-        [Util setLastProjectWithName:nil projectID:nil];
-        NSArray *allProjectLoadingInfos = [ProjectService getAllProjectLoadingInfos];
-        for (ProjectLoadingInfo *projectLoadingInfo in allProjectLoadingInfos) {
-            [Util setLastProjectWithName:projectLoadingInfo.visibleName projectID:projectLoadingInfo.projectID];
-            break;
-        }
-    }
-
-    // if there are no projects left, then automatically recreate default project
-    [fileManager addDefaultProjectToProjectsRootDirectoryIfNoProjectsExist];
 }
 
 - (void)translateDefaultProject

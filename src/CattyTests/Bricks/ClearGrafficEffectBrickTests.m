@@ -85,7 +85,7 @@
 
     XCTAssertEqualWithAccuracy(spriteNode.alpha, TransparencySensor.defaultRawValue, 0.0001f, @"ClearGraphic alpha is not correctly calculated");
     XCTAssertEqualWithAccuracy(spriteNode.ciBrightness, BrightnessSensor.defaultRawValue, 0.0001f, @"ClearGraphic brightness is not correctly calculated");
-    [Project removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
+    [ProjectService removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
 }
 
 - (void)testClearGraphicEffectBrick2
@@ -139,7 +139,7 @@
 
     XCTAssertEqualWithAccuracy(spriteNode.alpha, TransparencySensor.defaultRawValue, 0.0001f, @"ClearGraphic is not correctly calculated");
     XCTAssertEqualWithAccuracy(spriteNode.ciBrightness, BrightnessSensor.defaultRawValue, 0.0001f, @"ClearGraphic brightness is not correctly calculated");
-    [Project removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
+    [ProjectService removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
 }
 
 @end

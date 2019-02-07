@@ -204,7 +204,7 @@ class HelpWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewDe
             return false
         }
         // check if project exists
-        if projectName != nil && Project.projectExists(withProjectName: projectName!,
+        if projectName != nil && ProjectService.projectExists(projectName: projectName!,
                                                        projectID: projectID!) {
             Util.alert(withText: kLocalizedProjectAlreadyDownloadedDescription)
             return false

@@ -630,7 +630,7 @@
     NSMutableArray* projectLoadingInfos = [[ProjectService getAllProjectLoadingInfos] mutableCopy];
     for (ProjectLoadingInfo *info in projectLoadingInfos) {
         if ([info isEqualToLoadingInfo:oldProjectLoadingInfo]) {
-            [Project removeProjectFromDiskWithProjectName:projectName projectID:projectID];
+            [ProjectService removeProjectFromDiskWithProjectName:projectName projectID:projectID];
             NSIndexPath* indexPath = [self getPathForProjectLoadingInfo:info];
             
             if ([self.tableView numberOfRowsInSection:indexPath.section] > 1)

@@ -71,7 +71,7 @@
     action();
     
     XCTAssertEqualWithAccuracy(180.0f, spriteNode.catrobatBrightness, 0.1f, @"SetBrightnessBrick - Brightness not correct");
-    [Project removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
+    [ProjectService removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
 }
 
 - (void)testSetBrightnessBrickNegative
@@ -103,7 +103,7 @@
     action();
     
     XCTAssertEqualWithAccuracy(0.0f, spriteNode.catrobatBrightness, 0.1f ,@"SetBrightnessBrick - Brightness not correct");
-    [Project removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
+    [ProjectService removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
 }
 
 - (void)testSetBrightnessBrickTooBright
@@ -136,7 +136,7 @@
     action();
     
     XCTAssertEqualWithAccuracy(200.0f, spriteNode.catrobatBrightness, 0.1f, @"SetBrightnessBrick - Brightness not correct");
-    [Project removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
+    [ProjectService removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
 }
 
 - (void)testSetBrightnessBrickWrongInput
@@ -171,7 +171,7 @@
     
     XCTAssertEqualWithAccuracy(0.0f, spriteNode.catrobatBrightness, 0.1f, @"SetBrightnessBrick - Brightness not correct");
     
-    [Project removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
+    [ProjectService removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
 }
 
 @end

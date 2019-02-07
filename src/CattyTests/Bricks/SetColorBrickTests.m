@@ -73,7 +73,7 @@
     
     XCTAssertEqualWithAccuracy(200.0-60.0f, spriteNode.catrobatColor, 0.1f, @"SetColorBrick - Color not correct");
     
-    [Project removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
+    [ProjectService removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
 }
 
 - (void)testSetColorBrickHigher
@@ -107,7 +107,7 @@
     
     XCTAssertEqualWithAccuracy(140.0f, spriteNode.catrobatColor, 0.1f, @"SetColorBrick - Color not correct");
     
-    [Project removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
+    [ProjectService removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
 }
 
 - (void)testSetColorBrickMoreThan2Pi
@@ -140,7 +140,7 @@
     action();
     
     XCTAssertEqualWithAccuracy(30.0f, spriteNode.catrobatColor, 0.1f, @"SetColorBrick - Color not correct");
-    [Project removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
+    [ProjectService removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
 }
 
 - (void)testSetColorBrickWrongInput
@@ -174,7 +174,7 @@
     
     XCTAssertEqualWithAccuracy(0.0f, spriteNode.catrobatColor, 0.1f, @"SetColorBrick - Color not correct");
     
-    [Project removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
+    [ProjectService removeProjectFromDiskWithProjectName:project.header.programName projectID:project.header.programID];
 }
 
 @end

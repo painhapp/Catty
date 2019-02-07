@@ -175,7 +175,7 @@
     if ([identifier isEqualToString:segueToContinue]) {
         // The local project name with same project ID could differ from the original project name.
         // That's because the user could have renamed the downloaded project.
-        NSString *localProjectName = [Project projectNameForProjectID:self.project.projectID];
+        NSString *localProjectName = [ProjectService getProjectNameWithProjectID: self.project.projectID];
         
         // check if project loaded successfully -> not nil
         self.loadedProject = [ProjectService getProjectWithLoadingInfo:[ProjectLoadingInfo projectLoadingInfoForProjectWithName:localProjectName projectID:self.project.projectID]];
