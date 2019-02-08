@@ -210,4 +210,47 @@ import Foundation
 
         return false
     }
+    
+    @objc static func copyProject(sourceProjectName: String, sourceProjectID: String, destinationProjectName: String) {
+        let sourceProjectPath = ProjectService.getProjectPath(projectName: sourceProjectName, projectID: sourceProjectID)
+        destinationProjectName = Util.uniqueName(destinationProjectName, existingNames: ProjectService.getAllProjectNames())
+        
+       
+        let destinationProjectPath = ProjectService.getProjectPath(projectName: destinationProjectName, projectID: nil)
+    
+        let fileManager = CBFileManager.shared()
+        fileManager?.copyExistingDirectory(atPath: sourceProjectPath, toPath: destinationProjectPath)
+        let destinationProjectLoadingInfo = ProjectLoadingInfo(forProjectWithName: destinationProjectName, projectID: nil)
+        let project = ProjectService.getProject(loadingInfo: destinationProjectLoadingInfo!)
+        project!.header.programName = destinationProjectLoadingInfo!.visibleName
+        project!.saveToDisk(withNotification: true)
+    }
+    
+    @objc static func defaultProjectWithName(projectName: String, projectID: String) -> Project {
+        projectName = Util.uniqueName(projectName, existingNames: ProjectService.getAllProjectNames())
+        let project = Project()
+        project.header = Header.default()
+        project.header.programName = projectName
+        project.header.programID = projectID
+
+        let fileManager = CBFileManager.shared()
+        if !fileManager!.directoryExists(projectName) {
+            fileManager?.createDirectory(project.projectPath())
+        }
+
+        let imagesDirName = String.init(format: "%@%@", project.projectPath(), kProjectImagesDirName)
+        if !fileManager!.directoryExists(imagesDirName) {
+            fileManager?.createDirectory(imagesDirName)
+        }
+
+        let soundsDirName = String.init(format: "%@%@", project.projectPath(), kProjectSoundsDirName)
+        if !fileManager!.directoryExists(soundsDirName) {
+            fileManager?.createDirectory(soundsDirName)
+        }
+
+        project.addObject(withName: kLocalizedBackground)
+        debugPrint(project.description)
+        return project
+    }
+
 }
