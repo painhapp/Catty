@@ -9,7 +9,7 @@ pipeline {
     stage('Fastlane Test') {
       steps {
         sh 'cd src'
-        sh 'fastlane test'
+        sh 'fastlane tests'
       }
     }
     stage('Archive') {
