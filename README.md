@@ -78,4 +78,3 @@ The Following License Header should be used for all header and source files.
 </code></pre>
 
 [1]: http://brew.sh
-
