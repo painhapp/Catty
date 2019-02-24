@@ -8,8 +8,7 @@ pipeline {
     }
     stage('Fastlane Test') {
       steps {
-        sh 'cd src'
-        sh 'fastlane tests'
+        sh 'cd src && fastlane tests'
       }
     }
     stage('Archive') {
