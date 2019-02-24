@@ -14,7 +14,6 @@ pipeline {
     stage('Archive') {
       steps {
         archiveArtifacts(artifacts: 'src/fastlane/test_output/', allowEmptyArchive: true)
-        archiveArtifacts(artifacts: 'fastlane/test_output/', allowEmptyArchive: true)
       }
     }
   }
