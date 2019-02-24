@@ -14,7 +14,7 @@ pipeline {
     }
     stage('Archive') {
       steps {
-        archiveArtifacts(artifacts: 'reports/, dist/', allowEmptyArchive: true)
+        archiveArtifacts(artifacts: 'test_output/', allowEmptyArchive: true)
       }
     }
   }
