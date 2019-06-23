@@ -27,25 +27,27 @@ import Foundation
     var subtreeOutputMixer = AKMixer()
     var audioPlayerMixer = AKMixer()
     var audioPlayerCache = IterableCache<AudioPlayer>()
+    var audioPlayerFactory: AudioPlayerFactory
 
     let playerCreationQueue = DispatchQueue(label: "PlayerCreationQueue")
 
-    init(mainOut: AKInput) {
+    init(audioPlayerFactory: AudioPlayerFactory) {
+        self.audioPlayerFactory = audioPlayerFactory
         super.init()
-        setupSubtree(mainOut: mainOut)
+    }
+
+    func setup(mainOut: AKInput) {
+        subtreeOutputMixer.connect(to: mainOut)
+        audioPlayerMixer.connect(to: subtreeOutputMixer)
     }
 
     func playSound(fileName: String, filePath: String, expectation: Expectation?) {
         if let audioPlayer = audioPlayerCache.object(forKey: fileName) {
             startExistingAudioPlayer(audioPlayer: audioPlayer, expectation: expectation)
         } else {
-            let audioFileURL = createFileUrl(fileName: fileName, filePath: filePath)
-            do {
-                let file = try AKAudioFile(forReading: audioFileURL)
-                let audioPlayer = AudioPlayer(soundFile: file, addCompletionHandler: true)
-                startNonExistingAudioPlayer(audioPlayer: audioPlayer, fileName: fileName, expectation: expectation)
-            } catch {
-                print("Could not load audio file with url \(audioFileURL.absoluteString)")
+            let audioPlayer = audioPlayerFactory.createAudioPlayer(fileName: fileName, filePath: filePath)
+            if let player = audioPlayer {
+                startNonExistingAudioPlayer(audioPlayer: player, fileName: fileName, expectation: expectation)
             }
         }
     }
@@ -55,11 +57,13 @@ import Foundation
     }
 
     func setVolumeTo(percent: Double) {
-        subtreeOutputMixer.volume = percent / 100
+        let volume = percent / 100
+        subtreeOutputMixer.volume = MathUtil.moveValueIntoRange(volume, min: 0, max: 1)
     }
 
     func changeVolumeBy(percent: Double) {
-        subtreeOutputMixer.volume += percent / 100
+        let newVolume = subtreeOutputMixer.volume + (percent / 100)
+        subtreeOutputMixer.volume = MathUtil.moveValueIntoRange(newVolume, min: 0, max: 1)
     }
 
     func pauseAllAudioPlayers() {
@@ -79,15 +83,6 @@ import Foundation
         for audioPlayerKey in audioPlayerCache.getKeySet() {
             audioPlayerCache.object(forKey: audioPlayerKey)?.resume()
         }
-    }
-
-    internal func createFileUrl(fileName: String, filePath: String) -> URL {
-        return URL.init(fileURLWithPath: filePath + "/" + fileName)
-    }
-
-    private func setupSubtree(mainOut: AKInput) {
-        subtreeOutputMixer.connect(to: mainOut)
-        audioPlayerMixer.connect(to: subtreeOutputMixer)
     }
 
     private func startNonExistingAudioPlayer(audioPlayer: AudioPlayer, fileName: String, expectation: Expectation?) {

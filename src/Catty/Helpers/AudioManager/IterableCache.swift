@@ -41,7 +41,7 @@ public class IterableCache<ObjectType: AnyObject>: NSObject, NSCacheDelegate {
     }
 
     func object(forKey: String) -> ObjectType? {
-        var object:ObjectType?
+        var object: ObjectType?
         _ = cacheQueue.sync {
             object = cache.object(forKey: forKey as NSString)
         }
@@ -52,12 +52,13 @@ public class IterableCache<ObjectType: AnyObject>: NSObject, NSCacheDelegate {
         return self.keySet
     }
 
-    func removeFromKeySet(key: String) {
+    private func removeFromKeySet(key: String) {
         keySet.remove(key)
     }
 
     func removeAllObjects() {
         cache.removeAllObjects()
+        keySet.removeAll()
     }
 
     public func cache(_ cache: NSCache<AnyObject, AnyObject>, willEvictObject obj: Any) {

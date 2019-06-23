@@ -27,15 +27,29 @@ import Foundation
     var mainOut = AKMixer()
     var subtrees = [String: AudioSubtree]()
     let subtreeCreationQueue = DispatchQueue(label: "SubtreeCreationQueue")
+    let audioPlayerFactory: AudioPlayerFactory
 
-    override init() {
+    init(audioPlayerFactory: AudioPlayerFactory = StandardAudioPlayerFactory()) {
+        self.audioPlayerFactory = audioPlayerFactory
+        super.init()
+    }
+
+    @objc func start() {
         AudioKit.output = mainOut
         do {
             try AudioKit.start()
         } catch {
             print("could not start audio engine")
         }
-        super.init()
+    }
+
+    @objc func shutdown() {
+        do {
+            try AudioKit.stop()
+            try AudioKit.shutdown()
+        } catch {
+            print("Something went wrong when stopping the audio engine!")
+        }
     }
 
     @objc func pauseAudioEngine() {
@@ -65,30 +79,21 @@ import Foundation
         subtree.changeVolumeBy(percent: percent)
     }
 
-    @objc func pauseAllAudioPlayers() {
+    private func pauseAllAudioPlayers() {
         for (_, subtree) in subtrees {
             subtree.pauseAllAudioPlayers()
         }
     }
 
-    @objc func resumeAllAudioPlayers() {
+    private func resumeAllAudioPlayers() {
         for (_, subtree) in subtrees {
             subtree.resumeAllAudioPlayers()
         }
     }
 
-    @objc func stopAllAudioPlayers() {
+    private func stopAllAudioPlayers() {
         for (_, subtree) in subtrees {
             subtree.stopAllAudioPlayers()
-        }
-    }
-
-    @objc func shutdown() {
-        do {
-            try AudioKit.stop()
-            try AudioKit.shutdown()
-        } catch {
-            print("Something went wrong!")
         }
     }
 
@@ -102,7 +107,8 @@ import Foundation
     }
 
     internal func createNewAudioSubtree(key: String) -> AudioSubtree {
-        let subtree = AudioSubtree(mainOut: mainOut)
+        let subtree = AudioSubtree(audioPlayerFactory: audioPlayerFactory)
+        subtree.setup(mainOut: mainOut)
         subtrees[key] = subtree
         return subtree
     }

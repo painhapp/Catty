@@ -27,23 +27,20 @@ class AudioPlayer {
 
     let akPlayer: AKPlayer
     var playerIsFinishedExpectation: Expectation?
+    var fileName: String
+    var soundCompletionHandler: (() -> Void)!
     var isPaused = false
     var isDiscarded = false
 
     let playingQueue = DispatchQueue(label: "PlayingQueue")
 
     init(soundFile: AVAudioFile, addCompletionHandler: Bool) {
+        fileName = soundFile.fileNamePlusExtension
         akPlayer = AKPlayer(audioFile: soundFile)
         akPlayer.isLooping = false
         if addCompletionHandler {
+            soundCompletionHandler = standardSoundCompletionHandler
             akPlayer.completionHandler = soundCompletionHandler
-        }
-    }
-
-    func soundCompletionHandler() {
-        if let expectation = self.playerIsFinishedExpectation {
-            expectation.fulfill()
-            playerIsFinishedExpectation = nil
         }
     }
 
@@ -64,7 +61,7 @@ class AudioPlayer {
     func stop() {
         self.soundCompletionHandler()
         akPlayer.stop()
-        RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.01)) //Hack. Otherwise a player might not play iat all if play is executed too fast after the stop command
+        RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.01)) //Hack. Otherwise a player might not play at all if play is executed too fast after the stop command
     }
 
     func remove() {
@@ -99,11 +96,18 @@ class AudioPlayer {
     }
 
     func getFileName() -> String {
-        if let file = akPlayer.audioFile {
-            return file.fileNamePlusExtension
-        } else {
-            debugPrint("No file found for player")
-            return "no file found"
+        return fileName
+    }
+
+    func setSoundCompletionHandler(_ completionHandler: @escaping () -> Void) {
+        soundCompletionHandler = completionHandler
+        akPlayer.completionHandler = completionHandler
+    }
+
+    private func standardSoundCompletionHandler() {
+        if let expectation = self.playerIsFinishedExpectation {
+            expectation.fulfill()
+            playerIsFinishedExpectation = nil
         }
     }
 
