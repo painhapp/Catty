@@ -12,11 +12,6 @@ pipeline {
   }
 
   stages {
-    stage('Prepare') {
-      steps {
-        sh 'make init'
-      }
-    }
     stage('Build') {
       steps {
         sh 'cd src && fastlane cifix'
