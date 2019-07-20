@@ -212,7 +212,6 @@ platform :ios do
   end
 
   lane :cifix do
-    setup_jenkins
     sh ("security list-keychains")
     sh ("security unlock-keychain -p $PASSWORD ${HOME}/Library/Keychains/login.keychain-db")
     sh ("security set-keychain-settings -t 7200 -l ${HOME}/Library/Keychains/login.keychain-db")
