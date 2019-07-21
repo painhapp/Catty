@@ -207,11 +207,12 @@ platform :ios do
   desc "Upload Metadata to AppStore"
   lane :upload_metadata do
     deliver(
+      skip_binary_upload: true,
       submit_for_review: false,
       automatic_release: false,
       force: true, # Skip HTMl report verification
       metadata_path: "fastlane/crowdin/catty/AppStore",
-      screenshots_path: "fastlane/crowdin/catty/screenshots"
+      screenshots_path: "fastlane/crowdin/catty/screenshots",
     )
   end
 
