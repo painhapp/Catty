@@ -199,6 +199,7 @@ platform :ios do
   desc "Prepare Metadata for AppStore"
   lane :prepare_metadata do
     crowdin_download #"fastlane/crowdin/catty/AppStore"
+    sh ("find crowdin/catty/AppStore/* ! -name 'es' -type d -exec rm -rf {} +")
     snapshot
   end
 
@@ -206,7 +207,8 @@ platform :ios do
   lane :upload_metadata do
     deliver(
       submit_for_review: false,
-      force: false,
+      automatic_release: false,
+      force: true, # Skip HTMl report verification
       metadata_path: "fastlane/crowdin/catty/AppStore",
       screenshots_path: "fastlane/crowdin/catty/screenshots"
     )

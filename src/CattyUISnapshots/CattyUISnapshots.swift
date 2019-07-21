@@ -63,7 +63,5 @@ class CattyUISnapshots: XCTestCase {
         app.tabBars.buttons.element(boundBy: 1).tap()
         sleep(5)
         snapshot("02Explore")
-
-        XCTAssertTrue(true)
     }
 }
