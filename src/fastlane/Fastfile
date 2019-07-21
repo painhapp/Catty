@@ -214,7 +214,7 @@ platform :ios do
   lane :cifix do
     sh ("security list-keychains")
     sh ("security unlock-keychain -p $PASSWORD ${HOME}/Library/Keychains/login.keychain-db")
-    sh ("security set-keychain-settings -t 7200 -l ${HOME}/Library/Keychains/login.keychain-db")
+    sh ("security set-keychain-settings -t 999999 -l ${HOME}/Library/Keychains/login.keychain-db")
     sh ("security list-keychains")
   end
 
