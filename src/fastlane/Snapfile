@@ -1,14 +1,28 @@
 # A list of devices you want to take the screenshots from
 devices([
-  "iPhone XS Max",
-  "iPhone 8 Plus",
+  "iPhone XS Max", #6.5 inch screenshots
+  "iPhone 8 Plus", #5.5 inch screenshots
 ])
 
+#Valid directory names are: ["ca", "cs", "da", "de-DE", "el", "en-AU", "en-CA", "en-GB", "en-US",
+#"es-ES", "es-MX", "fi", "fr-CA", "fr-FR", "he", "hi", "hr", "hu", "id", "it", "ja", "ko", "ms", 
+#"nl-NL", "no", "pl", "pt-BR", "pt-PT", "ro", "ru", "sk", "sv", "th", "tr", "uk", "vi", "zh-Hans", 
+#"zh-Hant", "appleTV", "iMessage", "default"]
 languages([
-  "es-ES",
- # "de-DE",
- # "it-IT",
- # "ru"
+  "en-US",
+  #"es-ES",
+  #"de-DE",
+  #"it",
+  #"ja",
+  #"ko",
+  #"pl",
+  #"pt-BR",
+  #"pt-PT",
+  "ru",
+  #"sk",
+  #"sv",
+  #"zh-Hans",
+  #"zh-Hant"
 ])
 
 # The name of the scheme which contains the UI Tests

@@ -211,7 +211,8 @@ platform :ios do
       submit_for_review: false,
       automatic_release: false,
       force: true, # Skip HTMl report verification
-      metadata_path: "fastlane/crowdin/catty/AppStore",
+      skip_metadata: true
+      #metadata_path: "fastlane/crowdin/catty/AppStore",
       screenshots_path: "fastlane/crowdin/catty/screenshots",
     )
   end
