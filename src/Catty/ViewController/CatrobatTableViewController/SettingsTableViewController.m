@@ -135,9 +135,10 @@
                 [weakSelf openRateUsURL];
             };
         }]];
-        NSString *version = [[NSString alloc] initWithFormat:@"%@%@",
+        NSString *version = [[NSString alloc] initWithFormat:@"%@%@#%@",
                              kLocalizedVersionLabel,
-                             [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
+                             [Util appVersion],
+                             [Util appBuildVersion]];
         section.footerTitle = version;
     }]];
     

@@ -132,8 +132,8 @@ platform :ios do
   lane :test_reports do
     collate_junit_reports(
       reports: ["./fastlane/test_output/results-BluetoothHelperTests/report.junit", 
-                "./fastlane/test_output/results-Catty Tests/report.junit",
-                "./fastlane/test_output/results-Catty UITests/report.junit"],
+                "./fastlane/test_output/results-CattyTests/report.junit",
+                "./fastlane/test_output/results-CattyUITests/report.junit"],
       collated_report: './fastlane/test_output/TestSummaries.xml'
     )
   end
@@ -146,15 +146,21 @@ platform :ios do
 
   desc "Upload Translations to Crowdin"
   lane :crowdin_upload do
-    sh ("curl \
+    sh(
+      command: "curl \
           -F \"files[catty/Localizable.strings]=@../Catty/Resources/Localization/en.lproj/Localizable.strings\" \
           -F \"export_patterns[catty/Localizable.strings]=/catty/%osx_code%/%original_file_name%\" \
-          https://api.crowdin.com/api/project/catrobat/update-file?key="+ENV["CROWDIN_KEY"])
+          https://api.crowdin.com/api/project/catrobat/update-file?key="+ENV["CROWDIN_KEY"],
+      log: false
+    )
   end
 
   desc "Download all Translations from Crowdin"
   lane :crowdin_download do
-    sh ("wget -O crowdin.zip https://api.crowdin.com/api/project/catrobat/download/all.zip?key="+ENV["CROWDIN_KEY"])
+    sh(
+      command: "wget -O crowdin.zip https://api.crowdin.com/api/project/catrobat/download/all.zip?key="+ENV["CROWDIN_KEY"],
+      log: false
+    )
     sh ("unzip -o crowdin.zip -d crowdin")
   end
 
@@ -166,9 +172,6 @@ platform :ios do
       destination: "fastlane/crowdin.old/"
     )
     sh ("find ../Catty/Resources/Localization/* ! -name 'en.lproj' -type d -exec rm -rf {} +")
-
-    # Upload
-    crowdin_upload
 
     # Download
     crowdin_download
@@ -192,6 +195,22 @@ platform :ios do
   # Metadata
   #
   ##########################################################################
+
+  desc "Prepare Metadata for AppStore"
+  lane :prepare_metadata do
+    crowdin_download #"fastlane/crowdin/catty/AppStore"
+    snapshot
+  end
+
+  desc "Upload Metadata to AppStore"
+  lane :upload_metadata do
+    deliver(
+      submit_for_review: false,
+      force: false,
+      metadata_path: "fastlane/crowdin/catty/AppStore",
+      screenshots_path: "fastlane/crowdin/catty/screenshots"
+    )
+  end
 
   ##########################################################################
   #

@@ -56,16 +56,21 @@ Download all Translations from Crowdin
 fastlane ios update_translations
 ```
 Update lane for Crowdin translations
+### ios prepare_metadata
+```
+fastlane ios prepare_metadata
+```
+Prepare Metadata for AppStore
+### ios upload_metadata
+```
+fastlane ios upload_metadata
+```
+Upload Metadata to AppStore
 ### ios release
 ```
 fastlane ios release
 ```
 Release Pocket Code to Testflight
-### ios playground
-```
-fastlane ios playground
-```
-
 
 ----
 
