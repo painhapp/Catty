@@ -14,13 +14,13 @@
 "About Pocket Code" = "About Pocket Code";
 
 /* No comment provided by engineer. */
+"acceleration-sensor" = "acceleration-sensor";
+
+/* No comment provided by engineer. */
 "acceleration_x" = "acceleration_x";
 
 /* No comment provided by engineer. */
-"acceleration_y" = "acceleration_y";
-
-/* No comment provided by engineer. */
-"acceleration_z" = "acceleration_z";
+"acceleration_y" = "acceleration_y"
 
 /* No comment provided by engineer. */
 "Add" = "Add";
